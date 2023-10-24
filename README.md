@@ -4,7 +4,7 @@
 # \<RecipEat\>
  > Your author list below should include links to all members GitHub (remove existing author).
  
- > Authors: 
+ > Authors:  
  > \<[Noah Snodgrass](https://github.com/noahsnod)\>  
  > \<[Brandon Tran](https://github.com/brandontran1220)\>  
  > \<[Samuel Uribe](https://github.com/samuribe013)\>  
