@@ -27,51 +27,51 @@
  > * Our project will be primarily implemented in C++. As a primarily terminal based project, we will make use of multiple data structures to efficiently store the user’s information. We are also going to archive or store our past user data through a SQL database. We may also implement functionality for our user to run pre-written scripts for the user to access some of their past lists. When testing our software, we will use Valgrind and Google Test to run all unit tests to rigorously stress test our executable.
  > * **What will be the input/output of your project?**
 >  * Output:
->    *   Displaying all tasks on the list and the number of total items
->    *   Displaying possible actions for items or list
->    *   Displaying Lists
->    *   Displaying tasks that are finished and not finished
->    *   Creating a file that stores user's task list information
->    *   Displaying the weekly tasks schedule and the days
->    *   Displaying if lists are completed or not completed
->    *   File outputted to machine(in user chosen directory)
->    *   Total percentage bar of tasks completed for the week
->    *   Individual daily percentage bar of tasks completed for the week
->    *   Individual daily tasks
->    *   Tasks for the weeks
->    *   Overall undated tasks
->    *   Archived tasks and lists
->    *   Optional: If the user decides to add priorities and scheduling options
+>    * Displaying all tasks on the list and the number of total items
+>    * Displaying possible actions for items or list
+>    * Displaying Lists
+>    * Displaying tasks that are finished and not finished
+>    * Creating a file that stores user's task list information
+>    * Displaying the weekly tasks schedule and the days
+>    * Displaying if lists are completed or not completed
+>    * File outputted to machine(in user chosen directory)
+>    * Total percentage bar of tasks completed for the week
+>    * Individual daily percentage bar of tasks completed for the week
+>    * Individual daily tasks
+>    * Tasks for the weeks
+>    * Overall undated tasks
+>    * Archived tasks and lists
+>    * Optional: If the user decides to add priorities and scheduling options
 >  * Input:
->   *  Tasks:
->     *    Task’s name, priority
->     *    Duplicate Tasks
->     *    Changing the priority of tasks
->     *    Deleting the task
->     *    Increasing the count of tasks
->     *    Decreasing the count of tasks
->     *    Noting a completion of the tasks
->     *    Renaming tasks
->     *    Undoing action
->     *    Redoing action
->     *    Choosing between weekly task or an overall undated list of tasks
->     *    Choosing day if weekly
->     *    Archive tasks
->     *    Retrieve tasks from archive
->     *  Lists:
->     *    List’s name
->     *    List’s priority
->     *    Changing the list’s name
->     *    Changing Priority
->     *    Deleting lists
->     *    Duplicating lists
->     *    Noting the completion of lists
->     *    Undoing action
->     *    Choosing to have the application suggest a weekly schedule
->     *    Choosing between weekly list or an overall undated list of the lists
->     *    Choosing day if weekly
->     *    Archive lists
->     *    Retrieve lists from archive
+>   * Tasks:
+>    * Task’s name, priority
+>    * Duplicate Tasks
+>    * Changing the priority of tasks
+>    * Deleting the task
+>    * Increasing the count of tasks
+>    * Decreasing the count of tasks
+>    * Noting a completion of the tasks
+>    * Renaming tasks
+>    * Undoing action
+>    * Redoing action
+>    * Choosing between weekly task or an overall undated list of tasks
+>    * Choosing day if weekly
+>    * Archive tasks
+>    * Retrieve tasks from archive
+>   * Lists:
+>    * List’s name
+>    * List’s priority
+>    * Changing the list’s name
+>    * Changing Priority
+>    * Deleting lists
+>    * Duplicating lists
+>    * Noting the completion of lists
+>    * Undoing action
+>    * Choosing to have the application suggest a weekly schedule
+>    * Choosing between weekly list or an overall undated list of the lists
+>    * Choosing day if weekly
+>    * Archive lists
+>    * Retrieve lists from archive
 
  > * **What are the features that the project provides?**
 >  * Users can create tasks with a title, description, classification, priority, duration, and due date
