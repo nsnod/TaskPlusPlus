@@ -44,49 +44,49 @@
 >    * Optional: If the user decides to add priorities and scheduling options
 >  * Input:
 >   * Tasks:
->    * Task’s name, priority
->    * Duplicate Tasks
->    * Changing the priority of tasks
->    * Deleting the task
->    * Increasing the count of tasks
->    * Decreasing the count of tasks
->    * Noting a completion of the tasks
->    * Renaming tasks
->    * Undoing action
->    * Redoing action
->    * Choosing between weekly task or an overall undated list of tasks
->    * Choosing day if weekly
->    * Archive tasks
->    * Retrieve tasks from archive
+>     * Task’s name, priority
+>     * Duplicate Tasks
+>     * Changing the priority of tasks
+>     * Deleting the task
+>     * Increasing the count of tasks
+>     * Decreasing the count of tasks
+>     * Noting a completion of the tasks
+>     * Renaming tasks
+>     * Undoing action
+>     * Redoing action
+>     * Choosing between weekly task or an overall undated list of tasks
+>     * Choosing day if weekly
+>     * Archive tasks
+>     * Retrieve tasks from archive
 >   * Lists:
->    * List’s name
->    * List’s priority
->    * Changing the list’s name
->    * Changing Priority
->    * Deleting lists
->    * Duplicating lists
->    * Noting the completion of lists
->    * Undoing action
->    * Choosing to have the application suggest a weekly schedule
->    * Choosing between weekly list or an overall undated list of the lists
->    * Choosing day if weekly
->    * Archive lists
->    * Retrieve lists from archive
+>     * List’s name
+>     * List’s priority
+>     * Changing the list’s name
+>     * Changing Priority
+>     * Deleting lists
+>     * Duplicating lists
+>     * Noting the completion of lists
+>     * Undoing action
+>     * Choosing to have the application suggest a weekly schedule
+>     * Choosing between weekly list or an overall undated list of the lists
+>     * Choosing day if weekly
+>     * Archive lists
+>     * Retrieve lists from archive
 
  > * **What are the features that the project provides?**
->  * Users can create tasks with a title, description, classification, priority, duration, and due date
->  * Tasks lists can be made that will contain multiple tasks within it
->  * Each task will have the option to contain subtasks
->  * Users will be able to manage all of their tasks and tasks lists with displaying, creation, deletion, and editing
->  * Users will also have the option to undo their actions
->  * You will be able to sort lists based on their classification
->  * The application will also suggest a weekly schedule based on priority and due date
->  * Users will be able to assign tasks to the day to make weekly sets of tasks as well as
->  * store the tasks in an overall undated category rather than the weekly set
->  * Users will have the option to change an undated overall task and assign a date/edit priority
->  * Download a task document on their machine
->  * will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
->  * Users will have the option to take tasks and lists out of the archive 
+>     * Users can create tasks with a title, description, classification, priority, duration, and due date
+>     * Tasks lists can be made that will contain multiple tasks within it
+>     * Each task will have the option to contain subtasks
+>     * Users will be able to manage all of their tasks and tasks lists with displaying, creation, deletion, and editing
+>     * Users will also have the option to undo their actions
+>     * You will be able to sort lists based on their classification
+>     * The application will also suggest a weekly schedule based on priority and due date
+>     * Users will be able to assign tasks to the day to make weekly sets of tasks as well as
+>     * store the tasks in an overall undated category rather than the weekly set
+>     * Users will have the option to change an undated overall task and assign a date/edit priority
+>     * Download a task document on their machine
+>     * will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
+>     * Users will have the option to take tasks and lists out of the archive 
 
  > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
  > 
