@@ -22,13 +22,66 @@
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include:
  > * Why is it important or interesting to you?
- > * **The project is important to us because of our busy and packed schedules dealing with schoolwork and an endless supply of ramen noodles. The purpose of this project is to combine efficiency and convenience when it comes to dealing with proper meals. This application will allow us and other people alike to generate recipes with the ingredients we have on hand with the touch of a button. This will help students get over the feeling of being overwhelmed of not knowing what to make or eat. This will change the way people think when it comes to making food at home. We will be able to understand the steps and process of making each recipe with ease and at the end of the day, we will be rest assured that we ate a proper meal.**
+ > * **This project is important to us because, as college students, time management is the key to success. According to “collegesuccessplan.edu” “78% of students claim to struggle with time management throughout their college experience, with an additional 9% claiming to “always” struggle with this” and “80% of college professors believe their students struggle with time management “most” of the time.” With Task++ it enables users to manage their time efficiently with task management. With the ability to manage all your daily, weekly, or monthly tasks within lists and plans, you can be assured your time management will be maximized.**
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- > * **Our project will have a graphical user interface, likely to be developed in python. We will also make use of the GPT API to generate our recipes for us. This will likely also be done in python. We also intend to host our project on a server so that users will be able to see other peoples’ recipes and gain inspiration. We will implement the backend process in C++. We will also have to store our user's recipe links on an AWS server with simple web pages built with pieces of the MERN stack. When testing our software we will use valgrind and Google Test to run all unit tests to rigorously stress test our executable.**
+ > * **Our project will be primarily implemented in C++. As a primarily terminal based project, we will make use of multiple data structures to efficiently store the user’s information. We are also going to archive or store our past user data through a SQL database. We may also implement functionality for our user to run pre-written scripts for the user to access some of their past lists. When testing our software, we will use Valgrind and Google Test to run all unit tests to rigorously stress test our executable.**
  > * What will be the input/output of your project?
- > * **For our project, the main inputs will be ingredients, serving sizes, specific filters to specify food diets, cuisine, and duration of cooking time. Then, some optional inputs are changing the serving size of the recipe, refreshing the page to generate different recipes with the same ingredients, downloading the recipe, a random recipe option, stating the cooking tools on hand, recipe URL, and favoring the recipe to save the recipe for later. The user’s choices will be parsed through ChatGPT and then ChatGPT will generate 3 recipes for the user to choose from. For the output, the application will generate 3 recipes from the user’s input (or 3 new recipes if the user decides to refresh). Within the recipe, the output will be cooking time duration, serving size, ingredients, measurement of ingredients, instructions for cooking, and recipe link. A more general input and output will be inputting the URL onto a web browser and receiving the information back as an output.**
+>  * Output:
+>  * Displaying all tasks on the list and the number of total items
+>  * Displaying possible actions for items or list
+>  * Displaying Lists
+>  * Displaying tasks that are finished and not finished
+>  * Creating a file that stores user's task list information
+>  * Displaying the weekly tasks schedule and the days
+>  * Displaying if lists are completed or not completed
+>  * File outputted to machine(in user chosen directory)
+>  * Total percentage bar of tasks completed for the week
+>  * Individual daily percentage bar of tasks completed for the week
+>  * Individual daily tasks
+>  * Tasks for the weeks
+>  * Overall undated tasks
+>  * Archived tasks and lists
+>  * Optional: If the user decides to add priorities and scheduling options
+>  * Input:
+>  * Tasks:
+>  * Task’s name, priority
+>  * Duplicate Tasks
+>  * Changing the priority of tasks
+>  * Deleting the task
+>  * Increasing the count of tasks
+>  * Decreasing the count of tasks
+>  * Noting a completion of the tasks
+>  * Renaming tasks
+>  * Undoing action
+>  * Redoing action
+>  * Choosing between weekly task or an overall undated list of tasks
+>  * Choosing day if weekly
+>  * Archive tasks
+>  * Retrieve tasks from archive
+>  * Lists:
+>  * List’s name
+>  * List’s priority
+>  * Changing the list’s name
+>  * Changing Priority
+>  * Deleting lists
+>  * Duplicating lists
+>  * Noting the completion of lists
+>  * Undoing action
+>  * Choosing to have the application suggest a weekly schedule
+>  * Choosing between weekly list or an overall undated list of the lists
+>  * Choosing day if weekly
+>  * Archive lists
+>  * Retrieve lists from archive
+
  > * What are the features that the project provides?
- > * **Our project is a packaged .exe file that you can download and run on your computer. You will be able to give this software a list of ingredients and receive customized recipes back. The GUI will give you the option to select from multiple different filters to truly customize your recipe. The GUI will give you this customized recipe, and you have the option to save it. You will be able to customize the name of your recipe, and it will be stored on our end at our domain with the customized name with a number after it. This number feature is for if matching names exist EX: DOMAIN/MacAndCheese001, DOMAIN/MacAndCheese002. The custom URL is a very important feature because even though the software is built only for computers, the URL will allow you to share the recipe to your mobile device or to others. The URL will be a basic page containing all the filters, ingredients, and the recipe name. Our software will also allow you to favorite recipes to keep a list on your system.**
+>  * Users can create tasks with a title, description, classification, priority, duration, and due date
+>  * Tasks lists can be made that will contain multiple tasks within it\>
+>  * Each task will have the option to contain subtasks\>
+>  * Users will be able to manage all of their tasks and tasks lists with displaying, creation, deletion, and editing
+>  * Users will also have the option to undo their actions
+>  * You will be able to sort lists based on their classification
+>  * The application will also suggest a schedule for a user based on the priorities and different information on the tasks
+>  * Users will be able to assign tasks to the day to make weekly sets of tasks
  > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
  > 
  > You also need to set up an empty project board using GitHub projects (board view). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added.
