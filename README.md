@@ -1,9 +1,9 @@
 # Task++
-> Authors:  
-> [Noah Snodgrass](https://github.com/noahsnod)\
-> [Brandon Tran](https://github.com/brandontran1220)\
-> [Samuel Uribe](https://github.com/samuribe013)\
-> [Rohan Gujral](https://github.com/rgujr001)
+Authors:  
+[Noah Snodgrass](https://github.com/noahsnod)\
+[Brandon Tran](https://github.com/brandontran1220)\
+[Samuel Uribe](https://github.com/samuribe013)\
+[Rohan Gujral](https://github.com/rgujr001)
 
 ## Project Description
 **Why is it important or interesting to you?**
