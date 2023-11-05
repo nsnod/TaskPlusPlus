@@ -1,96 +1,80 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\>"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # Task++
- > Your author list below should include links to all members GitHub (remove existing author).
- 
- > Authors:  
- > \<[Noah Snodgrass](https://github.com/noahsnod)\>  
- > \<[Brandon Tran](https://github.com/brandontran1220)\>  
- > \<[Samuel Uribe](https://github.com/samuribe013)\>  
- > \<[Rohan Gujral](https://github.com/rgujr001)\>  
-
- > You will be forming a group of **FOUR** students and working on an interesting project. The project has 4 phases, each one with specific requirements. A list of proposed project ideas that have been successful in previous quarters is listed in the project specifications document on Canvas. You can select an idea from the list and start thinking about the features you will implement. If you want to propose your own original idea, you will have to contact your instructor to discuss the project and obtain written permission before you submit your project proposal (Phase 1). The project work should be divided almost equally among team members. You can of course help each other, but it needs to be clear who will be responsible for which features. Additionally, you are expected to follow Scrum patterns, specifically the use of a Scrum (Project) board, Sprints, and Scrum meetings.
-
- > ## Expectations
- > * The backend of your project should be implemented in C++. If you wish to choose anoher programming language (e.g. Java, Python), please discuss with your lab TA to obtain permission.
- > * You can incorporate additional technologies/tools but they must be approved (in writing) by the instructor or the TA.
- > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
- > * **Each member of the group must actively participate in the Github Project board, writing unit tests, and reviewing commited code.**
-> * All project phases are to be submitted to this GitHub repository. You should modify this README file to reflect the different phases of the project. In addition, you should regularly hold sprint meetings with your group. You will need to hold two to three scrum/check-in meetings with your lab TA/reader at different times in addition to the final demo.
+> Authors:  
+> [Noah Snodgrass](https://github.com/noahsnod)\
+> [Brandon Tran](https://github.com/brandontran1220)\
+> [Samuel Uribe](https://github.com/samuribe013)\
+> [Rohan Gujral](https://github.com/rgujr001)
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include:
- > * **Why is it important or interesting to you?**
- > * This project is important to us because, as college students, time management is the key to success. According to “collegesuccessplan.edu” “78% of students claim to struggle with time management throughout their college experience, with an additional 9% claiming to “always” struggle with this” and “80% of college professors believe their students struggle with time management “most” of the time.” With Task++ it enables users to manage their time efficiently with task management. With the ability to manage all your daily, weekly, or monthly tasks within lists and plans, you can be assured your time management will be maximized.
- > * **What languages/tools/technologies do you plan to use? (This list may change over the course of the project)**
- > * Our project will be primarily implemented in C++. As a primarily terminal based project, we will make use of multiple data structures to efficiently store the user’s information. We are also going to archive or store our past user data through a SQL database. We may also implement functionality for our user to run pre-written scripts for the user to access some of their past lists. When testing our software, we will use Valgrind and Google Test to run all unit tests to rigorously stress test our executable.
- > * **What will be the input/output of your project?**
->  * Output:
->    * Displaying all tasks on the list and the number of total items
->    * Displaying possible actions for items or list
->    * Displaying Lists
->    * Displaying tasks that are finished and not finished
->    * Creating a file that stores user's task list information
->    * Displaying the weekly tasks schedule and the days
->    * Displaying if lists are completed or not completed
->    * File outputted to machine(in user chosen directory)
->    * Total percentage bar of tasks completed for the week
->    * Individual daily percentage bar of tasks completed for the week
->    * Individual daily tasks
->    * Tasks for the weeks
->    * Overall undated tasks
->    * Archived tasks and lists
->    * Optional: If the user decides to add priorities and scheduling options
->  * Input:
->   * Tasks:
->     * Task’s name, priority
->     * Duplicate Tasks
->     * Changing the priority of tasks
->     * Deleting the task
->     * Increasing the count of tasks
->     * Decreasing the count of tasks
->     * Noting a completion of the tasks
->     * Renaming tasks
->     * Undoing action
->     * Redoing action
->     * Choosing between weekly task or an overall undated list of tasks
->     * Choosing day if weekly
->     * Archive tasks
->     * Retrieve tasks from archive
->   * Lists:
->     * List’s name
->     * List’s priority
->     * Changing the list’s name
->     * Changing Priority
->     * Deleting lists
->     * Duplicating lists
->     * Noting the completion of lists
->     * Undoing action
->     * Choosing to have the application suggest a weekly schedule
->     * Choosing between weekly list or an overall undated list of the lists
->     * Choosing day if weekly
->     * Archive lists
->     * Retrieve lists from archive
+**Why is it important or interesting to you?**
+* This project is important to us because, as college students, time management is the key to success. According to “collegesuccessplan.edu” “78% of students claim to struggle with time management throughout their college experience, with an additional 9% claiming to “always” struggle with this” and “80% of college professors believe their students struggle with time management “most” of the time.” With Task++ it enables users to manage their time efficiently with task management. With the ability to manage all your daily, weekly, or monthly tasks within lists and plans, you can be assured your time management will be maximized.
 
- > * **What are the features that the project provides?**
->     * Users can create tasks with a title, description, classification, priority, duration, and due date
->     * Tasks lists can be made that will contain multiple tasks within it
->     * Each task will have the option to contain subtasks
->     * Users will be able to manage all of their tasks and tasks lists with displaying, creation, deletion, and editing
->     * Users will also have the option to undo their actions
->     * You will be able to sort lists based on their classification
->     * The application will also suggest a weekly schedule based on priority and due date
->     * Users will be able to assign tasks to the day to make weekly sets of tasks as well as
->     * store the tasks in an overall undated category rather than the weekly set
->     * Users will have the option to change an undated overall task and assign a date/edit priority
->     * Download a task document on their machine
->     * will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
->     * Users will have the option to take tasks and lists out of the archive 
+**What languages/tools/technologies do you plan to use? (This list may change over the course of the project)**
+* Our project will be primarily implemented in C++. As a primarily terminal based project, we will make use of multiple data structures to efficiently store the user’s information. We are also going to archive or store our past user data through a SQL database. We may also implement functionality for our user to run pre-written scripts for the user to access some of their past lists. When testing our software, we will use Valgrind and Google Test to run all unit tests to rigorously stress test our executable.
 
- > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
- > 
- > You also need to set up an empty project board using GitHub projects (board view). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added.
+**What will be the input/output of your project?**
+* Output:
+    * Displaying all tasks on the list and the number of total items
+    * Displaying possible actions for items or list
+    * Displaying Lists
+    * Displaying tasks that are finished and not finished
+    * Creating a file that stores user's task list information
+    * Displaying the weekly tasks schedule and the days
+    * Displaying if lists are completed or not completed
+    * File outputted to machine(in user chosen directory)
+    * Total percentage bar of tasks completed for the week
+    * Individual daily percentage bar of tasks completed for the week
+    * Individual daily tasks
+    * Tasks for the weeks
+    * Overall undated tasks
+    * Archived tasks and lists
+    * Optional: If the user decides to add priorities and scheduling options
+* Input:
+    * Tasks:
+        * Task’s name, priority
+        * Duplicate Tasks
+        * Changing the priority of tasks
+        * Deleting the task
+        * Increasing the count of tasks
+        * Decreasing the count of tasks
+        * Noting a completion of the tasks
+        * Renaming tasks
+        * Undoing action
+        * Redoing action
+        * Choosing between weekly task or an overall undated list of tasks
+        * Choosing day if weekly
+        * Archive tasks
+        * Retrieve tasks from archive
+    * Lists:
+        * List’s name
+        * List’s priority
+        * Changing the list’s name
+        * Changing Priority
+        * Deleting lists
+        * Duplicating lists
+        * Noting the completion of lists
+        * Undoing action
+        * Choosing to have the application suggest a weekly schedule
+        * Choosing between weekly list or an overall undated list of the lists
+        * Choosing day if weekly
+        * Archive lists
+        * Retrieve lists from archive
+
+**What are the features that the project provides?**
+* Users can create tasks with a title, description, classification, priority, duration, and due date
+* Tasks lists can be made that will contain multiple tasks within it
+* Each task will have the option to contain subtasks
+* Users will be able to manage all of their tasks and tasks lists with displaying, creation, deletion, and editing
+* Users will also have the option to undo their actions
+* You will be able to sort lists based on their classification
+* The application will also suggest a weekly schedule based on priority and due date
+* Users will be able to assign tasks to the day to make weekly sets of tasks as well as
+* store the tasks in an overall undated category rather than the weekly set
+* Users will have the option to change an undated overall task and assign a date/edit priority
+* Download a task document on their machine
+* will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
+* Users will have the option to take tasks and lists out of the archive 
+
  > ## Phase II
  > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
  > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
