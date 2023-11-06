@@ -73,8 +73,6 @@ store the tasks in an overall undated category rather than the weekly set
 * Users will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
 * Users will have the option to take tasks and lists out of the archive 
 
-## Phase II
-
 ## User Interface Specification
 
 ### Navigation Diagram
