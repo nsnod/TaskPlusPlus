@@ -28,7 +28,6 @@ Authors:
     * Tasks for the weeks
     * Overall undated tasks
     * Archived tasks and lists
-    * Optional: If the user decides to add priorities and scheduling options
 * Input:
     * Tasks:
         * Task’s name, priority
@@ -51,7 +50,6 @@ Authors:
         * Changing the list’s name
         * Changing Priority
         * Deleting lists
-        * Duplicating lists
         * Noting the completion of lists
         * Undoing action
         * Choosing to have the application suggest a weekly schedule
@@ -61,7 +59,7 @@ Authors:
         * Retrieve lists from archive
 
 **What are the features that the project provides?**
-* Users can create tasks with a title, description, classification, priority, duration, and due date
+* Users can create tasks with a title, description, classification, priority, and due date
 * Tasks lists can be made that will contain multiple tasks within it
 * Each task will have the option to contain subtasks
 * Users will be able to manage all of their tasks and tasks lists with displaying, creation, deletion, and editing
@@ -69,31 +67,44 @@ Authors:
 * You will be able to sort lists based on their classification
 * The application will also suggest a weekly schedule based on priority and due date
 * Users will be able to assign tasks to the day to make weekly sets of tasks as well as
-* store the tasks in an overall undated category rather than the weekly set
+store the tasks in an overall undated category rather than the weekly set
 * Users will have the option to change an undated overall task and assign a date/edit priority
 * Download a task document on their machine
-* will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
+* Users will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
 * Users will have the option to take tasks and lists out of the archive 
 
- > ## Phase II
- > In addition to completing the "User Interface Specification" and "Class Diagram" sections below, you will need to:
- > * Create an "Epic" (note) for each feature. Place these epics in the `Product Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Break down the "Epics" into smaller actionable user stories (i.e. smaller development tasks). Convert them into issues and assign them to team members. Place these in the `TODO` (aka Sprint Backlog) column.
- >   * These cards should represent roughly 7 days worth of development time for your team. Then, once the sprint is over you should be repeating these steps to plan a new sprint, taking you until your second scrum meeting with the reader in phase III.
- > * Schedule two check-ins using Calendly. You need to pick both time slots on Tuesday of week 6. The check-ins will occur on Zoom. Your entire team must be present for both check-ins.
- >   * The first check-in needs to be scheduled with your lab TA. During that meeting, you will discuss your project design/class diagram from phase II.
- >   * The second check-in should be scheduled with a reader. During that meeting you will discuss:
- >     * The tasks you are planning for the first sprint
- >     * How work will be divided between the team members
+## Phase II
+
 ## User Interface Specification
- > Include a navigation diagram for your screens and the layout of each of those screens as desribed below. For all the layouts/diagrams, you can use any tool such as PowerPoint or a drawing program. (Specification requirement is adapted from [this template](https://redirect.cs.umbc.edu/~mgrass2/cmsc345/Template_UI.doc))
 
 ### Navigation Diagram
-> Draw a diagram illustrating how the user can navigate from one screen to another. Here is an [example](https://creately.com/diagram/example/ikfqudv82/user-navigation-diagram-classic?r=v). It can be useful to label each symbol that represents a screen so that you can reference the screens in the next section or the rest of the document if necessary. Give a brief description of what the diagram represents.
+![Navigation Diagram](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Navigation.jpg)\
+Once you boot the program, you will be taken to the home screen and will have multiple options of where to pivot to. You will be able to create a new task list, a new task, and will have multiple viewing options of the task archive, the overall undated tasks, and your weekly set of tasks. Within the new task screen, you will be able to create new tasks, confirm creation, and undo any errors you may have made. The new task list will have the same features but will be a list containing multiple other tasks. From the different viewing screens, you will be able to download the set of tasks for each viewing screen, edit the tasks and lists, or delete them. From the overall updated viewing screen, you will be able to create a recommended list of tasks for your week. You will be able to archive any tasks or task lists from within the viewing screens. All screens have the option to return home.
 
 ### Screen Layouts
-> Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs, expected output, and buttons (if applicable). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+![Home Screen](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Home_Screen.jpg)\
+The home screen prompts the user to enter their preferred action. Options include creating a new task, creating a new list, viewing the archive, checking weekly tasks, examining upcoming tasks, and selecting the weekly schedule recommender. The user can type their choice, and the program will parse it to determine the next course of action. There's also an exit option for users to leave the program when they're done.
+
+![New Task](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_Task.jpg)\
+When creating a new task, users are required to input the task name, task description, priority, due date, assigned date, and whether they want to assign it to an existing list or not. While on this screen, users have the flexibility to edit the task description extensively. They can undo any possible mistakes when given the final option to confirm. After they're satisfied with the changes, users can choose to return to the home screen.
+
+![New List](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_List.jpg)\
+Users can specify a list name and provide a description or any relevant information about the list's purpose. After naming the list and providing the description, users are given the option to pivot to the new task screen with the "add task" option.
+
+![Task Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Task_Editor.jpg)\
+When tasks are selected for editing, users are taken to the edit screen. This edit screen displays all current data of the task, including the title, priority, due date, assigned date, description, and whether it has an assigned list or not. Users have the option to continue editing aspects of the task or confirm their changes.
+
+![List Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/List_Editor.jpg)\
+When lists are selected for editing, users are taken to the list editor screen. The edit screen displays all the data of the current list, including the title and the description. Users are given the option to continue editing aspects of the list or confirm their changes.
+
+![Weekly View](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Weekly.jpg)\
+Users are presented with a calendar of the current week when viewing weekly tasks, with each task displayed alongside its due date. Users can manage the entire week or select individual days of the week. Actions include editing, archiving, deleting, or marking tasks as complete for the week or specific days. Users can also edit individual tasks on specific days. Users can also view the progress bar for the percentage of tasks they have completed for the week.
+
+![Upcoming View](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Upcoming.jpg)\
+Users get to see an overall list of undated tasks as well as their weekly tasks assigned to days beyond the current week. Users can edit, delete, archive, or mark tasks and lists as complete. They can also manage tasks within the selected lists.
+
+![Archive View](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Archive.jpg)\
+Users can view all archived lists and tasks and choose between the two options. They can enter a number corresponding to the task or list in the selected category. Users can also see the automated completed task list, which stores all completed tasks and lists. Options include editing, deleting, uploading, or marking as complete. Uploading allows users to move archived weeks into a new week for easier week creation.
 
 ## Class Diagram
  > Include a **class diagram(s)** for your project and a **description** of the diagram(s). Your class diagram(s) should include all the main classes you plan for the project. This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper UML notation (as discussed in the course slides).
