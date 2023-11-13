@@ -1,3 +1,3 @@
-class upcoming{
+class Upcoming {
 
 };

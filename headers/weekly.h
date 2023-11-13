@@ -1,3 +1,3 @@
-class weekly{
+class Weekly {
 
 };

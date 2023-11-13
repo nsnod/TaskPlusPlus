@@ -1,3 +1,3 @@
-class archive{
+class Archive {
 
 };
