@@ -107,7 +107,7 @@ Users can view all archived lists and tasks and choose between the two options. 
 ## Class Diagram
 <<<<<<< HEAD
 ![UML](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/UML_2.png)\
-The UML diagram we constructed separates our classes based on their different responsibilities and roles by following the SRP. Our Tasks and TaskLists have been separated with their respective information. Our different viewing options have similar and different functionalities so they are to share an abstract class and also have their own private functions and values. We have friend relationships between our TaskList and Task. Our relationships between the classes ensure that they only have access to what they must use implementing the rule of least privilege.
+The UML diagram we constructed has one main class, Home, that is connected to other classes through aggregation. Every class has their own responsibilities and have been separated with their respective information. Our different viewing options have similar and different functionalities so they are to share an abstract class and also have their own private functions and values. Our relationships between the classes ensure that they only have access to what they must use implementing the rule of least privilege.
  
  > ## Phase III
  > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
