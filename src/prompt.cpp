@@ -15,3 +15,22 @@ void prompt::newTaskPrompt(){
 void prompt::newListPrompt(){
     //fill out with prompt
 }
+
+void prompt::taskEditorPrompt(){
+
+}
+void prompt::listEditorPrompt(){
+
+}
+void prompt::viewArchivePrompt(){
+
+}
+void prompt::viewWeeklyTasksPrompt(){
+
+}
+void prompt::viewUpcomingTasksPrompt(){
+
+}
+void prompt::recommendWeeklySchedulePrompt(){
+    
+}
