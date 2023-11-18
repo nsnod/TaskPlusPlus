@@ -9,24 +9,28 @@ using namespace std;
 Task::Task(): name(""), description(""), priority(""), dueDay(-1), dueMonth(-1), dueYear(-1),
               assignedDay(-1), assignedMonth(-1), assignedYear(-1), completed(false) {}
 
-void Task::editTaskName(string &n) {
+void Task::editName(string &n) {
     name = n;
 }
 
-void Task::editTaskDescription(string &d) {
+void Task::editDescription(string &d) {
     description = d;
 }
 
-void Task::editTaskPriority(string &p) {
+void Task::editPriority(string &p) {
     priority = p;
 }
 
-void Task::editTaskDueDate() {
-    //temp filler
+void Task::editDueDate(int dD, int dM, int dY) {
+    dueDay = dD;
+    dueMonth = dM;
+    dueYear = dueYear;
 }
 
-void Task::editTaskAssignedDate() {
-    //temp filler
+void Task::editAssignedDate(int aD, int aM, int aY) {
+    assignedDay = aD;
+    assignedMonth = aM;
+    assignedYear = aY;
 }
 
 void Task::switchCompleteStatus() {
@@ -41,7 +45,7 @@ void Task::setList() {
     //temp filler
 }
 
-string Task::getTaskDueDate() {
+string Task::getFullDueDate() {
     if (dueDay == -1 || dueMonth == -1 || dueYear == -1) {
         return "No due date has been set for this task.";
     }
@@ -50,10 +54,23 @@ string Task::getTaskDueDate() {
                + "/" + to_string(dueYear);
 }
 
-string Task::getTaskAssignedDate() {
+void setDueDay(int dD) {
+    
+}
+
+void setDueMonth(int dM) {
+    
+}
+
+void setDueYear(int dY) {
+    
+}
+
+string Task::getFullAssignedDate() {
     if (assignedDay == -1 || assignedMonth == -1 || assignedYear == -1) {
         return "No assigned date has been set for this task.";
     }
     return "/" + to_string(assignedMonth) + "/" + to_string(assignedDay)
                + "/" + to_string(assignedYear);
 }
+
