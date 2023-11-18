@@ -7,3 +7,11 @@ prompt::prompt(){
 void prompt::homescreen(){
     //fill out with prompt
 }
+
+void prompt::newTaskPrompt(){
+    //fill out with prompt
+}
+
+void prompt::newListPrompt(){
+    //fill out with prompt
+}
