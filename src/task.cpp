@@ -9,15 +9,15 @@ using namespace std;
 Task::Task(): name(""), description(""), priority(""), dueDay(-1), dueMonth(-1), dueYear(-1),
               assignedDay(-1), assignedMonth(-1), assignedYear(-1), completed(false) {}
 
-void Task::editName(string &n) {
+void Task::editName(const string &n) {
     name = n;
 }
 
-void Task::editDescription(string &d) {
+void Task::editDescription(const string &d) {
     description = d;
 }
 
-void Task::editPriority(string &p) {
+void Task::editPriority(const string &p) {
     priority = p;
 }
 
@@ -45,7 +45,7 @@ void Task::setList() {
     //temp filler
 }
 
-string Task::getFullDueDate() {
+string Task::getFullDueDate() const {
     if (dueDay == -1 || dueMonth == -1 || dueYear == -1) {
         return "No due date has been set for this task.";
     }
@@ -66,7 +66,7 @@ void setDueYear(int dY) {
     
 }
 
-string Task::getFullAssignedDate() {
+string Task::getFullAssignedDate() const {
     if (assignedDay == -1 || assignedMonth == -1 || assignedYear == -1) {
         return "No assigned date has been set for this task.";
     }
