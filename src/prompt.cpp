@@ -17,20 +17,20 @@ void prompt::newListPrompt(){
 }
 
 void prompt::taskEditorPrompt(){
-
+    //fill out with prompt
 }
 void prompt::listEditorPrompt(){
-
+    //fill out with prompt    
 }
 void prompt::viewArchivePrompt(){
-
+    //fill out with prompt
 }
 void prompt::viewWeeklyTasksPrompt(){
-
+    //fill out with prompt
 }
 void prompt::viewUpcomingTasksPrompt(){
-
+    //fill out with prompt
 }
 void prompt::recommendWeeklySchedulePrompt(){
-    
+    //fill out with prompt
 }
