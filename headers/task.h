@@ -13,28 +13,31 @@ class Task {
    // Task(const Task&);
    // Task& operator=(const Task&);
 
-   // setters/editors
-   void editName(const string &); //edits the task name 
-   void editDescription(const string &); //edits the task description
-   void editPriority(const string &); //edits the task priority
-   void editDueDate(int, int, int); //edits the dueDate
-   void setDueDay(int);
-   void setDueMonth(int);
-   void setDueYear(int);
-   void editAssignedDate(int, int, int); //edits the assingedDate
-   void switchCompleteStatus(); //edits the complete value
-   void setList(); //prompts user to set the list
+   // setters
+   void setName(const string n) { name = n; }
+   void setDescription(const string d) { description = d; }
+   void setPriority(const string p) { priority = p; }
+   void setFullDueDate(string);
+   void setFullAssignedDate(string);
+   void setDueDay(int dD) { dueDay = dD; }
+   void setDueMonth(int dM) { dueMonth = dM; }
+   void setDueYear(int dY) { dueYear = dY; }
+   void setAssignedDay(int aD) { assignedDay = aD; }
+   void setAssignedeMonth(int aM) { assignedMonth = aM; }
+   void setAssignedYear(int aY) { assignedYear = aY; }
+   void switchCompleteStatus();
+   void setList(); //!
 
-   //getters
+   // getters
    string getName() const { return name; }
    string getDescription() const { return description; }
    string getPriority() const { return priority; }
    bool getCompleteStatus() const { return completed; }
-   string getFullDueDate() const;
+   string getFullDueDate() const { return fullDueDate; }
+   string getFullAssignedDate() const { return fullAssignedDate; }
    int getDueDay() const { return dueDay; }
    int getDueMonth() const { return dueMonth; }
    int getDueYear() const { return dueYear; }
-   string getFullAssignedDate() const; 
    int getAssignedDay() const { return assignedDay; }
    int getAssignedMonth() const { return assignedMonth; }
    int getAssignedYear() const { return assignedYear; }
@@ -43,6 +46,8 @@ class Task {
    string name;
    string description;
    string priority;
+   string fullDueDate;
+   string fullAssignedDate;
    int dueDay;
    int dueMonth;
    int dueYear;
