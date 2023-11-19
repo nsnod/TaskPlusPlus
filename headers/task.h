@@ -9,11 +9,11 @@ class Task {
  public:
    Task();
    //Rule of three
-   // ~Task() {}
+   ~Task() {}
    // Task(const Task&);
    // Task& operator=(const Task&);
 
-   // setters
+   // setters //
    void setName(const string n) { name = n; }
    void setDescription(const string d) { description = d; }
    void setPriority(const string p) { priority = p; }
@@ -28,7 +28,7 @@ class Task {
    void switchCompleteStatus();
    void setList(); //!
 
-   // getters
+   // getters //
    string getName() const { return name; }
    string getDescription() const { return description; }
    string getPriority() const { return priority; }
