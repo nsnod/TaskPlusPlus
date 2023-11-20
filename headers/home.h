@@ -17,9 +17,10 @@ class Home {
    void createNewList(vector<string>);
    void viewLists();
    void editLists();
+   void setList(Task*, string);
  private:
    unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
-   unordered_map<string, Task*> soloTasks;
+   unordered_set<Task*> soloTasks;
 };
 
 #endif
