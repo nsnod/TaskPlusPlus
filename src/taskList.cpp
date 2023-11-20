@@ -77,11 +77,11 @@ double TaskList::getProgress() const {
     return numOfCompleted / listOfTasks.size();
 }
 
-bool TaskList::findTask(string taskName) const {
+Task* TaskList::findTask(string taskName) const {
     for (auto i : listOfTasks) {
         if (i->getName() == taskName) {
-            return true;
+            return i;
         }
     }
-    return false;
+    return nullptr;
 }

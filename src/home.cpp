@@ -52,23 +52,23 @@ void Home::setList(Task* newTask, string selectedList) {
     }
 }
 
-bool Home::findSoloTask(string taskName) const {
+Task* Home::findSoloTask(string taskName) const {
     for (auto i : soloTasks) {
         if (i->getName() == taskName) {
-            return true;
+            return i;
         }
     }
-    return false;
+    return nullptr;
 }
 
-bool Home::findTaskList(string listName) const {
+TaskList* Home::findTaskList(string listName) const {
     for (auto classifications : classificationBasedStorage) {
         for (auto taskLists : classifications.second) {
             if (taskLists->getListName() == listName) {
-                return true;
+                return taskLists;
             }
         }
     }
-    return false;
+    return nullptr;
 }
 

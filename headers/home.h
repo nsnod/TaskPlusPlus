@@ -18,8 +18,9 @@ class Home {
    void viewLists();
    void editLists();
    void setList(Task*, string);
-   bool findSoloTask(string) const;
-   bool findTaskList(string) const;
+   Task* findSoloTask(string) const;
+   TaskList* findTaskList(string) const;
+   
  private:
    unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
    unordered_set<Task*> soloTasks;
