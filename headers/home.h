@@ -1,5 +1,9 @@
+#ifndef HOME_H
+#define HOME_H
+
 #include "../headers/task.h"
 #include "../headers/taskList.h"
+#include "../headers/task.h"
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -17,3 +21,5 @@ class Home {
    unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
    unordered_map<string, Task*> soloTasks;
 };
+
+#endif
