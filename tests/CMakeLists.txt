@@ -13,9 +13,14 @@ add_executable(testingTaskList
     taskListTest.cpp
 )
 
+add_executable(testingHome
+    homeTest.cpp
+)
+
 add_executable(runAllTests
     taskTest.cpp
     taskListTest.cpp
+    homeTest.cpp
 )
 
 target_link_libraries(testingTask gmock gtest gtest_main)
@@ -24,3 +29,5 @@ target_link_libraries(testingTaskList gmock gtest gtest_main)
 target_link_libraries(testingTaskList simpleLibrary)
 target_link_libraries(runAllTests gmock gtest gtest_main)
 target_link_libraries(runAllTests simpleLibrary)
+target_link_libraries(testingHome gmock gtest gtest_main)
+target_link_libraries(testingHome simpleLibrary)

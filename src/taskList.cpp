@@ -76,3 +76,12 @@ bool TaskList::getListCompleteStatus() const {
 double TaskList::getProgress() const {
     return numOfCompleted / listOfTasks.size();
 }
+
+Task* TaskList::findTask(string taskName) const {
+    for (auto i : listOfTasks) {
+        if (i->getName() == taskName) {
+            return i;
+        }
+    }
+    return nullptr;
+}

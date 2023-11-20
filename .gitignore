@@ -1,5 +1,6 @@
 *.o
 runTaskTests
+runALLTests
 CMakeCache.txt
 Makefile
 cmake_install.cmake
