@@ -26,7 +26,6 @@ class Task {
    void setAssignedeMonth(int aM) { assignedMonth = aM; }
    void setAssignedYear(int aY) { assignedYear = aY; }
    void switchCompleteStatus();
-   void setList(); //!
 
    // getters //
    string getName() const { return name; }

@@ -1,4 +1,6 @@
 #include "../headers/task.h"
+#include "../headers/home.h"
+#include "../headers/taskList.h"
 #include <iostream>
 #include <string>
 
@@ -31,8 +33,4 @@ void Task::switchCompleteStatus() {
     } else if (completed == true) {
         completed = false;
     }
-}
-
-void Task::setList() {
-    //temp filler
 }
