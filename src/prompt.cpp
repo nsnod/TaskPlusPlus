@@ -31,7 +31,6 @@ void prompt::setSelection(){
 }
 
 void prompt::printMainMenu(){
-    int userSelection;
 
     cout << "Task++" << endl;
     cout << "Select your option below (Number or Name)" << endl;
