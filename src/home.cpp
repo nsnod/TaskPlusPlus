@@ -60,3 +60,15 @@ bool Home::findSoloTask(string taskName) const {
     }
     return false;
 }
+
+bool Home::findTaskList(string listName) const {
+    for (auto classifications : classificationBasedStorage) {
+        for (auto taskLists : classifications.second) {
+            if (taskLists->getListName() == listName) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
