@@ -1,15 +1,16 @@
 #include "../headers/taskList.h"
 #include <iostream>
 #include <string>
-#include <vector>
 
 using namespace std;
 
 TaskList::TaskList() : name(""), description(""), classification(""), complete(false), numOfCompleted(0) {}
 
-// TaskList::~TaskList() { NOT SURE IF NEEDED
-
-// }
+TaskList::~TaskList() { 
+    for (auto i : listOfTasks) {
+        delete i;
+    }
+}
 
 void TaskList::editListName(const string& newName) {
     name = newName;
@@ -28,12 +29,16 @@ void TaskList::switchCompleteStatus() {
     else complete = true;
 }
 
-void TaskList::addTask(const Task task) {
-    userList.push_back(task);
+void TaskList::addTask(Task* newTask) {
+    listOfTasks.insert(newTask);
 }
 
-void TaskList::removeTask(int index) {
-    userList.erase(userList.begin() + index);
+void TaskList::removeTask(const string& taskName) {
+    for (auto target : listOfTasks) {
+        if (target->getName() == taskName) {
+            listOfTasks.erase(target);
+        }
+    }
 }
 
 void TaskList::editTask(int index) {
@@ -41,8 +46,8 @@ void TaskList::editTask(int index) {
 }
 
 void TaskList::findCompletedTasks() {
-    for(int i = 0; i < userList.size(); ++i) {
-        if (userList.at(i).getCompleteStatus() == true) {
+    for(auto i : listOfTasks) {
+        if (i->getCompleteStatus() == true) {
             ++numOfCompleted;
         }
     }
@@ -69,5 +74,5 @@ bool TaskList::getListCompleteStatus() const {
 }
 
 double TaskList::getProgress() const {
-    return numOfCompleted / userList.size();
+    return numOfCompleted / listOfTasks.size();
 }
