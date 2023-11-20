@@ -21,7 +21,13 @@ void Home::createNewTask(vector<string> inputs) {
 }
 
 void Home::createNewList(vector<string> inputs) {
+    TaskList* newList = new TaskList;
 
+    newList->editListName(inputs[0]);
+    newList->editListDescription(inputs[1]);
+    newList->editListClassification(inputs[2]);
+
+    classificationBasedStorage[newList->getListClassification()].insert(newList);
 }
 
 void Home::viewLists() {
@@ -36,12 +42,21 @@ void Home::setList(Task* newTask, string selectedList) {
     if (selectedList == "") {
         soloTasks.insert(newTask);
     } else {
-        for (auto i : classificationBasedStorage) {
-            for (auto j : i.second) {
-                if (j->getListName() == selectedList) {
-                    j->addTask(newTask);
+        for (auto classifications : classificationBasedStorage) {
+            for (auto taskLists : classifications.second) {
+                if (taskLists->getListName() == selectedList) {
+                    taskLists->addTask(newTask);
                 }
             }
         }
     }
+}
+
+bool Home::findSoloTask(string taskName) const {
+    for (auto i : soloTasks) {
+        if (i->getName() == taskName) {
+            return true;
+        }
+    }
+    return false;
 }
