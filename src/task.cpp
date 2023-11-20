@@ -1,4 +1,6 @@
 #include "../headers/task.h"
+#include "../headers/home.h"
+#include "../headers/taskList.h"
 #include <iostream>
 #include <string>
 
@@ -6,27 +8,23 @@ using namespace std;
 
 //Always construct a default task when user creates a task, then prompt them
 //for imformation during new task screen... only fill in what they need
-Task::Task(): name(""), description(""), priority(""), dueDay(-1), dueMonth(-1), dueYear(-1),
+Task::Task(): name(""), description(""), priority(""), fullDueDate(""), fullAssignedDate(""), dueDay(-1), dueMonth(-1), dueYear(-1),
               assignedDay(-1), assignedMonth(-1), assignedYear(-1), completed(false) {}
 
-void Task::editTaskName(string &n) {
-    name = n;
+void Task::setFullDueDate(string dueDate) {
+    fullDueDate = dueDate;
+
+    setDueMonth(stoi(dueDate.substr(0, 2)));
+    setDueDay(stoi(dueDate.substr(3, 2)));
+    setDueYear(stoi(dueDate.substr(6, 2)));
 }
 
-void Task::editTaskDescription(string &d) {
-    description = d;
-}
+void Task::setFullAssignedDate(string assignedDate) {
+    fullAssignedDate = assignedDate;
 
-void Task::editTaskPriority(string &p) {
-    priority = p;
-}
-
-void Task::editTaskDueDate() {
-    //temp filler
-}
-
-void Task::editTaskAssignedDate() {
-    //temp filler
+    setAssignedeMonth(stoi(assignedDate.substr(0, 2)));
+    setAssignedDay(stoi(assignedDate.substr(3, 2)));
+    setAssignedYear(stoi(assignedDate.substr(6, 2)));
 }
 
 void Task::switchCompleteStatus() {
@@ -35,25 +33,4 @@ void Task::switchCompleteStatus() {
     } else if (completed == true) {
         completed = false;
     }
-}
-
-void Task::setList() {
-    //temp filler
-}
-
-string Task::getTaskDueDate() {
-    if (dueDay == -1 || dueMonth == -1 || dueYear == -1) {
-        return "No due date has been set for this task.";
-    }
-
-    return "/" + to_string(dueMonth) + "/" + to_string(dueDay)
-               + "/" + to_string(dueYear);
-}
-
-string Task::getTaskAssignedDate() {
-    if (assignedDay == -1 || assignedMonth == -1 || assignedYear == -1) {
-        return "No assigned date has been set for this task.";
-    }
-    return "/" + to_string(assignedMonth) + "/" + to_string(assignedDay)
-               + "/" + to_string(assignedYear);
 }
