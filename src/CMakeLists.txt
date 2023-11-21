@@ -2,6 +2,7 @@ add_library(simpleLibrary
     task.cpp
     taskList.cpp
     home.cpp
+    prompt.cpp
 )
 
 # add_executable(runAllTests

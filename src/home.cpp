@@ -9,7 +9,7 @@
 
 using namespace std;
 
-void Home::createNewTask(vector<string> inputs) {
+void Home::createNewTask(const vector<string>& inputs) {
     Task* newTask = new Task;
 
     newTask->setName(inputs[0]);
@@ -20,7 +20,7 @@ void Home::createNewTask(vector<string> inputs) {
     setList(newTask, inputs[5]);
 }
 
-void Home::createNewList(vector<string> inputs) {
+void Home::createNewList(const vector<string>& inputs) {
     TaskList* newList = new TaskList;
 
     newList->editListName(inputs[0]);
@@ -30,15 +30,15 @@ void Home::createNewList(vector<string> inputs) {
     classificationBasedStorage[newList->getListClassification()].insert(newList);
 }
 
-void Home::viewLists() {
+void Home::viewLists() const {
 
 }
 
-void Home::editLists() {
+void Home::editLists() const {
 
 }
 
-void Home::setList(Task* newTask, string selectedList) {
+void Home::setList(Task* newTask, const string& selectedList) {
     if (selectedList == "") {
         soloTasks.insert(newTask);
     } else {
@@ -52,7 +52,7 @@ void Home::setList(Task* newTask, string selectedList) {
     }
 }
 
-Task* Home::findSoloTask(string taskName) const {
+Task* Home::findSoloTask(const string& taskName) const {
     for (auto i : soloTasks) {
         if (i->getName() == taskName) {
             return i;
@@ -61,7 +61,7 @@ Task* Home::findSoloTask(string taskName) const {
     return nullptr;
 }
 
-TaskList* Home::findTaskList(string listName) const {
+TaskList* Home::findTaskList(const string& listName) const {
     for (auto classifications : classificationBasedStorage) {
         for (auto taskLists : classifications.second) {
             if (taskLists->getListName() == listName) {

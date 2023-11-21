@@ -30,7 +30,7 @@ void prompt::setSelection(){
     this->selection = userChoice;
 }
 
-void prompt::printMainMenu(){
+void prompt::printMainMenu() {
 
     cout << "Task++" << endl;
     cout << "Select your option below (Number or Name)" << endl;
@@ -49,29 +49,29 @@ void prompt::printMainMenu(){
 
 }
 
-vector<string> prompt::newTaskPrompt(){
+// vector<string> prompt::newTaskPrompt() const {
+//     //fill out with prompt
+// }
+
+void prompt::newListPrompt() const {
     //fill out with prompt
 }
 
-void prompt::newListPrompt(){
+void prompt::taskEditorPrompt() const {
     //fill out with prompt
 }
-
-void prompt::taskEditorPrompt(){
-    //fill out with prompt
-}
-void prompt::listEditorPrompt(){
+void prompt::listEditorPrompt() const {
     //fill out with prompt    
 }
-void prompt::viewArchivePrompt(){
+void prompt::viewArchivePrompt() const {
     //fill out with prompt
 }
-void prompt::viewWeeklyTasksPrompt(){
+void prompt::viewWeeklyTasksPrompt() const {
     //fill out with prompt
 }
-void prompt::viewUpcomingTasksPrompt(){
+void prompt::viewUpcomingTasksPrompt() const {
     //fill out with prompt
 }
-void prompt::recommendWeeklySchedulePrompt(){
+void prompt::recommendWeeklySchedulePrompt() const {
     //fill out with prompt
 }

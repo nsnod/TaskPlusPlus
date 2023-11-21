@@ -13,13 +13,13 @@ using namespace std;
 
 class Home {
  public:
-   void createNewTask(vector<string>);
-   void createNewList(vector<string>);
-   void viewLists();
-   void editLists();
-   void setList(Task*, string);
-   Task* findSoloTask(string) const;
-   TaskList* findTaskList(string) const;
+   void createNewTask(const vector<string>&);
+   void createNewList(const vector<string>&);
+   void viewLists() const;
+   void editLists() const;
+   void setList(Task*, const string&);
+   Task* findSoloTask(const string&) const;
+   TaskList* findTaskList(const string&) const;
    
  private:
    unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
