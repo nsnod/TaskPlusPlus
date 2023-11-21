@@ -9,6 +9,7 @@ TEST(promptTest, printMenu){
 
     //testing that printing main menu doesnt cause an error
     EXPECT_NO_THROW(p.printMainMenu());
+    EXPECT_EQ(p.GetSelection(), 1);
 
 }
 
