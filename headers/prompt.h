@@ -12,7 +12,7 @@ class prompt{
 
     public:
     void printMainMenu();
-    void newTaskPrompt();
+    vector<string> newTaskPrompt();
     void newListPrompt();
     void taskEditorPrompt();
     void listEditorPrompt();
