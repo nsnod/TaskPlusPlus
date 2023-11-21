@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <limits>
+#include "home.h"
 
 using namespace std;
 
@@ -12,7 +14,7 @@ class prompt{
 
     public:
     void printMainMenu();
-    vector<string> newTaskPrompt();
+    vector<string> newTaskPrompt(const Home&);
     void newListPrompt();
     void taskEditorPrompt();
     void listEditorPrompt();
@@ -21,4 +23,5 @@ class prompt{
     void viewUpcomingTasksPrompt();
     void recommendWeeklySchedulePrompt();
     void setSelection(); //helper/setter function//
+    int getSelection() const;
 };

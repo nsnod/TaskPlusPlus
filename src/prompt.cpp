@@ -1,5 +1,6 @@
 #include "../headers/prompt.h"
 
+
 enum TaskAlias{ //Youtube: The Cherno: ENUMS in C++//
     TaskQ = 7
 };
@@ -7,6 +8,10 @@ enum TaskAlias{ //Youtube: The Cherno: ENUMS in C++//
 
 prompt::prompt(){
     this->selection = 0;
+}
+
+prompt::getSelection() const{
+    return this->selection;
 }
 
 
@@ -49,14 +54,13 @@ void prompt::printMainMenu(){
 
 }
 
-vector<string> prompt::newTaskPrompt(){
+vector<string> prompt::newTaskPrompt(const Home& userHome){
     vector<string> userData;
 
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
 
     if(cin.peek() != EOF){ //reference c++.com//
         cin.clear();
-
     }
     
     while(title == ""){
@@ -67,24 +71,21 @@ vector<string> prompt::newTaskPrompt(){
 
     cin.ignore();
     
-    while(priority != "High" || priority != "Medium" || priority != "Low"){
+    while(priority != "High" || priority != "Medium" || priority != "Low" || priority != "high" || priority != "medium" || priority != "low"){
         cout << "Please enter the priority of the new task: ";
         cin >> priority;
         cout << endl;
+
+        if(cin.peek() != EOF){ //Handles case if the user meets the condition but enters more than one string//
+            cin.ignore(numeric_limits<streamsize>::max(), '\n'); //reference c++.com//
+        }
     }
 
     cin.ignore();
 
-    while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
-        cout << "Please enter the due date of the task in the format MM/DD/YY: ";
+    while(cin.peek() != EOF || dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
+        cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         cin >> dueDate;
-        cout << endl;
-
-    }
-
-    while(assignedDate.size() != 8 || assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7)))){
-        cout << "Please enter the assigned date of the task: ";
-        cin >> assignedDate;
         cout << endl;
 
     }
@@ -99,11 +100,39 @@ vector<string> prompt::newTaskPrompt(){
 
     cin.ignore();
 
+    string assignToATask = "";
+    cout << "Would you like to assign this task? Y/N: "
+
+    cin >> assignToATask;
+
+    while(assignToATask != "Y" || assignToATask != "N"){
+        cout << "Please Enter Y for yes or N for to assign thit task to a task list";
+        cin >> assignToATask;
+        cout << endl;
+    }
+
+    if(assignToATask == "Y"){
+        string userListChoice;
+        cout << "Please select (Input corresponding numerical value from the below options): ";
+        cin >> userListChoice;
+        userHome.viewLists();
+        cout << endl;
+
+        while(userListChoice.size() != 1 || !(isdigit(userListChoice))){
+            cout << "Please select (Input corresponding numerical value from the below options): ";
+            cin >> userListChoice;
+            cout << endl;
+        }
+        assignedDate = userListChoice;
+    }
+
+    
+
     userData.push_back(title);
     userData.push_back(priority);
     userData.push_back(dueDate);
-    userData.push_back(assignedDate);
     userData.push_back(desc);
+    userData.push_back(assignedDate);
 
     return userData;
 }
