@@ -2,7 +2,7 @@
 
 enum TaskAlias{ //Youtube: The Cherno: ENUMS in C++//
     TaskQ = 7
-}
+};
 
 
 prompt::prompt(){
@@ -13,8 +13,8 @@ prompt::prompt(){
 
 
 void prompt::setSelection(){
-    int userSelection;
-    cin >> userSelection;
+    int userChoice;
+    cin >> userChoice;
 
     while (cin.fail() || userChoice > 7 || userChoice < 0){ 
 
@@ -24,10 +24,10 @@ void prompt::setSelection(){
         }
 
         cout << "INVALID INPUT: Please enter 1-6 or \"TaskQ\" to exit termal";
-        cin >> userSelection;
+        cin >> userChoice;
     }
         
-    selection = userChoice;
+    this->selection = userChoice;
 }
 
 void prompt::printMainMenu(){
@@ -46,7 +46,7 @@ void prompt::printMainMenu(){
     
     cout << endl;
 
-    
+
 }
 
 void prompt::newTaskPrompt(){
