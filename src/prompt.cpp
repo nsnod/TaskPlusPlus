@@ -50,7 +50,43 @@ void prompt::printMainMenu(){
 }
 
 vector<string> prompt::newTaskPrompt(){
-    //fill out with prompt
+    string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
+    
+    while(title == ""){
+        cout << "Please enter the name of the new task: ";
+        getline(cin, title);
+        cout << endl;
+    }
+    
+
+    while(desc == ""){
+        cout << "Please enter the description of the new task: ";
+        getline(cin, desc);
+        cout << endl;
+    }
+    
+
+    while(priority != "High" || priority != "Medium" || priority != "Low"){
+        cout << "Please enter the priority of the new task: ";
+        cin >> priority;
+        cout << endl;
+    }
+
+    while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
+        cout << "Please enter the due date of the task: ";
+        cin >> dueDate;
+        cout << endl;
+
+    }
+
+    while(assignedDate.size() != 8 || assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7)))){
+        cout << "Please enter the assigned date of the task: ";
+        cin >> assignedDate;
+        cout << endl;
+
+    }
+    
+    
 }
 
 void prompt::newListPrompt(){
