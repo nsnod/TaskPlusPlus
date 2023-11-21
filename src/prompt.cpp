@@ -50,30 +50,33 @@ void prompt::printMainMenu(){
 }
 
 vector<string> prompt::newTaskPrompt(){
+    vector<string> userData;
+
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
+
+    if(cin.peek() != EOF){ //reference c++.com//
+        cin.clear();
+
+    }
     
     while(title == ""){
         cout << "Please enter the name of the new task: ";
         getline(cin, title);
         cout << endl;
     }
-    
 
-    while(desc == ""){
-        cout << "Please enter the description of the new task: ";
-        getline(cin, desc);
-        cout << endl;
-    }
+    cin.ignore();
     
-
     while(priority != "High" || priority != "Medium" || priority != "Low"){
         cout << "Please enter the priority of the new task: ";
         cin >> priority;
         cout << endl;
     }
 
+    cin.ignore();
+
     while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
-        cout << "Please enter the due date of the task: ";
+        cout << "Please enter the due date of the task in the format MM/DD/YY: ";
         cin >> dueDate;
         cout << endl;
 
@@ -85,8 +88,24 @@ vector<string> prompt::newTaskPrompt(){
         cout << endl;
 
     }
-    
-    
+
+    cin.ignore();
+
+    while(desc == ""){
+        cout << "Please enter the description of the new task: ";
+        getline(cin, desc);
+        cout << endl;
+    }
+
+    cin.ignore();
+
+    userData.push_back(title);
+    userData.push_back(priority);
+    userData.push_back(dueDate);
+    userData.push_back(assignedDate);
+    userData.push_back(desc);
+
+    return userData;
 }
 
 void prompt::newListPrompt(){
