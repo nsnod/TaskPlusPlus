@@ -11,3 +11,9 @@ TEST(promptTest, printMenu){
     EXPECT_NO_THROW(p.printMainMenu());
 
 }
+
+TEST(promptTest, newTaskPrompt){
+    Prompt p;
+
+    EXPECT_EQ(p.newTaskPrompt(), {"Homework", "High", "04/04/22", "05/06/23", "physics, math"})
+}
