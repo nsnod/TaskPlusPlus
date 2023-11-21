@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class prompt(){
+class prompt{
     private:
     unsigned selection;
 
@@ -21,4 +21,4 @@ class prompt(){
     void viewUpcomingTasksPrompt();
     void recommendWeeklySchedulePrompt();
     void setSelection(); //helper/setter function//
-}
+};
