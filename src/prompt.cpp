@@ -5,9 +5,7 @@ string prompt::getSelection() const{
 }
 
 void prompt::setSelection(){
-    if(cin.peek() != EOF){
-        cin.ignore();
-    }
+    
 
     string userChoice = "";
     getline(cin,userChoice);
@@ -34,7 +32,6 @@ void prompt::printMainMenu(){
     cout << "Please make your selection (Input corresponding numerical value): ";
     this->setSelection();
     
-    //cout << endl;
 
 
 }
@@ -42,14 +39,9 @@ void prompt::printMainMenu(){
 vector<string> prompt::newTaskPrompt(/*const Home& userHome*/){
     vector<string> userData;
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
-/*
-    if(cin.peek() != EOF){
-        cin.ignore();
-    }*/
         
     cout << "Please enter the name of the new task: ";
     getline(cin, title);
-    //cin.ignore();
     
     while(priority != "High" && priority != "Medium" && priority != "Low"){
         cout << "Please enter the priority of the new task (\"High\", \"Medium\",\"Low\"): ";
