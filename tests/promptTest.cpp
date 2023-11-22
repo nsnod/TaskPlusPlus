@@ -1,6 +1,5 @@
-#include "gtest/gtest.h"
 #include "../headers/prompt.h"
-#include "../headers/home.h"
+#include "gtest/gtest.h"
 
 TEST(promptTest, printMenu){
     prompt p;

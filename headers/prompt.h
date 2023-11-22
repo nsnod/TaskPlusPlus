@@ -15,7 +15,6 @@ class prompt{
     string selection = "";
 
     public:
-    prompt();
     void printMainMenu();
     vector<string> newTaskPrompt(/*const Home&*/) const;
     void newListPrompt() const;
