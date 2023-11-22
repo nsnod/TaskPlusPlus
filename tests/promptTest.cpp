@@ -10,10 +10,8 @@ TEST(promptTest, printMenu){
     
     EXPECT_NO_THROW(p.printMainMenu());
 
-
     EXPECT_EQ(p.getSelection(), "1");
 
-    
     EXPECT_NO_THROW(p.newTaskPrompt());
     
 
