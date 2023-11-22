@@ -4,17 +4,19 @@
 #include <string>
 #include <vector>
 #include <limits>
+#include <cctype>
+#include <cstdlib>
 #include "home.h"
 
 using namespace std;
 
 class prompt{
     private:
-    unsigned selection;
+    string selection = "";
 
     public:
     void printMainMenu();
-    vector<string> newTaskPrompt(const Home&);
+    vector<string> newTaskPrompt(/*const Home&*/);
     void newListPrompt();
     void taskEditorPrompt();
     void listEditorPrompt();
@@ -23,5 +25,5 @@ class prompt{
     void viewUpcomingTasksPrompt();
     void recommendWeeklySchedulePrompt();
     void setSelection(); //helper/setter function//
-    int getSelection() const;
+    string getSelection() const;
 };

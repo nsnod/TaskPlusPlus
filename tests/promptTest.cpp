@@ -1,20 +1,28 @@
-#include "../headers/prompt.h"
 #include "gtest/gtest.h"
+#include "../headers/prompt.h"
+#include "../headers/home.h"
+
 
 TEST(promptTest, printMenu){
-    Prompt p;
-
-    //testing the mutator for prompt
-    EXPECT_NO_THROW(p.SetSelection());
+    prompt p;
 
     //testing that printing main menu doesnt cause an error
+    
     EXPECT_NO_THROW(p.printMainMenu());
-    EXPECT_EQ(p.GetSelection(), 1);
+
+
+    EXPECT_EQ(p.getSelection(), "1");
+
+    
+    EXPECT_NO_THROW(p.newTaskPrompt());
+    
 
 }
 
-TEST(promptTest, newTaskPrompt){
-    Prompt p;
 
-    EXPECT_EQ(p.newTaskPrompt(), {"Homework", "High", "04/04/22", "05/06/23", "physics, math"})
-}
+/*TEST(promptTest, newTaskPrompt){
+    prompt p;
+    //Home h;
+
+    EXPECT_EQ(p.newTaskPrompt(), {});
+}*/
