@@ -4,19 +4,17 @@ string prompt::getSelection() const{
     return this->selection;
 }
 
-
-
-
 void prompt::setSelection(){
-    cin.ignore();
+    if(cin.peek() != EOF){
+        cin.ignore();
+    }
+
     string userChoice = "";
     getline(cin,userChoice);
-    cin.ignore();
     
     while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "6" && userChoice != "Task--"){ 
         cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal: ";
         getline(cin,userChoice);
-        cin.clear();
     }
         
     this->selection = userChoice;
@@ -43,73 +41,51 @@ void prompt::printMainMenu(){
 
 vector<string> prompt::newTaskPrompt(/*const Home& userHome*/){
     vector<string> userData;
-
-    
-
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
+
+    if(cin.peek() != EOF){
+        cin.ignore();
+    }
         
     cout << "Please enter the name of the new task: ";
-    cin.ignore();
     getline(cin, title);
     
-    cout << endl;
-        
     
-
-    
-    
-    while(priority != "High" && priority != "Medium" && priority != "Low" && priority != "high" && priority != "medium" && priority != "low"){
-        cout << "Please enter the priority of the new task: ";
-        cin >> priority;
-        cout << endl;
-
+    while(priority != "High" && priority != "Medium" && priority != "Low"){
+        cout << "Please enter the priority of the new task (\"High\", \"Medium\",\"Low\"): ";
+        getline(cin,priority);
     }
 
-    while(/*cin.peek() != EOF ||*/ dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
+    while(dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
         cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
-        cin >> dueDate;
-        cout << endl;
-
+        getline(cin,dueDate);
     }
-
-    
-
     
     cout << "Please enter the description of the new task: ";
-    cin.ignore();
     getline(cin, desc);
-    cout << endl;
-    
 
     string assignToATask = "";
-    cout << "Would you like to assign this task? Y/N: ";
+    cout << "Would you like to assign this task? Type Y/N: ";
 
-    cin >> assignToATask;
+    getline(cin,assignToATask);
 
     while(assignToATask != "Y" && assignToATask != "N"){
-        cout << "Please Enter Y for yes or N for to assign thit task to a task list: ";
-        cin >> assignToATask;
-        cout << endl;
+        cout << "Please Enter Y for yes or N for to assign task to a task list: ";
+        getline(cin,assignToATask);
     }
 
     if(assignToATask == "Y"){
-        char userListChoice;
+        string userListChoice;
         cout << "Please select (Input corresponding numerical value from the below options): ";
-        cin >> userListChoice;
+        getline(cin,userListChoice);
         //userHome.viewLists();
-        cout << endl;
 
-        while(!isdigit(userListChoice) ){
+        while(!isdigit(userListChoice.at(0))){
             cout << "Please select (Input corresponding numerical value from the below options): ";
-            cin >> userListChoice;
-            cout << endl;
+            getline(cin,userListChoice);
         }
-
-        
         assignedDate = userListChoice;
     }
-
-    
 
     userData.push_back(title);
     userData.push_back(priority);
