@@ -105,7 +105,7 @@ Users get to see an overall list of undated tasks as well as their weekly tasks 
 Users can view all archived lists and tasks and choose between the two options. They can enter a number corresponding to the task or list in the selected category. Users can also see the automated completed task list, which stores all completed tasks and lists. Options include editing, deleting, uploading, or marking as complete. Uploading allows users to move archived weeks into a new week for easier week creation. User can type Task-- to back out and return to the home screen.
 
 ## Class Diagram
-![UML](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/UML_2.png)\
+![UML](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/UML_3.png)\
 The UML diagram we constructed has one main class, Home, that is connected to other classes through aggregation. Every class has their own responsibilities and have been separated with their respective information. Our different viewing options have similar and different functionalities so they are to share an abstract class and also have their own private functions and values. Our relationships between the classes ensure that they only have access to what they must use implementing the rule of least privilege.
 
 S: We designed our classes with the single-responsibility principle in mind for cleaner and concise code. Specifically, our Task class is only responsible for operations related only to individual tasks. In addition, our TaskList class is only responsible for actions related to only task lists. This change helped us write better code because it allowed us to reduce confusion on the operations of each class.
