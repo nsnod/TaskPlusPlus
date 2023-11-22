@@ -18,7 +18,7 @@ void prompt::setSelection(){
     this->selection = userChoice;
 }
 
-void prompt::printMainMenu(){
+void prompt::printMainMenu() {
 
     cout << "Task++" << endl;
     cout << "Select your option below (Number or Name)" << endl;
@@ -31,12 +31,10 @@ void prompt::printMainMenu(){
     cout << "(Type \"Task--\" - to exit terminal)" << endl << endl;
     cout << "Please make your selection (Input corresponding numerical value): ";
     this->setSelection();
-    
-
-
+  
 }
 
-vector<string> prompt::newTaskPrompt(/*const Home& userHome*/){
+vector<string> prompt::newTaskPrompt(/*const Home& userHome*/) const {
     vector<string> userData;
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
         
@@ -88,25 +86,25 @@ vector<string> prompt::newTaskPrompt(/*const Home& userHome*/){
     return userData;
 }
 
-void prompt::newListPrompt(){
+void prompt::newListPrompt() const {
     //fill out with prompt
 }
 
-void prompt::taskEditorPrompt(){
+void prompt::taskEditorPrompt() const {
     //fill out with prompt
 }
-void prompt::listEditorPrompt(){
+void prompt::listEditorPrompt() const {
     //fill out with prompt    
 }
-void prompt::viewArchivePrompt(){
+void prompt::viewArchivePrompt() const {
     //fill out with prompt
 }
-void prompt::viewWeeklyTasksPrompt(){
+void prompt::viewWeeklyTasksPrompt() const {
     //fill out with prompt
 }
-void prompt::viewUpcomingTasksPrompt(){
+void prompt::viewUpcomingTasksPrompt() const {
     //fill out with prompt
 }
-void prompt::recommendWeeklySchedulePrompt(){
+void prompt::recommendWeeklySchedulePrompt() const {
     //fill out with prompt
 }

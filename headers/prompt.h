@@ -15,15 +15,16 @@ class prompt{
     string selection = "";
 
     public:
+    prompt();
     void printMainMenu();
-    vector<string> newTaskPrompt(/*const Home&*/);
-    void newListPrompt();
-    void taskEditorPrompt();
-    void listEditorPrompt();
-    void viewArchivePrompt();
-    void viewWeeklyTasksPrompt();
-    void viewUpcomingTasksPrompt();
-    void recommendWeeklySchedulePrompt();
+    vector<string> newTaskPrompt(/*const Home&*/) const;
+    void newListPrompt() const;
+    void taskEditorPrompt() const;
+    void listEditorPrompt() const;
+    void viewArchivePrompt() const;
+    void viewWeeklyTasksPrompt() const;
+    void viewUpcomingTasksPrompt() const;
+    void recommendWeeklySchedulePrompt() const;
     void setSelection(); //helper/setter function//
     string getSelection() const;
 };

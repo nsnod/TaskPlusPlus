@@ -14,11 +14,11 @@ class Task {
    // Task& operator=(const Task&);
 
    // setters //
-   void setName(const string n) { name = n; }
-   void setDescription(const string d) { description = d; }
-   void setPriority(const string p) { priority = p; }
-   void setFullDueDate(string);
-   void setFullAssignedDate(string);
+   void setName(const string& n) { name = n; }
+   void setDescription(const string& d) { description = d; }
+   void setPriority(const string& p) { priority = p; }
+   void setFullDueDate(const string&);
+   void setFullAssignedDate(const string&);
    void setDueDay(int dD) { dueDay = dD; }
    void setDueMonth(int dM) { dueMonth = dM; }
    void setDueYear(int dY) { dueYear = dY; }

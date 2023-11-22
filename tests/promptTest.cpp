@@ -2,9 +2,11 @@
 #include "../headers/prompt.h"
 #include "../headers/home.h"
 
-
 TEST(promptTest, printMenu){
     prompt p;
+
+    //testing the mutator for prompt
+    EXPECT_NO_THROW(p.setSelection());
 
     //testing that printing main menu doesnt cause an error
     
