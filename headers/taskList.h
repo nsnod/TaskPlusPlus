@@ -31,6 +31,7 @@ class TaskList {
     bool getListCompleteStatus() const; // Return the completion status of the list
     double getProgress() const; // Return the progress of completed tasks to total tasks
     Task* findTask(const string& taskName) const; // Finds the task in a list based on its name
+    int getNumOfTasks() const; // Return the number of tasks in list
     
  private: 
     unordered_set<Task*> listOfTasks;
