@@ -34,10 +34,12 @@ void TaskList::addTask(Task* newTask) {
 }
 
 void TaskList::removeTask(const string& taskName) {
-    for (auto target : listOfTasks) {
-        if (target->getName() == taskName) {
-            listOfTasks.erase(target);
-            delete target;
+    if (listOfTasks.size() > 0 && findTask(taskName) != nullptr) {
+        for (auto target : listOfTasks) {
+            if (target->getName() == taskName) {
+                listOfTasks.erase(target);
+                delete target;
+            }
         }
     }
 }
@@ -117,4 +119,8 @@ Task* TaskList::findTask(const string& taskName) const {
         }
     }
     return nullptr;
+}
+
+int TaskList::getNumOfTasks() const {
+    return listOfTasks.size();
 }
