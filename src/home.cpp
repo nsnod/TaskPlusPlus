@@ -40,7 +40,7 @@ void Home::editLists() const {
 
 void Home::setList(Task* newTask, const string& selectedList) {
     if (selectedList == "") {
-        soloTasks.insert(newTask);
+        soloTasks->addTask(newTask);
     } else {
         for (auto classifications : classificationBasedStorage) {
             for (auto taskLists : classifications.second) {
@@ -53,12 +53,7 @@ void Home::setList(Task* newTask, const string& selectedList) {
 }
 
 Task* Home::findSoloTask(const string& taskName) const {
-    for (auto i : soloTasks) {
-        if (i->getName() == taskName) {
-            return i;
-        }
-    }
-    return nullptr;
+    return soloTasks->findTask(taskName);
 }
 
 TaskList* Home::findTaskList(const string& listName) const {
