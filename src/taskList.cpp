@@ -42,8 +42,40 @@ void TaskList::removeTask(const string& taskName) {
     }
 }
 
-void TaskList::editTask(int index) {
-    // Waiting for prompt to be able to edit that certain task
+template<typename T> void TaskList::editTask(Task* target, const string& action, T newVal) {
+    if (action == "Name") {
+        target->setName(newVal);
+    }
+    else if (action == "Description") {
+        target->setDescription(newVal);
+    }
+    else if (action == "Priority") {
+        target->setPriority(newVal);
+    }
+    else if (action == "Full Due Date") {
+        target->setFullDueDate(newVal);
+    }
+    else if (action == "Full Assigned Date") {
+        target->setFullAssignedDate(newVal);
+    }
+    else if (action == "Due Day") {
+        target->setDueDay(newVal);
+    }
+    else if (action == "Due Month") {
+        target->setDueMonth(newVal);
+    }
+    else if (action == "Due Year") {
+        target->setDueYear(newVal);
+    }
+    else if (action == "Assigned Day") {
+        target->setAssignedDay(newVal);
+    }
+    else if (action == "Assigned Month") {
+        target->setAssignedMonth(newVal);
+    }
+    else if (action == "Assigned Year") {
+        target->setAssignedYear(newVal);
+    }
 }
 
 void TaskList::findCompletedTasks() {
@@ -78,7 +110,7 @@ double TaskList::getProgress() const {
     return numOfCompleted / listOfTasks.size();
 }
 
-Task* TaskList::findTask(string taskName) const {
+Task* TaskList::findTask(const string& taskName) const {
     for (auto i : listOfTasks) {
         if (i->getName() == taskName) {
             return i;

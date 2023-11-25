@@ -22,7 +22,7 @@ void Task::setFullDueDate(const string& dueDate) {
 void Task::setFullAssignedDate(const string& assignedDate) {
     fullAssignedDate = assignedDate;
 
-    setAssignedeMonth(stoi(assignedDate.substr(0, 2)));
+    setAssignedMonth(stoi(assignedDate.substr(0, 2)));
     setAssignedDay(stoi(assignedDate.substr(3, 2)));
     setAssignedYear(stoi(assignedDate.substr(6, 2)));
 }
