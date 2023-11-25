@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_set>
 
+// template<typename T>
 class TaskList {
  public:
     TaskList(); // Default Constructor
@@ -19,7 +20,7 @@ class TaskList {
     void switchCompleteStatus(); // Change the completion status of the list
     void addTask(Task* newTask); // Add task to list
     void removeTask(const string& taskName); // Remove a specific task from list
-    void editTask(int index); // Edit a specific task within the test
+    template<typename T> void editTask(Task* target, const string& action, T newVal); // Edit a specific task within the test
     void findCompletedTasks(); // Count the number of completed tasks
 
     // getters
