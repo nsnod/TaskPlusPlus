@@ -23,7 +23,7 @@ class Home {
    
  private:
    unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
-   unordered_set<Task*> soloTasks;
+   TaskList* soloTasks = new TaskList;
 };
 
 #endif
