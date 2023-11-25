@@ -71,7 +71,7 @@ template<typename T> void TaskList::editTask(Task* target, const string& action,
         target->setAssignedDay(newVal);
     }
     else if (action == "Assigned Month") {
-        target->setAssignedeMonth(newVal);
+        target->setAssignedMonth(newVal);
     }
     else if (action == "Assigned Year") {
         target->setAssignedYear(newVal);
@@ -110,7 +110,7 @@ double TaskList::getProgress() const {
     return numOfCompleted / listOfTasks.size();
 }
 
-Task* TaskList::findTask(string taskName) const {
+Task* TaskList::findTask(const string& taskName) const {
     for (auto i : listOfTasks) {
         if (i->getName() == taskName) {
             return i;

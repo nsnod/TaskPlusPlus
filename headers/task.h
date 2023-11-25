@@ -23,7 +23,7 @@ class Task {
    void setDueMonth(int dM) { dueMonth = dM; }
    void setDueYear(int dY) { dueYear = dY; }
    void setAssignedDay(int aD) { assignedDay = aD; }
-   void setAssignedeMonth(int aM) { assignedMonth = aM; }
+   void setAssignedMonth(int aM) { assignedMonth = aM; }
    void setAssignedYear(int aY) { assignedYear = aY; }
    void switchCompleteStatus();
 
