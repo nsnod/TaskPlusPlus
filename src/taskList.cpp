@@ -37,6 +37,7 @@ void TaskList::removeTask(const string& taskName) {
     for (auto target : listOfTasks) {
         if (target->getName() == taskName) {
             listOfTasks.erase(target);
+            delete target;
         }
     }
 }
