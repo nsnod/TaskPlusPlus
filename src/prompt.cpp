@@ -37,6 +37,8 @@ void prompt::printMainMenu() {
 vector<string> prompt::newTaskPrompt(/*const Home& userHome*/) const {
     vector<string> userData;
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
+
+    cout << "Input Information as prompted!" << endl;
         
     cout << "Please enter the name of the new task: ";
     getline(cin, title);
