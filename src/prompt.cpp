@@ -49,7 +49,7 @@ void prompt::printMainMenu(){
 
 }
 
-void prompt::newTaskPrompt(){
+vector<string> prompt::newTaskPrompt(){
     //fill out with prompt
 }
 
