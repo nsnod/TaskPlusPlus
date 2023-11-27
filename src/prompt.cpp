@@ -1,36 +1,24 @@
 #include "../headers/prompt.h"
 
-enum TaskAlias{ //Youtube: The Cherno: ENUMS in C++//
-    TaskQ = 7
-};
-
-
-prompt::prompt(){
-    this->selection = 0;
+string prompt::getSelection() const{
+    return this->selection;
 }
 
-
-
-
 void prompt::setSelection(){
-    int userChoice;
-    cin >> userChoice;
+    
 
-    while (cin.fail() || userChoice > 7 || userChoice < 0){ 
-
-        if(cin.fail()){
-            cin.clear();
-            cin.ignore();
-        }
-
-        cout << "INVALID INPUT: Please enter 1-6 or \"TaskQ\" to exit termal";
-        cin >> userChoice;
+    string userChoice = "";
+    getline(cin,userChoice);
+    
+    while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "6" && userChoice != "Task--"){ 
+        cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal: ";
+        getline(cin,userChoice);
     }
         
     this->selection = userChoice;
 }
 
-void prompt::printMainMenu(){
+void prompt::printMainMenu() {
 
     cout << "Task++" << endl;
     cout << "Select your option below (Number or Name)" << endl;
@@ -40,38 +28,83 @@ void prompt::printMainMenu(){
     cout << "4. New Upcoming Tasks" << endl;
     cout << "5. View Weekly Tasks" << endl;
     cout << "6.Reccomend Weekly Schedule" << endl;
-    cout << "(Type Task - to exit terminal)" << endl << endl;
+    cout << "(Type \"Task--\" - to exit terminal)" << endl << endl;
     cout << "Please make your selection (Input corresponding numerical value): ";
     this->setSelection();
+  
+}
+
+vector<string> prompt::newTaskPrompt(/*const Home& userHome*/) const {
+    vector<string> userData;
+    string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
+        
+    cout << "Please enter the name of the new task: ";
+    getline(cin, title);
     
-    cout << endl;
+    while(priority != "High" && priority != "Medium" && priority != "Low"){
+        cout << "Please enter the priority of the new task (\"High\", \"Medium\",\"Low\"): ";
+        getline(cin,priority);
+    }
 
+    while(dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
+        cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+        getline(cin,dueDate);
+    }
+    
+    cout << "Please enter the description of the new task: ";
+    getline(cin, desc);
 
+    string assignToATask = "";
+    cout << "Would you like to assign this task? Type Y/N: ";
+
+    getline(cin,assignToATask);
+
+    while(assignToATask != "Y" && assignToATask != "N"){
+        cout << "Please Enter Y for yes or N for to assign task to a task list: ";
+        getline(cin,assignToATask);
+    }
+
+    if(assignToATask == "Y"){
+        string userListChoice;
+        cout << "Please select (Input corresponding numerical value from the below options): ";
+        getline(cin,userListChoice);
+        //userHome.viewLists();
+
+        while(!isdigit(userListChoice.at(0))){
+            cout << "Please select (Input corresponding numerical value from the below options): ";
+            getline(cin,userListChoice);
+        }
+        assignedDate = userListChoice;
+    }
+
+    userData.push_back(title);
+    userData.push_back(priority);
+    userData.push_back(dueDate);
+    userData.push_back(desc);
+    userData.push_back(assignedDate);
+
+    return userData;
 }
 
-vector<string> prompt::newTaskPrompt(){
+void prompt::newListPrompt() const {
     //fill out with prompt
 }
 
-void prompt::newListPrompt(){
+void prompt::taskEditorPrompt() const {
     //fill out with prompt
 }
-
-void prompt::taskEditorPrompt(){
-    //fill out with prompt
-}
-void prompt::listEditorPrompt(){
+void prompt::listEditorPrompt() const {
     //fill out with prompt    
 }
-void prompt::viewArchivePrompt(){
+void prompt::viewArchivePrompt() const {
     //fill out with prompt
 }
-void prompt::viewWeeklyTasksPrompt(){
+void prompt::viewWeeklyTasksPrompt() const {
     //fill out with prompt
 }
-void prompt::viewUpcomingTasksPrompt(){
+void prompt::viewUpcomingTasksPrompt() const {
     //fill out with prompt
 }
-void prompt::recommendWeeklySchedulePrompt(){
+void prompt::recommendWeeklySchedulePrompt() const {
     //fill out with prompt
 }
