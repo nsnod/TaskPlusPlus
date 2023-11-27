@@ -7,6 +7,8 @@
 #include <cctype>
 #include <cstdlib>
 #include "home.h"
+#include "task.h"
+#include "taskList.h"
 
 using namespace std;
 
@@ -18,7 +20,7 @@ class prompt{
     void printMainMenu();
     vector<string> newTaskPrompt(const Home*) const;
     vector<string> newListPrompt() const;
-    vector<string> taskEditorPrompt() const;
+    vector<string> taskEditorPrompt(const TaskList*) const;
     void listEditorPrompt() const;
     void viewArchivePrompt() const;
     void viewWeeklyTasksPrompt() const;

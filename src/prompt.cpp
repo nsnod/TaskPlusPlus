@@ -76,12 +76,13 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
 
     string userListChoice = "";
     if(assignToATask == "Y"){ 
-        cout << "Please select list: ";
+
         //userHome.viewLists(); //lists out existing task lists
+        cout << "Please select list: ";
         getline(cin,userListChoice);
 
-        while(userHome->findTaskList(userListChoice) == nullptr){
-            cout << "Please select a existent list: "; //if they enter non existent list//
+        while(userHome->findTaskList(userListChoice) == nullptr){ //checks if list exist//
+            cout << "Please select a existent list: "; 
             //userHome.viewLists(); //lists out existing task lists
             getline(cin,userListChoice);
         }
@@ -124,21 +125,83 @@ vector<string> prompt::newListPrompt() const {
     
 }
 
-vector<string> prompt::taskEditorPrompt() const {
+vector<string> prompt::taskEditorPrompt(const TaskList* userList) const {
+    vector<string> userChanges;
     string targetTask = "", action = "", newVal = "";
+    string choice = "";
 
     cout << "Task Editor" << endl;
     cout << "Edit your task below!" << endl;
 
+    //userList->viewTasks();
 
+    cout << "Select a task to edit: ";
+    getline(cin,targetTask);
 
+    while(userList->findTask(targetTask) == nullptr){
+        //userList->viewTasks();
+        cout << "Please enter valid task: ";
+        getline(cin,targetTask);
+    }
     
+    cout << "1) " << userList->findTask(targetTask)->getName() << endl; //target task name//
+    cout << "2) " << userList->findTask(targetTask)->getPriority() << endl; //target task priority//
+    cout << "3) " << userList->findTask(targetTask)->getFullDueDate() << endl; //target task FULL due date//
+    cout << "4) " << userList->findTask(targetTask)->getFullAssignedDate() << endl; //target task assigned date//
+    cout << "5) " << userList->findTask(targetTask)->getDescription() << endl; //target task description//
 
-    
+    do{
+        cout << "Please action of what you want to edit (enter numerical value): ";
+        getline(cin,choice);
+    }while(choice!= "1" && choice != "2" && choice != "3" && choice != "4" && choice !="5");
 
+    if(choice =="1"){
+        action = "Name";
+        cout << "Enter new name: ";
+        getline(cin,newVal); 
+
+    }
+    else if(choice =="2"){
+        action = "Priority";
+        do{
+            cout << "Enter new priority(\"High\", \"Medium\",\"Low\"): "; //checks if valid priority//
+            getline(cin,newVal);
+        }while(newVal != "High" && newVal != "Medium" && newVal != "Low" && newVal != "high" && newVal != "medium" && newVal != "low");
+        
+
+    }
+    else if(choice =="3"){
+        action = "Full Due Date";
+
+        do{
+            cout << "Enter new date (format mm/dd/yy): ";
+            getline(cin,newVal);
+        }while(newVal.at(2) != '/' || newVal.at(5) != '/' || !(isdigit(newVal.at(0))) || !(isdigit(newVal.at(1))) || !(isdigit(newVal.at(3))) || !(isdigit(newVal.at(4))) || !(isdigit(newVal.at(6))) || !(isdigit(newVal.at(7))));
+
+    }
+    else if(choice =="4"){
+        action = "Full Assigned Date";
+
+        do{
+            cout << "Enter new assigned date (format mm//dd/yy): ";
+            getline(cin,newVal);
+        }while(newVal.at(2) != '/' || newVal.at(5) != '/' || !(isdigit(newVal.at(0))) || !(isdigit(newVal.at(1))) || !(isdigit(newVal.at(3))) || !(isdigit(newVal.at(4))) || !(isdigit(newVal.at(6))) || !(isdigit(newVal.at(7))));
+    }
+
+    else if(choice == "5"){
+        action = "Description";
+        cout << "Enter new description: ";
+        getline(cin,newVal);
+    }
     
-    
+    userChanges.push_back(targetTask);
+    userChanges.push_back(action);
+    userChanges.push_back(newVal);
+     
+    return userChanges; //make sure in main to use find task when u call edit task ->find(targetTask)//
+
 }
+
 void prompt::listEditorPrompt() const {
     //fill out with prompt    
 }
