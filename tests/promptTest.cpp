@@ -3,6 +3,7 @@
 
 TEST(promptTest, printMenu){
     prompt p;
+    Home userHome;
 
     //testing the mutator for prompt
     EXPECT_NO_THROW(p.setSelection());
@@ -13,7 +14,7 @@ TEST(promptTest, printMenu){
 
     EXPECT_EQ(p.getSelection(), "1");
 
-    EXPECT_NO_THROW(p.newTaskPrompt());
+    EXPECT_NO_THROW(p.newTaskPrompt(userHome));
     
 
 }

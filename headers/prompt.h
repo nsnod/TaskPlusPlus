@@ -16,8 +16,8 @@ class prompt{
 
     public:
     void printMainMenu();
-    vector<string> newTaskPrompt(/*const Home&*/) const;
-    void newListPrompt() const;
+    vector<string> newTaskPrompt(const Home&) const;
+    vector<string> newListPrompt() const;
     void taskEditorPrompt() const;
     void listEditorPrompt() const;
     void viewArchivePrompt() const;

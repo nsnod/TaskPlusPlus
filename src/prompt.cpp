@@ -34,7 +34,7 @@ void prompt::printMainMenu() {
   
 }
 
-vector<string> prompt::newTaskPrompt(/*const Home& userHome*/) const {
+vector<string> prompt::newTaskPrompt(const Home& userHome) const {
     vector<string> userData;
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
 
@@ -55,6 +55,12 @@ vector<string> prompt::newTaskPrompt(/*const Home& userHome*/) const {
         getline(cin,dueDate);
     }
     
+    
+    while(assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7)))){
+        cout << "Please enter the addigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+        getline(cin,assignedDate);
+    }
+
     cout << "Please enter the description of the new task: ";
     getline(cin, desc);
 
@@ -63,35 +69,59 @@ vector<string> prompt::newTaskPrompt(/*const Home& userHome*/) const {
 
     getline(cin,assignToATask);
 
-    while(assignToATask != "Y" && assignToATask != "N"){
-        cout << "Please Enter Y for yes or N for to assign task to a task list: ";
+    while(assignToATask != "Y" && assignToATask != "N" && assignToATask != "y" && assignToATask != "n"){ //checks if user properly enter y or n, to see if they want to assign it to a list//
+        cout << "Please Enter Y for yes or N for no to assign task to a task list: ";
         getline(cin,assignToATask);
     }
 
-    if(assignToATask == "Y"){
-        string userListChoice;
-        cout << "Please select (Input corresponding numerical value from the below options): ";
+    string userListChoice = "";
+    if(assignToATask == "Y"){ 
+        cout << "Please select list: ";
+        //userHome.viewLists(); //lists out existing task lists
         getline(cin,userListChoice);
-        //userHome.viewLists();
 
-        while(!isdigit(userListChoice.at(0))){
-            cout << "Please select (Input corresponding numerical value from the below options): ";
+        while(userHome.findTaskList(userListChoice) == nullptr){
+            cout << "Please select a list: "; //if they enter non existent list//
+            //userHome.viewLists(); //lists out existing task lists
             getline(cin,userListChoice);
         }
-        assignedDate = userListChoice;
     }
 
     userData.push_back(title);
     userData.push_back(priority);
     userData.push_back(dueDate);
-    userData.push_back(desc);
     userData.push_back(assignedDate);
+    userData.push_back(desc);
+    userData.push_back(userListChoice);
+    
 
     return userData;
 }
 
-void prompt::newListPrompt() const {
-    //fill out with prompt
+vector<string> prompt::newListPrompt() const {
+
+    vector<string> userListData;
+
+    string listTitle = "", listDescription = "", listClassification = "", addTasks = "";
+    cout << "New Task List" << endl << endl;
+
+    cout << "Input Information as prompted!" << endl;
+
+    cout << "Enter list name: ";
+    getline(cin,listTitle);
+
+    cout << "Enter list Description: ";
+    getline(cin,listDescription);
+
+    cout << "Enter list classification: ";
+    getline(cin,listClassification);
+
+    userListData.push_back(listTitle);
+    userListData.push_back(listDescription);
+    userListData.push_back(listClassification);
+    
+   return userListData;
+    
 }
 
 void prompt::taskEditorPrompt() const {
