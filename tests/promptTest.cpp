@@ -3,7 +3,7 @@
 
 TEST(promptTest, printMenu){
     prompt p;
-    Home userHome;
+    Home *userHome;
 
     //testing the mutator for prompt
     EXPECT_NO_THROW(p.setSelection());

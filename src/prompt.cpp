@@ -34,7 +34,7 @@ void prompt::printMainMenu() {
   
 }
 
-vector<string> prompt::newTaskPrompt(const Home& userHome) const {
+vector<string> prompt::newTaskPrompt(const Home* userHome) const {
     vector<string> userData;
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
 
@@ -80,8 +80,8 @@ vector<string> prompt::newTaskPrompt(const Home& userHome) const {
         //userHome.viewLists(); //lists out existing task lists
         getline(cin,userListChoice);
 
-        while(userHome.findTaskList(userListChoice) == nullptr){
-            cout << "Please select a list: "; //if they enter non existent list//
+        while(userHome->findTaskList(userListChoice) == nullptr){
+            cout << "Please select a existent list: "; //if they enter non existent list//
             //userHome.viewLists(); //lists out existing task lists
             getline(cin,userListChoice);
         }
@@ -124,8 +124,20 @@ vector<string> prompt::newListPrompt() const {
     
 }
 
-void prompt::taskEditorPrompt() const {
-    //fill out with prompt
+vector<string> prompt::taskEditorPrompt() const {
+    string targetTask = "", action = "", newVal = "";
+
+    cout << "Task Editor" << endl;
+    cout << "Edit your task below!" << endl;
+
+
+
+    
+
+    
+
+    
+    
 }
 void prompt::listEditorPrompt() const {
     //fill out with prompt    
