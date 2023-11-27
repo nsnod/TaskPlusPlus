@@ -31,6 +31,7 @@ void Home::createNewList(vector<string> inputs) {
 }
 
 void Home::viewLists() {
+    return;
 
 }
 
