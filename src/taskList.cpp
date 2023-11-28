@@ -44,7 +44,7 @@ void TaskList::removeTask(const string& taskName) {
     }
 }
 
-template<typename T> void TaskList::editTask(Task* target, const string& action, T newVal) {
+void TaskList::editTask(Task* target, const string& action, const string& newVal) {
     if (action == "Name") {
         target->setName(newVal);
     }
@@ -59,24 +59,6 @@ template<typename T> void TaskList::editTask(Task* target, const string& action,
     }
     else if (action == "Full Assigned Date") {
         target->setFullAssignedDate(newVal);
-    }
-    else if (action == "Due Day") {
-        target->setDueDay(newVal);
-    }
-    else if (action == "Due Month") {
-        target->setDueMonth(newVal);
-    }
-    else if (action == "Due Year") {
-        target->setDueYear(newVal);
-    }
-    else if (action == "Assigned Day") {
-        target->setAssignedDay(newVal);
-    }
-    else if (action == "Assigned Month") {
-        target->setAssignedMonth(newVal);
-    }
-    else if (action == "Assigned Year") {
-        target->setAssignedYear(newVal);
     }
 }
 

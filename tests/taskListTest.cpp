@@ -132,3 +132,18 @@ TEST(TestingProgression, allCompleted) {
 
     EXPECT_DOUBLE_EQ(newList.getProgress(), 1.0);
 }
+
+TEST(TestingEditTask, stringNewVal) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    string priority = "High";
+    string description = "NEED TO DO ASAP";
+
+    newList.editTask(t1, "Priority", priority);
+    newList.editTask(t1, "Description", description);
+
+    EXPECT_EQ(t1->getPriority(), priority);
+    EXPECT_EQ(t1->getDescription(), description);
+}
