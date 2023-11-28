@@ -202,8 +202,11 @@ vector<string> prompt::taskEditorPrompt(const TaskList* userList) const {
 
 }
 
-void prompt::listEditorPrompt() const {
-    //fill out with prompt    
+void prompt::listEditorPrompt(const Home*) const {
+    cout << "List editor" << endl;
+    cout << "Edit list below!" << endl;
+
+    cout << "Select a task to edit: "
 }
 void prompt::viewArchivePrompt() const {
     //fill out with prompt
