@@ -26,6 +26,7 @@ add_executable(runAllTests
     taskTest.cpp
     taskListTest.cpp
     homeTest.cpp
+    promptTest.cpp
 )
 
 
