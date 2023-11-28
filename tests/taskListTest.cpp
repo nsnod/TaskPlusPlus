@@ -55,6 +55,29 @@ TEST(TestingDescription, descriptionNotEmpty) {
     EXPECT_TRUE(newList.getListDescription() == "Testing 1 2 3");
 }
 
+TEST(TestingAdd, oneTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    EXPECT_TRUE(newList.getNumOfTasks() == 1);
+}
+
+TEST(TestingAdd, multipleTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    Task *t2 = new Task;
+    Task *t3 = new Task;
+    Task *t4 = new Task;
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_TRUE(newList.getNumOfTasks() == 4);
+}
+
 TEST(TestingProgression, noneCompleted) {
     TaskList newList;
     Task *t1, *t2, *t3, *t4;
