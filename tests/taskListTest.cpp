@@ -147,3 +147,51 @@ TEST(TestingEditTask, stringNewVal) {
     EXPECT_EQ(t1->getPriority(), priority);
     EXPECT_EQ(t1->getDescription(), description);
 }
+
+TEST(TestingRemove, oneTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    string name = "Test";
+    t1->setName(name);
+
+    newList.removeTask(name);
+    EXPECT_EQ(newList.getNumOfTasks(), 0);
+}
+
+TEST(TestingRemove, multipleTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    Task *t2 = new Task;
+    Task *t3 = new Task;
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+
+    string name1 = "Test";
+    string name2 = "Test2";
+    string name3 = "Test3";
+
+    t1->setName(name1);
+    t2->setName(name2);
+    t3->setName(name3);
+
+    EXPECT_EQ(newList.getNumOfTasks(), 3);
+    newList.removeTask(name1);
+    newList.removeTask(name2);
+    newList.removeTask(name3);
+    EXPECT_EQ(newList.getNumOfTasks(), 0);
+}
+
+TEST(TestingRemove, taskUnexistant) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    string name = "Test";
+
+    newList.removeTask(name);
+    EXPECT_EQ(newList.getNumOfTasks(), 1);
+}
