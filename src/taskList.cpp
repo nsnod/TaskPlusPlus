@@ -39,12 +39,15 @@ void TaskList::removeTask(const string& taskName) {
             if (target->getName() == taskName) {
                 listOfTasks.erase(target);
                 delete target;
+                target = nullptr;
+
+                return;
             }
         }
     }
 }
 
-template<typename T> void TaskList::editTask(Task* target, const string& action, T newVal) {
+void TaskList::editTask(Task* target, const string& action, const string& newVal) {
     if (action == "Name") {
         target->setName(newVal);
     }
@@ -60,27 +63,10 @@ template<typename T> void TaskList::editTask(Task* target, const string& action,
     else if (action == "Full Assigned Date") {
         target->setFullAssignedDate(newVal);
     }
-    else if (action == "Due Day") {
-        target->setDueDay(newVal);
-    }
-    else if (action == "Due Month") {
-        target->setDueMonth(newVal);
-    }
-    else if (action == "Due Year") {
-        target->setDueYear(newVal);
-    }
-    else if (action == "Assigned Day") {
-        target->setAssignedDay(newVal);
-    }
-    else if (action == "Assigned Month") {
-        target->setAssignedMonth(newVal);
-    }
-    else if (action == "Assigned Year") {
-        target->setAssignedYear(newVal);
-    }
 }
 
 void TaskList::findCompletedTasks() {
+    numOfCompleted = 0;
     for(auto i : listOfTasks) {
         if (i->getCompleteStatus() == true) {
             ++numOfCompleted;
@@ -108,8 +94,9 @@ bool TaskList::getListCompleteStatus() const {
     return complete;
 }
 
-double TaskList::getProgress() const {
-    return numOfCompleted / listOfTasks.size();
+double TaskList::getProgress() {
+    findCompletedTasks();
+    return numOfCompleted / getNumOfTasks();
 }
 
 Task* TaskList::findTask(const string& taskName) const {
