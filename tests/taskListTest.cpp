@@ -54,3 +54,144 @@ TEST(TestingDescription, descriptionNotEmpty) {
 
     EXPECT_TRUE(newList.getListDescription() == "Testing 1 2 3");
 }
+
+TEST(TestingAdd, oneTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    EXPECT_TRUE(newList.getNumOfTasks() == 1);
+}
+
+TEST(TestingAdd, multipleTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    Task *t2 = new Task;
+    Task *t3 = new Task;
+    Task *t4 = new Task;
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_TRUE(newList.getNumOfTasks() == 4);
+}
+
+TEST(TestingProgression, noneCompleted) {
+    TaskList newList;
+    Task *t1, *t2, *t3, *t4;
+    t1 = new Task;
+    t2 = new Task;
+    t3 = new Task;
+    t4 = new Task;
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 0);
+}
+
+TEST(TestingProgression, someCompleted) {
+    TaskList newList;
+    Task *t1, *t2, *t3, *t4;
+    t1 = new Task;
+    t2 = new Task;
+    t3 = new Task;
+    t4 = new Task;
+
+    t1->switchCompleteStatus();
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 0.25);
+}
+
+TEST(TestingProgression, allCompleted) {
+    TaskList newList;
+    Task *t1, *t2, *t3, *t4;
+    t1 = new Task;
+    t2 = new Task;
+    t3 = new Task;
+    t4 = new Task;
+
+    t1->switchCompleteStatus();
+    t2->switchCompleteStatus();
+    t3->switchCompleteStatus();
+    t4->switchCompleteStatus();
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 1.0);
+}
+
+TEST(TestingEditTask, stringNewVal) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    string priority = "High";
+    string description = "NEED TO DO ASAP";
+
+    newList.editTask(t1, "Priority", priority);
+    newList.editTask(t1, "Description", description);
+
+    EXPECT_EQ(t1->getPriority(), priority);
+    EXPECT_EQ(t1->getDescription(), description);
+}
+
+TEST(TestingRemove, oneTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    string name = "Test";
+    t1->setName(name);
+
+    newList.removeTask(name);
+    EXPECT_EQ(newList.getNumOfTasks(), 0);
+}
+
+TEST(TestingRemove, multipleTask) {
+    TaskList newList;
+    Task *t1 = new Task;
+    Task *t2 = new Task;
+    Task *t3 = new Task;
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+
+    string name1 = "Test";
+    string name2 = "Test2";
+    string name3 = "Test3";
+
+    t1->setName(name1);
+    t2->setName(name2);
+    t3->setName(name3);
+
+    EXPECT_EQ(newList.getNumOfTasks(), 3);
+    newList.removeTask(name1);
+    newList.removeTask(name2);
+    newList.removeTask(name3);
+    EXPECT_EQ(newList.getNumOfTasks(), 0);
+}
+
+TEST(TestingRemove, taskUnexistant) {
+    TaskList newList;
+    Task *t1 = new Task;
+    newList.addTask(t1);
+
+    string name = "Test";
+
+    newList.removeTask(name);
+    EXPECT_EQ(newList.getNumOfTasks(), 1);
+}
