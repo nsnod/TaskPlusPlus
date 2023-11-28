@@ -29,7 +29,7 @@ class TaskList {
     string getListDescription() const; // Return the list's description
     string getListClassification() const; // Return the list's classification
     bool getListCompleteStatus() const; // Return the completion status of the list
-    double getProgress() const; // Return the progress of completed tasks to total tasks
+    double getProgress(); // Return the progress of completed tasks to total tasks
     Task* findTask(const string& taskName) const; // Finds the task in a list based on its name
     int getNumOfTasks() const; // Return the number of tasks in list
     

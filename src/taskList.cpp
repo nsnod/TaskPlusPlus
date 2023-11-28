@@ -81,6 +81,7 @@ template<typename T> void TaskList::editTask(Task* target, const string& action,
 }
 
 void TaskList::findCompletedTasks() {
+    numOfCompleted = 0;
     for(auto i : listOfTasks) {
         if (i->getCompleteStatus() == true) {
             ++numOfCompleted;
@@ -108,8 +109,9 @@ bool TaskList::getListCompleteStatus() const {
     return complete;
 }
 
-double TaskList::getProgress() const {
-    return numOfCompleted / listOfTasks.size();
+double TaskList::getProgress() {
+    findCompletedTasks();
+    return numOfCompleted / getNumOfTasks();
 }
 
 Task* TaskList::findTask(const string& taskName) const {

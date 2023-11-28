@@ -54,3 +54,37 @@ TEST(TestingDescription, descriptionNotEmpty) {
 
     EXPECT_TRUE(newList.getListDescription() == "Testing 1 2 3");
 }
+
+TEST(TestingProgression, noneCompleted) {
+    TaskList newList;
+    Task *t1, *t2, *t3, *t4;
+    t1 = new Task;
+    t2 = new Task;
+    t3 = new Task;
+    t4 = new Task;
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 0);
+}
+
+TEST(TestingProgression, someCompleted) {
+    TaskList newList;
+    Task *t1, *t2, *t3, *t4;
+    t1 = new Task;
+    t2 = new Task;
+    t3 = new Task;
+    t4 = new Task;
+
+    t1->switchCompleteStatus();
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 0.25);
+}
