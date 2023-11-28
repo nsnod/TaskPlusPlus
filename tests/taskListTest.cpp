@@ -111,3 +111,24 @@ TEST(TestingProgression, someCompleted) {
 
     EXPECT_DOUBLE_EQ(newList.getProgress(), 0.25);
 }
+
+TEST(TestingProgression, allCompleted) {
+    TaskList newList;
+    Task *t1, *t2, *t3, *t4;
+    t1 = new Task;
+    t2 = new Task;
+    t3 = new Task;
+    t4 = new Task;
+
+    t1->switchCompleteStatus();
+    t2->switchCompleteStatus();
+    t3->switchCompleteStatus();
+    t4->switchCompleteStatus();
+
+    newList.addTask(t1);
+    newList.addTask(t2);
+    newList.addTask(t3);
+    newList.addTask(t4);
+
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 1.0);
+}
