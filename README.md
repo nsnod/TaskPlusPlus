@@ -105,30 +105,19 @@ Users get to see an overall list of undated tasks as well as their weekly tasks 
 Users can view all archived lists and tasks and choose between the two options. They can enter a number corresponding to the task or list in the selected category. Users can also see the automated completed task list, which stores all completed tasks and lists. Options include editing, deleting, uploading, or marking as complete. Uploading allows users to move archived weeks into a new week for easier week creation. User can type Task-- to back out and return to the home screen.
 
 ## Class Diagram
-![UML](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/UML_2.png)\
+![UML](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/UML_3.png)\
 The UML diagram we constructed has one main class, Home, that is connected to other classes through aggregation. Every class has their own responsibilities and have been separated with their respective information. Our different viewing options have similar and different functionalities so they are to share an abstract class and also have their own private functions and values. Our relationships between the classes ensure that they only have access to what they must use implementing the rule of least privilege.
- 
- > ## Phase III
- > You will need to schedule a check-in for the second scrum meeting with the same reader you had your first scrum meeting with (using Calendly). Your entire team must be present. This meeting will occur on Zoom and should be conducted by Wednesday of week 8.
- 
- > BEFORE the meeting you should do the following:
- > * Update your class diagram from Phase II to include any feedback you received from your TA/grader.
- > * Considering the SOLID design principles, reflect back on your class diagram and think about how you can use the SOLID principles to improve your design. You should then update the README.md file by adding the following:
- >   * A new class diagram incorporating your changes after considering the SOLID principles.
- >   * For each update in your class diagram, you must explain in 3-4 sentences:
- >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
- > * Perform a new sprint plan like you did in Phase II.
- > * You should also make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
 
- 
+S: We designed our classes with the single-responsibility principle in mind for cleaner and concise code. Specifically, our Task class is only responsible for operations related only to individual tasks. In addition, our TaskList class is only responsible for actions related to only task lists. This change helped us write better code because it allowed us to reduce confusion on the operations of each class.
+
+O: The open-closed principle was applied by our Home class. The home class uses aggregation to be able to use the various operations that class Task and TaskList provides. For example, the home class is able create a task list and manipulate tasks within those lists. This change helped us write better code because the code was more concise which provided a clear indication of the operations that the home class can access and it avoids the need to change the code within Home if Task or taskList were to change.
+
+L: The Liskov substitution principle is applied by the base class, View, and the children of this class. The derived classes, Archive, Weekly, and Upcoming all share the common function view() that was from the View class. Although each class hold different responsibilities, they still need the view() function to perform their operations correctly. This change helped ue write better code because it allowed us to be less repetitive and use the function from any derived classes with ease.
+
+I: We used the interface segregation principle when designing the subtype classes, Archive, Weekly, and Upcoming, which are derived from the View base class. These 3 classes are all derived from View so they all share the inherited functions of View, but every class has separate functions to deal with their sole responsibilites. This code change helped us write better code because the code became more concise and clean since each class was tailored to their specific responsibility.
+
+D: The Dependency inversion principle is applied by the Home class. The Home class are provided with Task and TaskList's operations through aggregation which allows Home to access the tools needed to perform the necessary actions. This separates Home from concrete details and implementations. This improved our code by keeping classes flexible, extendable and reusable in the future.
+
  > ## Final deliverable
  > All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
  > Before the demo, you should do the following:

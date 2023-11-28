@@ -34,18 +34,39 @@ void TaskList::addTask(Task* newTask) {
 }
 
 void TaskList::removeTask(const string& taskName) {
-    for (auto target : listOfTasks) {
-        if (target->getName() == taskName) {
-            listOfTasks.erase(target);
+    if (listOfTasks.size() > 0 && findTask(taskName) != nullptr) {
+        for (auto target : listOfTasks) {
+            if (target->getName() == taskName) {
+                listOfTasks.erase(target);
+                delete target;
+                target = nullptr;
+
+                return;
+            }
         }
     }
 }
 
-void TaskList::editTask(int index) {
-    // Waiting for prompt to be able to edit that certain task
+void TaskList::editTask(Task* target, const string& action, const string& newVal) {
+    if (action == "Name") {
+        target->setName(newVal);
+    }
+    else if (action == "Description") {
+        target->setDescription(newVal);
+    }
+    else if (action == "Priority") {
+        target->setPriority(newVal);
+    }
+    else if (action == "Full Due Date") {
+        target->setFullDueDate(newVal);
+    }
+    else if (action == "Full Assigned Date") {
+        target->setFullAssignedDate(newVal);
+    }
 }
 
 void TaskList::findCompletedTasks() {
+    numOfCompleted = 0;
     for(auto i : listOfTasks) {
         if (i->getCompleteStatus() == true) {
             ++numOfCompleted;
@@ -73,15 +94,20 @@ bool TaskList::getListCompleteStatus() const {
     return complete;
 }
 
-double TaskList::getProgress() const {
-    return numOfCompleted / listOfTasks.size();
+double TaskList::getProgress() {
+    findCompletedTasks();
+    return numOfCompleted / getNumOfTasks();
 }
 
-Task* TaskList::findTask(string taskName) const {
+Task* TaskList::findTask(const string& taskName) const {
     for (auto i : listOfTasks) {
         if (i->getName() == taskName) {
             return i;
         }
     }
     return nullptr;
+}
+
+int TaskList::getNumOfTasks() const {
+    return listOfTasks.size();
 }

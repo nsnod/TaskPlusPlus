@@ -2,9 +2,19 @@
 
 string prompt::getSelection() const{
     return this->selection;
+string prompt::getSelection() const{
+    return this->selection;
 }
 
 void prompt::setSelection(){
+    
+
+    string userChoice = "";
+    getline(cin,userChoice);
+    
+    while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "6" && userChoice != "Task--"){ 
+        cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal: ";
+        getline(cin,userChoice);
     
 
     string userChoice = "";
@@ -19,6 +29,7 @@ void prompt::setSelection(){
 }
 
 void prompt::printMainMenu() {
+void prompt::printMainMenu() {
 
     cout << "Task++" << endl;
     cout << "Select your option below (Number or Name)" << endl;
@@ -28,6 +39,7 @@ void prompt::printMainMenu() {
     cout << "4. New Upcoming Tasks" << endl;
     cout << "5. View Weekly Tasks" << endl;
     cout << "6.Reccomend Weekly Schedule" << endl;
+    cout << "(Type \"Task--\" - to exit terminal)" << endl << endl;
     cout << "(Type \"Task--\" - to exit terminal)" << endl << endl;
     cout << "Please make your selection (Input corresponding numerical value): ";
     this->setSelection();
@@ -200,6 +212,36 @@ vector<string> prompt::taskEditorPrompt(const TaskList* userList) const {
      
     return userChanges; //make sure in main to use find task when u call edit task ->find(targetTask)//
 
+    string assignToATask = "";
+    cout << "Would you like to assign this task? Type Y/N: ";
+
+    getline(cin,assignToATask);
+
+    while(assignToATask != "Y" && assignToATask != "N"){
+        cout << "Please Enter Y for yes or N for to assign task to a task list: ";
+        getline(cin,assignToATask);
+    }
+
+    if(assignToATask == "Y"){
+        string userListChoice;
+        cout << "Please select (Input corresponding numerical value from the below options): ";
+        getline(cin,userListChoice);
+        //userHome.viewLists();
+
+        while(!isdigit(userListChoice.at(0))){
+            cout << "Please select (Input corresponding numerical value from the below options): ";
+            getline(cin,userListChoice);
+        }
+        assignedDate = userListChoice;
+    }
+
+    userData.push_back(title);
+    userData.push_back(priority);
+    userData.push_back(dueDate);
+    userData.push_back(desc);
+    userData.push_back(assignedDate);
+
+    return userData;
 }
 
 void prompt::listEditorPrompt() const {
