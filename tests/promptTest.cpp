@@ -11,3 +11,25 @@ TEST(promptTest, printMenu){
     EXPECT_NO_THROW(p.printMainMenu());
 
 }
+
+TEST(promptTest, newListPrompt){
+    Prompt p;
+
+    EXPECT_NO_THROW(p.newListPrompt());
+}
+
+TEST(promptTest, newTaskPrompt){
+
+    Prompt p;
+
+    EXPECT_NO_THROW(p.newTaskPrompt());
+    
+}
+
+TEST(promptTest, taskEditorPrompt){
+
+    Prompt p;
+    
+    EXPECT_NO_THROW(p.taskEditorPrompt());
+    
+}
