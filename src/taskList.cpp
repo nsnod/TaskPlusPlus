@@ -4,7 +4,7 @@
 
 using namespace std;
 
-TaskList::TaskList() : name(""), description(""), classification(""), complete(false), numOfCompleted(0) {}
+TaskList::TaskList() : name(""), description(""), classification(""), complete(false) {}
 
 TaskList::~TaskList() { 
     for (auto i : listOfTasks) {
@@ -39,12 +39,15 @@ void TaskList::removeTask(const string& taskName) {
             if (target->getName() == taskName) {
                 listOfTasks.erase(target);
                 delete target;
+                target = nullptr;
+
+                return;
             }
         }
     }
 }
 
-template<typename T> void TaskList::editTask(Task* target, const string& action, T newVal) {
+void TaskList::editTask(Task* target, const string& action, const string& newVal) {
     if (action == "Name") {
         target->setName(newVal);
     }
@@ -60,36 +63,40 @@ template<typename T> void TaskList::editTask(Task* target, const string& action,
     else if (action == "Full Assigned Date") {
         target->setFullAssignedDate(newVal);
     }
-    else if (action == "Due Day") {
-        target->setDueDay(newVal);
-    }
-    else if (action == "Due Month") {
-        target->setDueMonth(newVal);
-    }
-    else if (action == "Due Year") {
-        target->setDueYear(newVal);
-    }
-    else if (action == "Assigned Day") {
-        target->setAssignedDay(newVal);
-    }
-    else if (action == "Assigned Month") {
-        target->setAssignedMonth(newVal);
-    }
-    else if (action == "Assigned Year") {
-        target->setAssignedYear(newVal);
-    }
 }
 
-void TaskList::findCompletedTasks() {
+double TaskList::findCompletedTasks() const {
+    double numOfCompleted = 0;
     for(auto i : listOfTasks) {
         if (i->getCompleteStatus() == true) {
             ++numOfCompleted;
         }
     }
+
+    return numOfCompleted;
 }
 
 void TaskList::viewTasks() const {
-    // Going to call prompt NEED TO WAIT
+    if (getNumOfTasks() != 0) {
+        cout << getListName() << "\tCompleted Progression: " << setprecision(3) << getProgress() << "%" << endl;
+        cout << "-----------------------------------------------" << endl << endl;
+
+        int taskCount = 1;
+
+        for (auto i : listOfTasks) {
+            cout << taskCount << ".) " << i->getName() << " " << i->getFullDueDate() << " ";
+
+            if (i->getCompleteStatus() == true) {
+                cout << "\u2713";
+            }
+            cout << endl;
+
+            ++taskCount;
+        }
+    }
+    else {
+        cout << "------------LIST IS EMPTY------------" << endl;
+    }
 }
 
 string TaskList::getListName() const {
@@ -109,7 +116,8 @@ bool TaskList::getListCompleteStatus() const {
 }
 
 double TaskList::getProgress() const {
-    return numOfCompleted / listOfTasks.size();
+    double numOfCompleted = findCompletedTasks();
+    return 100.0 * (numOfCompleted / getNumOfTasks());
 }
 
 Task* TaskList::findTask(const string& taskName) const {

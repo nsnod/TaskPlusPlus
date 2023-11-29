@@ -8,7 +8,7 @@
 TEST(HomeCreateNewTask, listCreation) {
     Home admin;
 
-    vector<string> listInputs{"The Best List", "ListDescription", "Upcoming"};
+    vector<string> listInputs{"The Best List", "ListDescription"};
 
     admin.createNewList(listInputs);
 
@@ -20,28 +20,26 @@ TEST(HomeCreateNewTask, listCreation) {
 TEST(HomeCreateNewTask, newTaskAssignedToExampleListFound) {
     Home admin;
 
-    vector<string> listInputs{"The Best List", "ListDescription", "Upcoming"};
+    vector<string> listInputs{"The Best List", "ListDescription"};
     vector<string> taskInputs{"Name", "High", "11/19/23", "11/18/23", "Description", "The Best List"};
 
     admin.createNewList(listInputs);
     admin.createNewTask(taskInputs);
-
     EXPECT_TRUE(((admin.findTaskList("The Best List"))->findTask("Name"))->getDescription() == "Description");
 }
 
 TEST(HomeCreateNewTask, newTaskAssignedToExampleListNotFound) {
     Home admin;
 
-    vector<string> listInputs{"The Best List", "ListDescription", "Upcoming"};
+    vector<string> listInputs{"The Best List", "ListDescription"};
     vector<string> taskInputs{"Name", "High", "11/19/23", "11/18/23", "Description", "The Best List"};
 
     admin.createNewList(listInputs);
     admin.createNewTask(taskInputs);
-
     EXPECT_TRUE(((admin.findTaskList("The Best List"))->findTask("Doesn't exist")) == nullptr);
 }
 
-//New Task creation assigned to no list testing //
+// New Task creation assigned to no list testing //
 
 TEST(HomeCreateNewTask, newTaskWithNoAssignedListFound) {
     Home admin;

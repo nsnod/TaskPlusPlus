@@ -4,6 +4,7 @@
 #include "task.h"
 #include <vector>
 #include <unordered_set>
+#include <iomanip>
 
 // template<typename T>
 class TaskList {
@@ -20,8 +21,7 @@ class TaskList {
     void switchCompleteStatus(); // Change the completion status of the list
     void addTask(Task* newTask); // Add task to list
     void removeTask(const string& taskName); // Remove a specific task from list
-    template<typename T> void editTask(Task* target, const string& action, T newVal); // Edit a specific task within the test
-    void findCompletedTasks(); // Count the number of completed tasks
+    void editTask(Task* target, const string& action, const string& newVal); // Edit a specific task within the test
 
     // getters
     void viewTasks() const; // Display all tasks within list
@@ -32,6 +32,7 @@ class TaskList {
     double getProgress() const; // Return the progress of completed tasks to total tasks
     Task* findTask(const string& taskName) const; // Finds the task in a list based on its name
     int getNumOfTasks() const; // Return the number of tasks in list
+    double findCompletedTasks() const; // Count the number of completed tasks
     
  private: 
     unordered_set<Task*> listOfTasks;
@@ -39,7 +40,6 @@ class TaskList {
     string description;
     string classification;
     bool complete;
-    double numOfCompleted;
 };
 
 #endif
