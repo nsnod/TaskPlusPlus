@@ -19,6 +19,7 @@ class prompt{
     string selection = "";
 
     public:
+    
     void printMainMenu();
     vector<string> newTaskPrompt(const Home*) const;
     vector<string> newListPrompt() const;

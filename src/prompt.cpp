@@ -45,7 +45,7 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
     cout << "Please enter the name of the new task: ";
     getline(cin, title);
     
-    while(priority != "High" && priority != "Medium" && priority != "Low"){
+    while(priority != "High" && priority != "Medium" && priority != "Low" && priority != "high" && priority != "medium" && priority != "low"){
         cout << "Please enter the priority of the new task (\"High\", \"Medium\",\"Low\"): ";
         getline(cin,priority);
     }
