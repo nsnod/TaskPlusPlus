@@ -17,6 +17,7 @@ void Home::createNewTask(const vector<string>& inputs) {
     newTask->setFullDueDate(inputs[2]);
     newTask->setFullAssignedDate(inputs[3]);
     newTask->setDescription(inputs[4]);
+    setClassification(newTask);
     setList(newTask, inputs[5]);
 }
 
@@ -25,9 +26,8 @@ void Home::createNewList(const vector<string>& inputs) {
 
     newList->editListName(inputs[0]);
     newList->editListDescription(inputs[1]);
-    newList->editListClassification(inputs[2]);
 
-    classificationBasedStorage[newList->getListClassification()].insert(newList);
+    overallLists.insert(newList);
 }
 
 void Home::viewLists() const {
@@ -42,13 +42,19 @@ void Home::setList(Task* newTask, const string& selectedList) {
     if (selectedList == "") {
         soloTasks->addTask(newTask);
     } else {
-        for (auto classifications : classificationBasedStorage) {
-            for (auto taskLists : classifications.second) {
-                if (taskLists->getListName() == selectedList) {
-                    taskLists->addTask(newTask);
-                }
+        for (auto taskLists : overallLists) {
+            if (taskLists->getListName() == selectedList) {
+                taskLists->addTask(newTask);
             }
         }
+    }
+}
+
+void Home::setClassification(Task* newTask) { 
+    if (newTask->getFullDueDate() != "") {
+        classificationTaskStorage["Dated"]->addTask(newTask);
+    } else if (newTask->getFullDueDate() == "") {
+        classificationTaskStorage["Undated"]->addTask(newTask);
     }
 }
 
@@ -57,11 +63,9 @@ Task* Home::findSoloTask(const string& taskName) const {
 }
 
 TaskList* Home::findTaskList(const string& listName) const {
-    for (auto classifications : classificationBasedStorage) {
-        for (auto taskLists : classifications.second) {
-            if (taskLists->getListName() == listName) {
-                return taskLists;
-            }
+    for (auto taskLists : overallLists) {
+        if (taskLists->getListName() == listName) {
+            return taskLists;
         }
     }
     return nullptr;

@@ -18,11 +18,13 @@ class Home {
    void viewLists() const;
    void editLists() const;
    void setList(Task*, const string&);
+   void setClassification(Task*);
    Task* findSoloTask(const string&) const;
    TaskList* findTaskList(const string&) const;
    
  private:
-   unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
+   unordered_map<string, TaskList*> classificationTaskStorage;
+   unordered_set<TaskList*> overallLists;
    TaskList* soloTasks = new TaskList;
 };
 
