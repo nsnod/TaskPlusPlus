@@ -51,10 +51,10 @@ void Home::setList(Task* newTask, const string& selectedList) {
 }
 
 void Home::setClassification(Task* newTask) { 
-    if (newTask->getFullDueDate() != "") {
-        classificationTaskStorage["Dated"]->addTask(newTask);
-    } else if (newTask->getFullDueDate() == "") {
-        classificationTaskStorage["Undated"]->addTask(newTask);
+    if (newTask->getFullDueDate() == "") {
+        classificationTaskStorage["Undated"].insert(newTask);
+    } else {
+        classificationTaskStorage["Dated"].insert(newTask);
     }
 }
 
@@ -70,4 +70,3 @@ TaskList* Home::findTaskList(const string& listName) const {
     }
     return nullptr;
 }
-
