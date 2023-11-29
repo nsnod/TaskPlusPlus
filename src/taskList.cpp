@@ -4,7 +4,7 @@
 
 using namespace std;
 
-TaskList::TaskList() : name(""), description(""), classification(""), complete(false), numOfCompleted(0) {}
+TaskList::TaskList() : name(""), description(""), classification(""), complete(false) {}
 
 TaskList::~TaskList() { 
     for (auto i : listOfTasks) {
@@ -65,17 +65,37 @@ void TaskList::editTask(Task* target, const string& action, const string& newVal
     }
 }
 
-void TaskList::findCompletedTasks() {
-    numOfCompleted = 0;
+double TaskList::findCompletedTasks() const {
+    double numOfCompleted = 0;
     for(auto i : listOfTasks) {
         if (i->getCompleteStatus() == true) {
             ++numOfCompleted;
         }
     }
+
+    return numOfCompleted;
 }
 
 void TaskList::viewTasks() const {
-    // Going to call prompt NEED TO WAIT
+    if (getNumOfTasks() != 0) {
+        cout << getListName() << "\tCompleted Progression: " << setprecision(3) << getProgress() << "%" << endl;
+        cout << "---------------------------------------" << endl << endl;
+
+        int taskCount = 1;
+
+        for (auto i : listOfTasks) {
+            cout << taskCount << ".) " << i->getName() << " " << i->getFullDueDate() << " ";
+
+            if (i->getCompleteStatus() == true) {
+                cout << "complete" << endl;
+            }
+
+            ++taskCount;
+        }
+    }
+    else {
+        cout << "------------LIST IS EMPTY------------" << endl;
+    }
 }
 
 string TaskList::getListName() const {
@@ -94,8 +114,8 @@ bool TaskList::getListCompleteStatus() const {
     return complete;
 }
 
-double TaskList::getProgress() {
-    findCompletedTasks();
+double TaskList::getProgress() const {
+    double numOfCompleted = findCompletedTasks();
     return numOfCompleted / getNumOfTasks();
 }
 
