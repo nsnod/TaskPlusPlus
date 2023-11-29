@@ -79,7 +79,7 @@ double TaskList::findCompletedTasks() const {
 void TaskList::viewTasks() const {
     if (getNumOfTasks() != 0) {
         cout << getListName() << "\tCompleted Progression: " << setprecision(3) << getProgress() << "%" << endl;
-        cout << "---------------------------------------" << endl << endl;
+        cout << "-----------------------------------------------" << endl << endl;
 
         int taskCount = 1;
 
@@ -87,8 +87,9 @@ void TaskList::viewTasks() const {
             cout << taskCount << ".) " << i->getName() << " " << i->getFullDueDate() << " ";
 
             if (i->getCompleteStatus() == true) {
-                cout << "complete" << endl;
+                cout << "\u2713";
             }
+            cout << endl;
 
             ++taskCount;
         }
@@ -116,7 +117,7 @@ bool TaskList::getListCompleteStatus() const {
 
 double TaskList::getProgress() const {
     double numOfCompleted = findCompletedTasks();
-    return numOfCompleted / getNumOfTasks();
+    return 100.0 * (numOfCompleted / getNumOfTasks());
 }
 
 Task* TaskList::findTask(const string& taskName) const {
