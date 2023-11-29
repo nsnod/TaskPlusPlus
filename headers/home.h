@@ -18,11 +18,16 @@ class Home {
    void viewLists() const;
    void editLists() const;
    void setList(Task*, const string&);
+   void setClassification(Task*);
+   //void deleteTask()
+   //NO DOUBLE FREES
+   //delete from one list and then just erase from the other because there are two pointers
    Task* findSoloTask(const string&) const;
    TaskList* findTaskList(const string&) const;
    
  private:
-   unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
+   unordered_map<string, unordered_set<Task*>> classificationTaskStorage;
+   unordered_set<TaskList*> overallLists;
    TaskList* soloTasks = new TaskList;
 };
 
