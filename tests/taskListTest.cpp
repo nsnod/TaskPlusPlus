@@ -109,7 +109,7 @@ TEST(TestingProgression, someCompleted) {
     newList.addTask(t3);
     newList.addTask(t4);
 
-    EXPECT_DOUBLE_EQ(newList.getProgress(), 0.25);
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 25.0);
 }
 
 TEST(TestingProgression, allCompleted) {
@@ -130,7 +130,7 @@ TEST(TestingProgression, allCompleted) {
     newList.addTask(t3);
     newList.addTask(t4);
 
-    EXPECT_DOUBLE_EQ(newList.getProgress(), 1.0);
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 100.0);
 }
 
 TEST(TestingEditTask, stringNewVal) {
