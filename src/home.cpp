@@ -32,6 +32,11 @@ void Home::createNewList(const vector<string>& inputs) {
 
 void Home::viewLists() const {
 
+    int listCount = 1;
+
+    for (auto list : overallLists) {
+        cout << listCount << ".)" << list->getListName() << endl;
+    }
 }
 
 void Home::editLists() const {
