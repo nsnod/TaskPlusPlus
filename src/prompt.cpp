@@ -50,40 +50,37 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
         getline(cin,priority);
     }
 
-    while(dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
+    do{
         cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,dueDate);
-    }
+    }while(dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
     
     
-    while(assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7)))){
-        cout << "Please enter the addigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+    do{
+        cout << "Please enter the assigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,assignedDate);
-    }
+    }while(assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7))));
 
     cout << "Please enter the description of the new task: ";
     getline(cin, desc);
 
-    string assignToATask = "";
-    cout << "Would you like to assign this task? Type Y/N: ";
-
-    getline(cin,assignToATask);
-
-    while(assignToATask != "Y" && assignToATask != "N" && assignToATask != "y" && assignToATask != "n"){ //checks if user properly enter y or n, to see if they want to assign it to a list//
+    string assignToList = "";
+    
+    do{
         cout << "Please Enter Y for yes or N for no to assign task to a task list: ";
-        getline(cin,assignToATask);
-    }
+        getline(cin,assignToList);
+    }while(assignToList != "Y" && assignToList != "N" && assignToList != "y" && assignToList != "n"); //checks if user properly enter y or n, to see if they want to assign it to a list//
 
     string userListChoice = "";
-    if(assignToATask == "Y"){ 
+    if(assignToList == "Y"){ 
 
-        //userHome.viewLists(); //lists out existing task lists
+        userHome->viewLists(); //lists out existing task lists
         cout << "Please select list: ";
         getline(cin,userListChoice);
 
         while(userHome->findTaskList(userListChoice) == nullptr){ //checks if list exist//
             cout << "Please select a existent list: "; 
-            //userHome.viewLists(); //lists out existing task lists
+            userHome->viewLists(); //lists out existing task lists
             getline(cin,userListChoice);
         }
     }
@@ -103,7 +100,7 @@ vector<string> prompt::newListPrompt() const {
 
     vector<string> userListData;
 
-    string listTitle = "", listDescription = "", listClassification = "", addTasks = "";
+    string listTitle = "", listDescription = "", addTasks = "";
     cout << "New Task List" << endl << endl;
 
     cout << "Input Information as prompted!" << endl;
@@ -114,12 +111,8 @@ vector<string> prompt::newListPrompt() const {
     cout << "Enter list Description: ";
     getline(cin,listDescription);
 
-    cout << "Enter list classification: ";
-    getline(cin,listClassification);
-
     userListData.push_back(listTitle);
     userListData.push_back(listDescription);
-    userListData.push_back(listClassification);
     
    return userListData;
     
@@ -133,13 +126,13 @@ vector<string> prompt::taskEditorPrompt(const TaskList* userList) const {
     cout << "Task Editor" << endl;
     cout << "Edit your task below!" << endl;
 
-    //userList->viewTasks();
+    userList->viewTasks();
 
     cout << "Select a task to edit: ";
     getline(cin,targetTask);
 
     while(userList->findTask(targetTask) == nullptr){
-        //userList->viewTasks();
+        userList->viewTasks();
         cout << "Please enter valid task: ";
         getline(cin,targetTask);
     }
