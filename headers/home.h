@@ -16,7 +16,7 @@ class Home {
    void createNewTask(const vector<string>&);
    void createNewList(const vector<string>&);
    void viewLists() const;
-   void editLists() const;
+   void editList(TaskList*, string, string) const;
    void setList(Task*, const string&);
    void setClassification(Task*);
    //void deleteTask()
