@@ -39,12 +39,16 @@ void Home::viewLists() const {
     }
 }
 
-void Home::editList(TaskList* target, string action, string newVal) const {
+void Home::editList(string newList, string action, string newVal) const {
+    TaskList *target = findTaskList(newList);
+
     if (action == "Title") {
         target->editListName(newVal);
     } else if (action == "Description") {
         target->editListDescription(newVal);
     }
+
+    target = nullptr;
 }
 
 void Home::setList(Task* newTask, const string& selectedList) {

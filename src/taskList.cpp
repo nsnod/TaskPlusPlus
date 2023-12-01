@@ -47,7 +47,7 @@ void TaskList::removeTask(const string& taskName) {
     }
 }
 
-void TaskList::editTask(const string& taskName, const string& action, const string& newVal) {
+void TaskList::editTask(string taskName, string action, string newVal) {
     Task *target = findTask(taskName);
     
     if (action == "Name") {
