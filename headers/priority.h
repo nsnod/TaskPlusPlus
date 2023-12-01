@@ -2,6 +2,7 @@
 #define PRIORITY_H
 
 #include <iostream>
+#include "view.h"
 #include "home.h"
 #include "task.h"
 #include "taskList.h"
