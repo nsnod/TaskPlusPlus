@@ -3,6 +3,7 @@
 
 #include "../headers/task.h"
 #include "../headers/taskList.h"
+#include "view.h"
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -12,6 +13,7 @@ using namespace std;
 
 class Home {
  public:
+   friend class View;
    void createNewTask(const vector<string>&);
    void createNewList(const vector<string>&);
    void viewLists() const;
