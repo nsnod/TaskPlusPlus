@@ -47,7 +47,9 @@ void TaskList::removeTask(const string& taskName) {
     }
 }
 
-void TaskList::editTask(Task* target, const string& action, const string& newVal) {
+void TaskList::editTask(const string& taskName, const string& action, const string& newVal) {
+    Task *target = findTask(taskName);
+    
     if (action == "Name") {
         target->setName(newVal);
     }
@@ -63,6 +65,8 @@ void TaskList::editTask(Task* target, const string& action, const string& newVal
     else if (action == "Full Assigned Date") {
         target->setFullAssignedDate(newVal);
     }
+
+    target = nullptr;
 }
 
 double TaskList::findCompletedTasks() const {

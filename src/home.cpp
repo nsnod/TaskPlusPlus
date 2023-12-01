@@ -32,10 +32,19 @@ void Home::createNewList(const vector<string>& inputs) {
 
 void Home::viewLists() const {
 
+    int listCount = 1;
+
+    for (auto list : overallLists) {
+        cout << listCount << ".)" << list->getListName() << endl;
+    }
 }
 
-void Home::editLists() const {
-
+void Home::editList(TaskList* target, string action, string newVal) const {
+    if (action == "Title") {
+        target->editListName(newVal);
+    } else if (action == "Description") {
+        target->editListDescription(newVal);
+    }
 }
 
 void Home::setList(Task* newTask, const string& selectedList) {

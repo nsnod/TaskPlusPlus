@@ -60,3 +60,16 @@ TEST(HomeCreateNewTask, newTaskWithNoAssignedListNotFound) {
 
     EXPECT_TRUE(admin.findSoloTask("Doesn't exist") == nullptr);
 }
+
+// Testing edit //
+
+TEST(HomeView, editingList) {
+    TaskList *tL1 = new TaskList;
+    TaskList *tL2 = new TaskList;
+
+    tL1->editListName("List 1");
+    tL2->editListName("List 2");
+
+    EXPECT_TRUE(tL1->getListName() == "List 1");
+    EXPECT_TRUE(tL2->getListName() == "List 2");
+}

@@ -21,7 +21,7 @@ class TaskList {
     void switchCompleteStatus(); // Change the completion status of the list
     void addTask(Task* newTask); // Add task to list
     void removeTask(const string& taskName); // Remove a specific task from list
-    void editTask(Task* target, const string& action, const string& newVal); // Edit a specific task within the test
+    void editTask(const string& taskName, const string& action, const string& newVal); // Edit a specific task within the test
 
     // getters
     void viewTasks() const; // Display all tasks within list
