@@ -11,7 +11,7 @@ void prompt::setSelection(){
     getline(cin,userChoice);
     
     while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "6" && userChoice != "Task--"){ 
-        cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal: ";
+        cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal:";
         getline(cin,userChoice);
     }
         
@@ -29,7 +29,7 @@ void prompt::printMainMenu() {
     cout << "5. View Weekly Tasks" << endl;
     cout << "6.Reccomend Weekly Schedule" << endl;
     cout << "(Type \"Task--\" - to exit terminal)" << endl << endl;
-    cout << "Please make your selection (Input corresponding numerical value): ";
+    cout << "Please make your selection (Input corresponding numerical value):";
     this->setSelection();
   
 }
@@ -50,13 +50,13 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
         getline(cin,priority);
     }
 
-    while(dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
+    while(dueDate.size() != 8 ||dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7)))){
         cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,dueDate);
     }
     
     
-    while(assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7)))){
+    while(assignedDate.size() != 8 || assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7)))){
         cout << "Please enter the addigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,assignedDate);
     }
@@ -201,13 +201,11 @@ vector<string> prompt::taskEditorPrompt(const TaskList* userList) const {
     return userChanges; //make sure in main to use find task when u call edit task ->find(targetTask)//
 
 }
+/*
+void prompt::listEditorPrompt() const{
 
-void prompt::listEditorPrompt(const Home*) const {
-    cout << "List editor" << endl;
-    cout << "Edit list below!" << endl;
-
-    cout << "Select a task to edit: "
 }
+
 void prompt::viewArchivePrompt() const {
     //fill out with prompt
 }
@@ -220,3 +218,4 @@ void prompt::viewUpcomingTasksPrompt() const {
 void prompt::recommendWeeklySchedulePrompt() const {
     //fill out with prompt
 }
+*/

@@ -3,7 +3,6 @@
 
 #include "../headers/home.h"
 #include "../headers/prompt.h"
-#include "../headers/archive.h"
 #include "../headers/recommender.h"
 #include "../headers/task.h"
 #include "../headers/taskList.h"
@@ -16,9 +15,14 @@ using namespace std;
 int main(){
 
     prompt Prompt;
-    Home Home;
+    Home* home = new Home;
 
-    //Prompt.printMainMenu();
+    Prompt.printMainMenu();
 
+    if(Prompt.getSelection() == "1"){
+        Prompt.newTaskPrompt(home);
+    }
+
+    delete home;
     return 0;
 }
