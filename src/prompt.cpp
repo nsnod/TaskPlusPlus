@@ -74,13 +74,13 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
     string userListChoice = "";
     if(assignToList == "Y"){ 
 
-        userHome->viewLists(); //lists out existing task lists
+        userHome->viewLists(); //lists out existing task lists !!FIX NOT DISPLAYING!!
         cout << "Please select list: ";
         getline(cin,userListChoice);
 
         while(userHome->findTaskList(userListChoice) == nullptr){ //checks if list exist//
             cout << "Please select a existent list: "; 
-            userHome->viewLists(); //lists out existing task lists
+            userHome->viewLists(); //lists out existing task lists !!FIX NOT DISPLAYING!!
             getline(cin,userListChoice);
         }
     }
@@ -96,7 +96,7 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
     return userData;
 }
 
-vector<string> prompt::newListPrompt() const {
+vector<string> prompt::newListPrompt() const { //WORKS//
 
     vector<string> userListData;
 
@@ -118,7 +118,7 @@ vector<string> prompt::newListPrompt() const {
     
 }
 
-vector<string> prompt::taskEditorPrompt(const TaskList* userList) const {
+void prompt::taskEditorPrompt(const TaskList* userList) const { //UNTESTED//
     vector<string> userChanges;
     string targetTask = "", action = "", newVal = "";
     string choice = "";
@@ -187,27 +187,49 @@ vector<string> prompt::taskEditorPrompt(const TaskList* userList) const {
         getline(cin,newVal);
     }
     
-    userChanges.push_back(targetTask);
-    userChanges.push_back(action);
-    userChanges.push_back(newVal);
+    userList->editTask(targetTask, action, newVal);
+
+    //userChanges.push_back(targetTask);
+    //userChanges.push_back(action);
+    //userChanges.push_back(newVal);
      
-    return userChanges; //make sure in main to use find task when u call edit task ->find(targetTask)//
+    //return userChanges; //make sure in main to use find task when u call edit task ->find(targetTask)//
 
 }
 
-void prompt::listEditorPrompt() const{
+vector<string> prompt::listEditorPrompt(const TaskList* userList) const{ //untested//
+    string choice = "";
+    string action = "";
+    string payload = "";
+    cout << "List Editor" << endl;
+    cout << "Edit the List Below!" << endl;
+
+    cout << "1) " << userList->getListName() << endl;
+    cout << "2) " << userList->getListDescription() << endl;
+
+    do{
+        cout << "Please Type 1 to edit your list name or Type 2 to edit your list description: ";
+        getline(cin,choice);
+    }while(choice != "1" && choice != "2");
+
+    if(choice == "1"){
+        action = "Name";
+        cout << "Enter new Title: ";
+        getline(cin,payload);
+    }
+    else{
+        action = "Description";
+        cout << "Enter new description: ";
+        getline(cin,payload);
+    }
+
+    vector<string> listData = {action,payload};
+
+    return listData;
 
 }
 
-void prompt::viewArchivePrompt() const {
-    //fill out with prompt
-}
+
 void prompt::viewWeeklyTasksPrompt() const {
-    //fill out with prompt
-}
-void prompt::viewUpcomingTasksPrompt() const {
-    //fill out with prompt
-}
-void prompt::recommendWeeklySchedulePrompt() const {
     //fill out with prompt
 }
