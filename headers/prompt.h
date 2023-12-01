@@ -23,12 +23,12 @@ class prompt{
     void printMainMenu();
     vector<string> newTaskPrompt(const Home*) const;
     vector<string> newListPrompt() const;
-    vector<string> taskEditorPrompt(const TaskList*) const;
-    void listEditorPrompt() const;
-    void viewArchivePrompt() const;
+    void taskEditorPrompt(const TaskList*) const;
+    vector<string> listEditorPrompt(const TaskList*) const;
+    
     void viewWeeklyTasksPrompt() const;
-    void viewUpcomingTasksPrompt() const;
-    void recommendWeeklySchedulePrompt() const;
+    void viewPriority() const;
+    
     void setSelection(); //helper/setter function//
     string getSelection() const;
 };
