@@ -10,7 +10,11 @@
 using namespace std;
 
 class Priority {
-
+ public:
+    void view(string choice) const;
+    void priorityComplete() const;
+    void priorityUncomplete() const;
+    void priorityAll() const;
 };
 
 #endif
