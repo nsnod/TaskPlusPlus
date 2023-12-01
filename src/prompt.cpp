@@ -118,7 +118,7 @@ vector<string> prompt::newListPrompt() const { //WORKS//
     
 }
 
-void prompt::taskEditorPrompt(const TaskList* userList) const { //UNTESTED//
+void prompt::taskEditorPrompt(TaskList* userList){ //UNTESTED//
     vector<string> userChanges;
     string targetTask = "", action = "", newVal = "";
     string choice = "";
@@ -188,16 +188,9 @@ void prompt::taskEditorPrompt(const TaskList* userList) const { //UNTESTED//
     }
     
     userList->editTask(targetTask, action, newVal);
-
-    //userChanges.push_back(targetTask);
-    //userChanges.push_back(action);
-    //userChanges.push_back(newVal);
-     
-    //return userChanges; //make sure in main to use find task when u call edit task ->find(targetTask)//
-
 }
 
-vector<string> prompt::listEditorPrompt(const TaskList* userList) const{ //untested//
+void prompt::listEditorPrompt(TaskList* userList){ //untested//
     string choice = "";
     string action = "";
     string payload = "";
@@ -223,13 +216,24 @@ vector<string> prompt::listEditorPrompt(const TaskList* userList) const{ //untes
         getline(cin,payload);
     }
 
-    vector<string> listData = {action,payload};
-
-    return listData;
+    userList->editL(userList->getListName(),action,payload);
 
 }
 
 
-void prompt::viewWeeklyTasksPrompt() const {
+void prompt::viewWeekly() const {
+    //fill out with prompt
+
+
+    // calls the function from weekly view class (outputs and calcs all days of week)
+    // then this function will take input for if they want to select a task or back out
+    // then this function will check if their task actually exists
+    // then the user can choose to edit the task mark it as complete or delete the task
+    // if they chose to edit then we call edit task prompt
+
+}
+
+void prompt::viewPriority() const{
     //fill out with prompt
 }
+

@@ -16,16 +16,21 @@ class prompt{
     string selection = "";
 
     public:
+
+    void setSelection(); //helper//
+    string getSelection() const; //helper//
     
     void printMainMenu();
+
     vector<string> newTaskPrompt(const Home*) const;
     vector<string> newListPrompt() const;
-    void taskEditorPrompt(const TaskList*) const;
-    vector<string> listEditorPrompt(const TaskList*) const;
+
+    void taskEditorPrompt(TaskList*);
+    void listEditorPrompt(TaskList*);
     
-    void viewWeeklyTasksPrompt() const;
+    void viewWeekly() const;
     void viewPriority() const;
+    void viewOverall() const;
     
-    void setSelection(); //helper/setter function//
-    string getSelection() const;
+    
 };
