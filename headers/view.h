@@ -1,6 +1,15 @@
+#ifndef VIEW_H
+#define VIEW_H
+
+#include "home.h"
+#include "taskList.h"
+#include "task.h"
+
 class View {
-
-    public:
-
-    
+ public:
+    void viewWeekly() const;
+    void viewPriority(string userChoice) const;
+    void viewOverall() const;
 };
+
+#endif
