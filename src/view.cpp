@@ -6,3 +6,19 @@
 
 using namespace std;
 
+void View::viewPriority(string userChoice) const {
+    if (Home::isEmpty() != true) {
+        if (userChoice == "Completed") {
+            
+        }
+        else if (userChoice == "Uncompleted") {
+
+        }
+        else if (userChoice == "All") {
+
+        }
+    }
+    else {
+        cout << "-------------NO TASKS AVAILABLE-------------" << endl;
+    }
+}
