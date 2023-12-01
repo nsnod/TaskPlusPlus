@@ -83,3 +83,11 @@ TaskList* Home::findTaskList(const string& listName) const {
     }
     return nullptr;
 }
+
+bool Home::isEmpty() {
+    if (soloTasks->getNumOfTasks() == 0 && overallLists.size() == 0) {
+        return true;
+    }
+    
+    return false;
+}

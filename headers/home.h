@@ -18,6 +18,7 @@ class Home {
    void editList(string, string, string) const;
    void setList(Task*, const string&);
    void setClassification(Task*);
+   bool isEmpty();
    //void deleteTask()
    //NO DOUBLE FREES
    //delete from one list and then just erase from the other because there are two pointers
