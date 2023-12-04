@@ -8,9 +8,9 @@
 class Home;
 class View {
  public:
-    void viewWeekly() const;
+    void viewWeekly(Home target) const;
     void viewPriority(Home target, string userChoice);
-    void viewOverall() const;
+    void viewOverall(Home target) const;
  private:
     void sortTasks(Home target);
     bool compareTasks(Task const* task1, Task const* task2);
