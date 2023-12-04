@@ -20,8 +20,9 @@ int main(){
     Prompt.printMainMenu();
 
     if(Prompt.getSelection() == "1"){
-        Prompt.newTaskPrompt(home);
+        home->createNewTask(Prompt.newTaskPrompt(home));
     }
+
 
     delete home;
     return 0;

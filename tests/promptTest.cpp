@@ -1,35 +1,40 @@
 #include "../headers/prompt.h"
+#include "../headers/home.h"
+#include "../headers/taskList.h"
 #include "gtest/gtest.h"
 
+
+Home* h;
+TaskList* t;
+
 TEST(promptTest, printMenu){
-    Prompt p;
+    prompt *p;
 
     //testing the mutator for prompt
-    EXPECT_NO_THROW(p.SetSelection());
 
     //testing that printing main menu doesnt cause an error
-    EXPECT_NO_THROW(p.printMainMenu());
+    EXPECT_NO_THROW(p->printMainMenu());
 
 }
 
 TEST(promptTest, newListPrompt){
-    Prompt p;
+    prompt p;
 
     EXPECT_NO_THROW(p.newListPrompt());
 }
 
 TEST(promptTest, newTaskPrompt){
 
-    Prompt p;
+    prompt p;
 
-    EXPECT_NO_THROW(p.newTaskPrompt());
+    EXPECT_NO_THROW(p.newTaskPrompt(h));
     
 }
 
 TEST(promptTest, taskEditorPrompt){
 
-    Prompt p;
+    prompt p;
     
-    EXPECT_NO_THROW(p.taskEditorPrompt());
+    EXPECT_NO_THROW(p.taskEditorPrompt(t));
     
 }
