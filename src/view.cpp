@@ -129,6 +129,21 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
     cout << endl;    
 }
 
-void View::viewOverall() const {
-    
+void View::viewOverall(Home target) const {
+    if (target.isEmpty() != true) {
+        cout << "Solo Tasks" << endl;
+        target.soloTasks->viewTasks();
+        cout << endl << endl;
+
+        for (TaskList* list : target.overallLists) {
+            list->viewTasks();
+            cout << endl << endl;
+        } 
+    } else {
+        cout << "-------------NO TASKS AVAILABLE-------------" << endl;
+    }    
+}
+
+void View::viewWeekly(Home target) const {
+
 }

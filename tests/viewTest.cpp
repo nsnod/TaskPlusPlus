@@ -35,3 +35,34 @@ TEST(View, testingSort) {
     v1.viewPriority(admin, "All");
     cout << endl;
 }
+
+TEST(View, overallView) {
+    Home admin;
+
+    vector<string> listInput{"The Best List", "the best description"};
+    vector<string> listInput2{"3", "the best description"};
+    admin.createNewList(listInput);
+    admin.createNewList(listInput2);
+
+    vector<string> taskInputs1{"task one", "Low", "05/19/23", "11/18/23", "Description", "The Best List"};
+    vector<string> taskInputs2{"task two", "High", "02/19/24", "11/18/23", "Description", "The Best List"};
+    vector<string> taskInputs3{"task three", "Medium", "11/19/24", "11/18/23", "Description", "The Best List"};
+    vector<string> taskInputs4{"task four", "Low", "12/19/24", "11/18/23", "Description", "3"};
+    vector<string> taskInputs5{"task five", "High", "09/19/21", "11/18/23", "Description", "3"};
+    vector<string> taskInputs6{"task six", "High", "01/19/23", "11/18/23", "Description", "3"};
+
+
+    admin.createNewTask(taskInputs1);
+    admin.createNewTask(taskInputs2);
+    admin.createNewTask(taskInputs3);
+    admin.createNewTask(taskInputs4);
+    admin.createNewTask(taskInputs5);
+    admin.createNewTask(taskInputs6);
+
+    TaskList *theBestList = admin.findTaskList("The Best List");
+    theBestList->findTask("task one")->switchCompleteStatus();
+    
+    View v1;
+    
+    v1.viewOverall(admin);
+}
