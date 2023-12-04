@@ -76,6 +76,8 @@ void View::viewPriority(Home target, string userChoice) {
             cout << "LOW PRIORITY - ALL\n" << "---------------------------\n";
             printLowPriority(true, true);
         }
+
+        sortedTasks.clear();
     }
     else {
         cout << "-------------NO TASKS AVAILABLE-------------" << endl;
@@ -87,7 +89,7 @@ void View::printHighPriority(bool printCompleted, bool printUncompleted) const {
         Task* target = sortedTasks.at(i);
         if (target->getPriority() == "High") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << "\u2713" << endl;
+                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
             else if (target->getCompleteStatus() == false && printUncompleted == true) {
                 cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
@@ -102,7 +104,7 @@ void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
         Task* target = sortedTasks.at(i);
         if (target->getPriority() == "Medium") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << "\u2713" << endl;
+                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
             else if (target->getCompleteStatus() == false && printUncompleted == true) {
                 cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
@@ -117,7 +119,7 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
         Task* target = sortedTasks.at(i);
         if (target->getPriority() == "Low") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << "\u2713" << endl;
+                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
             else if (target->getCompleteStatus() == false && printUncompleted == true) {
                 cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
