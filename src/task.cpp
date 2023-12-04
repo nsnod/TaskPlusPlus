@@ -35,19 +35,19 @@ void Task::switchCompleteStatus() {
     }
 }
 
-bool Task::operator<(Task const& lhs, Task const& rhs) {
-    if (lhs.getDueYear() < rhs.getDueYear()) {
+bool Task::operator<(Task const& rhs) {
+    if (getDueYear() < rhs.getDueYear()) {
         return true;
     }
-    if (lhs.getDueYear() > rhs.getDueYear()) {
+    if (getDueYear() > rhs.getDueYear()) {
         return false;
     }
-    if (lhs.getDueMonth() < rhs.getDueMonth()) {
+    if (getDueMonth() < rhs.getDueMonth()) {
         return true;
     }
-    if (lhs.getDueMonth() > rhs.getDueMonth()) {
+    if (getDueMonth() > rhs.getDueMonth()) {
         return false;
     }
 
-    return lhs.getDueDay() < rhs.getDueDay();
+    return getDueDay() < rhs.getDueDay();
 }
