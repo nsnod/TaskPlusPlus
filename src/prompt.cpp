@@ -20,16 +20,20 @@ void prompt::setSelection(){
 
 void prompt::printMainMenu() {
 
-    cout << "Task++" << endl;
-    cout << "Select your option below (Number or Name)" << endl;
+    prompt::printTaskPlusPlus();
+    cout << "==============================================" << endl;
+    cout << "             Task++ Menu Options             " << endl;
+    cout << "==============================================" << endl;
     cout << "1. New Task" << endl;
     cout << "2. New Task List" << endl;
     cout << "3. View Task Archive" << endl;
     cout << "4. New Upcoming Tasks" << endl;
     cout << "5. View Weekly Tasks" << endl;
-    cout << "6.Reccomend Weekly Schedule" << endl;
-    cout << "(Type \"Task--\" - to exit terminal)" << endl << endl;
-    cout << "Please make your selection (Input corresponding numerical value): ";
+    cout << "6. Recommend Weekly Schedule" << endl;
+    cout << "==============================================" << endl;
+    cout << "(Type \"Task--\" to exit the terminal)" << endl;
+    cout << "==============================================" << endl;
+    cout << "Please select an option (Enter the corresponding number): ";
     this->setSelection();
   
 }
@@ -38,7 +42,12 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
     vector<string> userData;
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "";
 
-    cout << "New Task" << endl << endl;
+    cout << "    _   __                ______           __  " << endl;
+    cout << "   / | / /__ _      __   /_  __/___ ______/ /__" << endl;
+    cout << "  /  |/ / _ \\ | /| / /    / / / __ `/ ___/ //_/" << endl;
+    cout << " / /|  /  __/ |/ |/ /    / / / /_/ (__  ) ,<   " << endl;
+    cout << "/_/ |_/\\___/|__/|__/    /_/  \\__,_/____/_/|_|" << endl;
+
 
     cout << "Input Information as prompted!" << endl;
         
@@ -98,18 +107,25 @@ vector<string> prompt::newTaskPrompt(const Home* userHome) const {
 
 vector<string> prompt::newListPrompt() const { //WORKS//
 
+    cout << "    _   __                __    _      __ " << endl;
+    cout << "   / | / /__ _      __   / /   (_)____/ /_" << endl;
+    cout << "  /  |/ / _ \\ | /| / /  / /   / / ___/ __/" << endl;
+    cout << " / /|  /  __/ |/ |/ /  / /___/ (__  ) /_" << endl;
+    cout << "/_/ |_/\___/|__/|__ /  /_____/_/____/\\__/" << endl;
+
+
+
     vector<string> userListData;
 
     string listTitle = "", listDescription = "", addTasks = "";
-    cout << "New Task List" << endl << endl;
+    cout << "==============================================" << endl;
+    cout << "Enter List Title: ";
+    getline(cin, listTitle);
+    cout << "Enter Description: ";
+    getline(cin, listDescription);
+    cout << "==============================================" << endl;
 
-    cout << "Input Information as prompted!" << endl;
 
-    cout << "Enter list name: ";
-    getline(cin,listTitle);
-
-    cout << "Enter list Description: ";
-    getline(cin,listDescription);
 
     userListData.push_back(listTitle);
     userListData.push_back(listDescription);
@@ -216,7 +232,7 @@ void prompt::listEditorPrompt(TaskList* userList){ //untested//
         getline(cin,payload);
     }
 
-    userList->editL(userList->getListName(),action,payload);
+    
 
 }
 
@@ -236,4 +252,18 @@ void prompt::viewWeekly() const {
 void prompt::viewPriority() const{
     //fill out with prompt
 }
+
+void prompt::printTaskPlusPlus() {
+    // Define the flame-like pattern around 'Task++'
+    string asciiArt = R"(
+  ______           __             
+ /_  __/___ ______/ /__  __    __ 
+  / / / __ `/ ___/ //_/_/ /___/ /_
+ / / / /_/ (__  ) ,< /_  __/_  __/
+/_/  \__,_/____/_/|_| /_/   /_/   
+)";
+
+    cout << asciiArt << endl;
+}
+
 

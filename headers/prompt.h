@@ -31,6 +31,9 @@ class prompt{
     void viewWeekly() const;
     void viewPriority() const;
     void viewOverall() const;
+
+    void printTaskPlusPlus();
+    void printEnd(); //print at end XD//
     
     
 };
