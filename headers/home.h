@@ -21,9 +21,7 @@ class Home {
    void setList(Task*, const string&);
    void setClassification(Task*);
    bool isEmpty();
-   //void deleteTask()
-   //NO DOUBLE FREES
-   //delete from one list and then just erase from the other because there are two pointers
+   void deleteList(const string&);
    Task* findSoloTask(const string&) const;
    TaskList* findTaskList(const string&) const;
    

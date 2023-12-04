@@ -22,3 +22,7 @@ void View::viewPriority(string userChoice) const {
         cout << "-------------NO TASKS AVAILABLE-------------" << endl;
     }
 }
+
+void View::viewOverall() const {
+    
+}

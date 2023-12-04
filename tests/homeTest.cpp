@@ -81,3 +81,51 @@ TEST(HomeEmpty, isHomeEmpty) {
 
     EXPECT_TRUE(emptyHome.isEmpty() == true);
 }
+
+// Testing Delete List //
+
+TEST(HomeDeleteList, deletingOneList) {
+    Home admin;
+
+    vector<string> listInputs{"The Best List", "ListDescription"};
+    admin.createNewList(listInputs);
+
+    EXPECT_FALSE(admin.findTaskList("The Best List") == nullptr);
+
+    admin.deleteList("The Best List");
+
+    EXPECT_TRUE(admin.findTaskList("The Best List") == nullptr);
+}
+
+TEST(HomeDeleteList, deletingTwoLists) {
+    Home admin;
+
+    vector<string> listInputs{"The Best List", "ListDescription"};
+    vector<string> listInputs2{"The Best List 2", "ListDescription"};
+    admin.createNewList(listInputs);
+    admin.createNewList(listInputs2);
+
+    EXPECT_FALSE(admin.findTaskList("The Best List") == nullptr);
+    EXPECT_FALSE(admin.findTaskList("The Best List 2") == nullptr);
+
+    admin.deleteList("The Best List");
+    admin.deleteList("The Best List 2");
+
+    EXPECT_TRUE(admin.findTaskList("The Best List") == nullptr);
+    EXPECT_TRUE(admin.findTaskList("The Best List 2") == nullptr);
+}
+
+TEST(HomeDeleteList, doubleFreeTest) {
+    Home admin;
+
+    vector<string> listInputs{"The Best List", "ListDescription"};
+    admin.createNewList(listInputs);
+
+    EXPECT_FALSE(admin.findTaskList("The Best List") == nullptr);
+
+    admin.deleteList("The Best List");
+    admin.deleteList("The Best List");
+    admin.deleteList("The Best List");
+
+    EXPECT_TRUE(admin.findTaskList("The Best List") == nullptr);
+}
