@@ -57,10 +57,24 @@ void View::viewPriority(Home target, string userChoice) {
             printLowPriority(true, false);
         }
         else if (userChoice == "Uncompleted") {
+            cout << "HIGH PRIORITY - UNCOMPLETED\n" << "---------------------------\n";
+            printHighPriority(false, true);
 
+            cout << "MEDIUM PRIORITY - UNCOMPLETED\n" << "---------------------------\n";
+            printMedPriority(false, true);
+
+            cout << "LOW PRIORITY - UNCOMPLETED\n" << "---------------------------\n";
+            printLowPriority(false, true);
         }
         else if (userChoice == "All") {
+            cout << "HIGH PRIORITY - ALL\n" << "---------------------------\n";
+            printHighPriority(true, true);
 
+            cout << "MEDIUM PRIORITY - ALL\n" << "---------------------------\n";
+            printMedPriority(true, true);
+
+            cout << "LOW PRIORITY - ALL\n" << "---------------------------\n";
+            printLowPriority(true, true);
         }
     }
     else {
