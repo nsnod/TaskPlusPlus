@@ -3,11 +3,7 @@ add_library(simpleLibrary
     taskList.cpp
     home.cpp
     prompt.cpp
-    # archive.cpp
-    # recommender.cpp
-    # upcoming.cpp
-    # view.cpp
-    # weekly.cpp
+    view.cpp
 )
 
 # add_executable(runAllTests
