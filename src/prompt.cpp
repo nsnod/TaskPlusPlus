@@ -113,8 +113,6 @@ vector<string> prompt::newListPrompt() const { //WORKS//
     cout << " / /|  /  __/ |/ |/ /  / /___/ (__  ) /_" << endl;
     cout << "/_/ |_/\___/|__/|__ /  /_____/_/____/\\__/" << endl;
 
-
-
     vector<string> userListData;
 
     string listTitle = "", listDescription = "", addTasks = "";

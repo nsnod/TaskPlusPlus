@@ -30,7 +30,7 @@ class prompt{
     
     void viewWeekly() const;
     void viewPriority() const;
-    void viewOverall() const;
+    void viewOverall() const; //viewing all lists  (lists inside the tasks) and solo tasks gets input //
 
     void printTaskPlusPlus();
     void printEnd(); //print at end XD//
