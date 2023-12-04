@@ -42,10 +42,19 @@ bool View::compareTasks (Task const* task1, Task const* task2) {
 }
 
 
-void View::viewPriority(Home target, string userChoice) const {
+void View::viewPriority(Home target, string userChoice) {
     if (target.isEmpty() != true) {
+        sortTasks(target);
+
         if (userChoice == "Completed") {
-            
+            cout << "HIGH PRIORITY - COMPLETED\n" << "---------------------------\n";
+            printHighPriority(true, false);
+
+            cout << "MEDIUM PRIORITY - COMPLETED\n" << "---------------------------\n";
+            printMedPriority(true, false);
+
+            cout << "LOW PRIORITY - COMPLETED\n" << "---------------------------\n";
+            printLowPriority(true, false);
         }
         else if (userChoice == "Uncompleted") {
 
@@ -57,6 +66,29 @@ void View::viewPriority(Home target, string userChoice) const {
     else {
         cout << "-------------NO TASKS AVAILABLE-------------" << endl;
     }
+}
+
+void View::printHighPriority(bool printCompleted, bool printUncompleted) const {
+    for (int i = 0; i < sortedTasks.size(); ++i) {
+        Task* target = sortedTasks.at(i);
+        if (target->getPriority() == "High") {
+            if (target->getCompleteStatus() == true && printCompleted == true) {
+                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << "\u2713" << endl;
+            }
+            else if (target->getCompleteStatus() == false && printUncompleted == true) {
+                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
+            }
+        }
+    } 
+    cout << endl;
+}
+
+void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
+
+}
+
+void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
+
 }
 
 void View::viewOverall() const {
