@@ -84,7 +84,18 @@ void View::printHighPriority(bool printCompleted, bool printUncompleted) const {
 }
 
 void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
-
+    for (int i = 0; i < sortedTasks.size(); ++i) {
+        Task* target = sortedTasks.at(i);
+        if (target->getPriority() == "Medium") {
+            if (target->getCompleteStatus() == true && printCompleted == true) {
+                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << "\u2713" << endl;
+            }
+            else if (target->getCompleteStatus() == false && printUncompleted == true) {
+                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
+            }
+        }
+    } 
+    cout << endl;
 }
 
 void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
