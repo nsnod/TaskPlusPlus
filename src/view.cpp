@@ -6,6 +6,10 @@
 
 using namespace std;
 
+void View::sortTasks() {
+    
+}
+
 void View::viewPriority(string userChoice) const {
     if (Home::isEmpty() != true) {
         if (userChoice == "Completed") {
