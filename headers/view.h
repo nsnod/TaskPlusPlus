@@ -11,7 +11,7 @@ class View {
     void viewWeekly() const;
     void viewPriority(Home target, string userChoice) const;
     void viewOverall() const;
- private:
+//  private:
     void sortTasks(Home target);
     bool compareTasks(Task const* task1, Task const* task2);
     vector<Task*> sortedTasks;

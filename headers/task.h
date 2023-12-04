@@ -12,7 +12,6 @@ class Task {
    ~Task() {}
    // Task(const Task&);
    // Task& operator=(const Task&);
-   bool operator<(Task const& rhs);
 
    // setters //
    void setName(const string& n) { name = n; }
