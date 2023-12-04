@@ -235,8 +235,60 @@ void prompt::listEditorPrompt(TaskList* userList){ //untested//
 }
 
 
-void prompt::viewWeekly() const {
+void prompt::viewWeekly(View* mainView, Home* userHome) const {
     //fill out with prompt
+    string choice = "";
+
+    cout << "//   _    ___                 _       __          __   __     " << endl;
+    cout << "//  | |  / (_)__ _      __   | |     / /__  ___  / /__/ /_  __" << endl;
+    cout << "//  | | / / / _ \\ | /| / /  | | /| / / _ \\/ _ \\/ //_/ / / / /" << endl;
+    cout << "//  | |/ / /  __/ |/ |/ /    | |/ |/ /  __/  __/ ,< / / /_/ / " << endl;
+    cout << "//  |___/_/\\___/|__/|__/    |__/|__/\\___/\\___/_/|_/_/\\__, /  " << endl;
+    cout << "//                                                   /____/   " << endl;
+
+    mainView->viewWeekly();
+
+    string choice = "";
+
+    cout << "==== Edit Options ====" << endl;
+    cout << "1.) Edit a task" << endl;
+    cout << "2.) Delete a task" << endl;
+    cout << "3.) Mark a task as complete " << endl;
+    cout << "4.) Back out" << endl;
+    cout << "======================" << endl;
+
+    cout << "Choose a option (enter 1-4): " << endl;
+
+    getline(cin,choice);
+
+    while(choice!= "1" && choice != "2" && choice != "3" && choice != "4"){
+        cout << "Please enter a valid choice: ";
+        getline(cin,choice);
+    }
+
+    if(choice == "4"){
+        return;
+    }
+
+    
+    else if(choice == "3"){
+
+    }
+    else if(choice == "2"){
+
+    }
+    else{
+
+    }
+
+
+    
+
+
+
+    
+
+    
 
 
     // calls the function from weekly view class (outputs and calcs all days of week)
