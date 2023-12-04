@@ -21,6 +21,17 @@ void Home::createNewTask(const vector<string>& inputs) {
     setList(newTask, inputs[5]);
 }
 
+void Home::deleteList(const string& listName) {
+
+    TaskList* target = findTaskList(listName);
+
+    if (target != nullptr) {
+        overallLists.erase(target);
+        delete target;
+        target = nullptr;
+    }
+}
+
 void Home::createNewList(const vector<string>& inputs) {
     TaskList* newList = new TaskList;
 
@@ -82,4 +93,12 @@ TaskList* Home::findTaskList(const string& listName) const {
         }
     }
     return nullptr;
+}
+
+bool Home::isEmpty() {
+    if (soloTasks->getNumOfTasks() == 0 && overallLists.size() == 0) {
+        return true;
+    }
+    
+    return false;
 }

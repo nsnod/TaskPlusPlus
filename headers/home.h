@@ -3,6 +3,7 @@
 
 #include "../headers/task.h"
 #include "../headers/taskList.h"
+#include "view.h"
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -12,15 +13,15 @@ using namespace std;
 
 class Home {
  public:
+   friend class View;
    void createNewTask(const vector<string>&);
    void createNewList(const vector<string>&);
    void viewLists() const;
    void editList(string, string, string) const;
    void setList(Task*, const string&);
    void setClassification(Task*);
-   //void deleteTask()
-   //NO DOUBLE FREES
-   //delete from one list and then just erase from the other because there are two pointers
+   bool isEmpty();
+   void deleteList(const string&);
    Task* findSoloTask(const string&) const;
    TaskList* findTaskList(const string&) const;
    
