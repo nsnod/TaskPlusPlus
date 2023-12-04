@@ -1,6 +1,9 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#include <chrono>
+#include <ctime>
+#include <sstream>
 #include "../headers/view.h"
 #include "../headers/home.h"
 #include "../headers/taskList.h"
@@ -16,7 +19,7 @@ void View::sortTasks(Home target) {
     for (unsigned int i = 0; i < sortedTasks.size() - 1; ++i) {
         int min = i;
         for (unsigned int j = i + 1; j < sortedTasks.size(); ++j) {
-            if (compareTasks(sortedTasks.at(j), sortedTasks.at(min))) {
+            if (compareTasksDueDate(sortedTasks.at(j), sortedTasks.at(min))) {
                 min = j;
             }
         }
@@ -24,7 +27,7 @@ void View::sortTasks(Home target) {
     }
 }
 
-bool View::compareTasks (Task const* task1, Task const* task2) {
+bool View::compareTasksDueDate (Task const* task1, Task const* task2) {
     if (task1->getDueYear() < task2->getDueYear()) {
         return true;
     }
@@ -144,6 +147,51 @@ void View::viewOverall(Home target) const {
     }    
 }
 
-void View::viewWeekly(Home target) const {
+void View::loadStringStreams(Home target) {
+    stringstream sun, mon, tues, weds, thurs, fri, sat;
+    if (target.isEmpty() != true) {
+    //iterate through all tasks including solo tasks
+    //calculates if something is in the current week and then calculates
+    // the day of the week to load it into a string stream.
+        for (auto task : target.classificationTaskStorage["Undated"]) {
+            if (isDateInWeek(task) == true) {
+                if (calculateDayOfWeek(task) == "sun") {
 
+                }
+            }
+        }
+    }
+    // for (auto task : )
+
+}
+
+string View::calculateDayOfWeek(Task*) {
+    return "";
+}
+
+void View::loadTaskData(stringstream& ss, const Task& task) {
+    ss << task.getName() << " " << task.getFullDueDate();
+    if (task.getCompleteStatus()) {
+        ss << " \u2713";
+    }
+    ss << endl;
+}
+
+bool View::isDateInWeek(Task* target) {
+    // gets the current time point
+    auto currentTime = chrono::system_clock::now();
+    time_t currentTimeT = chrono::system_clock::to_time_t(currentTime);
+    // converst the current time to a tm structure
+    tm* currentTM = localtime(&currentTimeT);
+    // calculates the day of the week for the current time
+    int currentDayOfWeek = currentTM->tm_wday;
+    // calculates the day of the week for the given date
+    tm givenDate = {0, 0, 0, target->getAssignedDay(), target->getAssignedMonth()
+                 - 1, target->getAssignedYear() - 1900};
+    mktime(&givenDate);
+    int givenDayOfWeek = givenDate.tm_wday;
+    // difference in days between the current day and the given date
+    int daysDifference = (givenDayOfWeek - currentDayOfWeek + 7) % 7;
+    // checks if the given date is in the current week
+    return (daysDifference >= 0 && daysDifference <= 6);
 }
