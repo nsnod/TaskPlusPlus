@@ -19,7 +19,7 @@ class View {
     bool compareTasksAssignedDate(Task const* task1, Task const* task2);
     string calculateDayOfWeek(Task*);
     bool isDateInWeek(Task*);
-    void loadTaskData(stringstream&, const Task&);
+    void loadTaskData(stringstream&, Task*);
     void printHighPriority(bool printCompleted, bool printUncompleted) const;
     void printMedPriority(bool printCompleted, bool printUncompleted) const;
     void printLowPriority(bool printCompleted, bool printUncompleted) const;
