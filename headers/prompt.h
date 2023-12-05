@@ -29,7 +29,7 @@ class prompt{
     void taskEditorPrompt(TaskList*);
     void listEditorPrompt(TaskList*);
     
-    void viewWeekly(View*,Home*) const;
+    void viewWeekly(View*,Home*);
     void viewPriority() const;
     void viewOverall() const; //viewing all lists  (lists inside the tasks) and solo tasks gets input //
 

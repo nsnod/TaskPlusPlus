@@ -235,7 +235,7 @@ void prompt::listEditorPrompt(TaskList* userList){ //untested//
 }
 
 
-void prompt::viewWeekly(View* mainView, Home* userHome) const {
+void prompt::viewWeekly(View* mainView, Home* userHome){
     //fill out with prompt
     string choice = "";
 
@@ -248,7 +248,33 @@ void prompt::viewWeekly(View* mainView, Home* userHome) const {
 
     mainView->viewWeekly();
 
-    string choice = "";
+    cout << "Would you like to select a task to edit? (enter yes or no): ";
+    getline(cin,choice);
+
+    while(choice != "yes" && choice != "Yes" && choice != "no" && choice != "No" ){
+        cout << "please enter valid choice (yes or no): ";
+        getline(cin, choice);
+    }
+    
+    string taskChoice = "";
+    if(choice == "no" || choice == "No"){
+        return;
+    }
+
+    else{
+        
+        cout << "Please select a task: ";
+        getline(cin,taskChoice);
+
+        while(userHome->findSoloTask(taskChoice) == nullptr){
+            cout << "Please Enter Existing Task: ";
+            getline(cin,taskChoice);
+        }
+
+
+    }
+
+    Task* tempTask = userHome->findSoloTask(taskChoice);
 
     cout << "==== Edit Options ====" << endl;
     cout << "1.) Edit a task" << endl;
@@ -273,6 +299,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome) const {
     
     else if(choice == "3"){
 
+
     }
     else if(choice == "2"){
 
@@ -280,6 +307,8 @@ void prompt::viewWeekly(View* mainView, Home* userHome) const {
     else{
 
     }
+
+    tempTask = nullptr;
 
 
     
@@ -304,7 +333,6 @@ void prompt::viewPriority() const{
 }
 
 void prompt::printTaskPlusPlus() {
-    // Define the flame-like pattern around 'Task++'
     string asciiArt = R"(
   ______           __             
  /_  __/___ ______/ /__  __    __ 
