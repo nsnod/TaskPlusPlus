@@ -147,48 +147,81 @@ void View::viewOverall(Home target) const {
     }    
 }
 
+void View::viewWeekly(Home target) {
+    loadStringStreams(target);
+}
+
+void View::unloadStringStreams(stringstream& sun, stringstream& mon, stringstream& tues, stringstream& weds,
+                stringstream& thurs, stringstream& fri, stringstream& sat) {
+    cout << "Sunday!" << endl;
+    cout << sun.str() << endl;
+    
+    cout << "Monday!" << endl;
+    cout << mon.str() << endl;
+
+    cout << "Tuesday!" << endl;
+    cout << tues.str() << endl;
+
+    cout << "Wednesday!" << endl;
+    cout << weds.str() << endl;
+
+    cout << "Thursday!" << endl;
+    cout << thurs.str() << endl;
+
+    cout << "Friday!" << endl;
+    cout << fri.str() << endl;
+
+    cout << "Saturday!" << endl;
+    cout << sat.str() << endl;
+}
+
 void View::loadStringStreams(Home target) {
     stringstream sun, mon, tues, weds, thurs, fri, sat;
     if (target.isEmpty() != true) {
-        for (auto task : target.classificationTaskStorage["Undated"]) {
-            if (isDateInWeek(task) == true) {
-                if (calculateDayOfWeek(task) == "sun") { loadTaskData(sun, task); } 
-                else if (calculateDayOfWeek(task) == "mon") { loadTaskData(mon, task); }
-                else if (calculateDayOfWeek(task) == "tues") { loadTaskData(tues, task); }
-                else if (calculateDayOfWeek(task) == "weds") { loadTaskData(weds, task); }
-                else if (calculateDayOfWeek(task) == "thurs") { loadTaskData(thurs, task); }
-                else if (calculateDayOfWeek(task) == "fri") { loadTaskData(fri, task); }
-                else if (calculateDayOfWeek(task) == "sat") { loadTaskData(sat, task); }
-            }
-        }
-        for (auto task : target.classificationTaskStorage["Dated"]) {
-            if (isDateInWeek(task) == true) {
-                if (calculateDayOfWeek(task) == "sun") { loadTaskData(sun, task); } 
-                else if (calculateDayOfWeek(task) == "mon") { loadTaskData(mon, task); }
-                else if (calculateDayOfWeek(task) == "tues") { loadTaskData(tues, task); }
-                else if (calculateDayOfWeek(task) == "weds") { loadTaskData(weds, task); }
-                else if (calculateDayOfWeek(task) == "thurs") { loadTaskData(thurs, task); }
-                else if (calculateDayOfWeek(task) == "fri") { loadTaskData(fri, task); }
-                else if (calculateDayOfWeek(task) == "sat") { loadTaskData(sat, task); }
+        for (auto taskList : target.overallLists) {
+            for(auto task : taskList->getTasks()) {
+                if (isDateInWeek(task) == true) {
+                    if (calculateDayOfWeek(task) == "Sunday") { loadTaskData(sun, task); } 
+                    else if (calculateDayOfWeek(task) == "Monday") { loadTaskData(mon, task); }
+                    else if (calculateDayOfWeek(task) == "Tuesday") { loadTaskData(tues, task); }
+                    else if (calculateDayOfWeek(task) == "Wednesday") { loadTaskData(weds, task); }
+                    else if (calculateDayOfWeek(task) == "Thursday") { loadTaskData(thurs, task); }
+                    else if (calculateDayOfWeek(task) == "Friday") { loadTaskData(fri, task); }
+                    else if (calculateDayOfWeek(task) == "Saturday") { loadTaskData(sat, task); }
+                }
             }
         }
         unordered_set<Task*> soloTaskIterator = target.getSoloTasks()->getTasks();
         for (Task* task : soloTaskIterator) {
             if (isDateInWeek(task) == true) {
-                if (calculateDayOfWeek(task) == "sun") { loadTaskData(sun, task); } 
-                else if (calculateDayOfWeek(task) == "mon") { loadTaskData(mon, task); }
-                else if (calculateDayOfWeek(task) == "tues") { loadTaskData(tues, task); }
-                else if (calculateDayOfWeek(task) == "weds") { loadTaskData(weds, task); }
-                else if (calculateDayOfWeek(task) == "thurs") { loadTaskData(thurs, task); }
-                else if (calculateDayOfWeek(task) == "fri") { loadTaskData(fri, task); }
-                else if (calculateDayOfWeek(task) == "sat") { loadTaskData(sat, task); }
+                if (calculateDayOfWeek(task) == "Sunday") { loadTaskData(sun, task); } 
+                else if (calculateDayOfWeek(task) == "Monday") { loadTaskData(mon, task); }
+                else if (calculateDayOfWeek(task) == "Tuesday") { loadTaskData(tues, task); }
+                else if (calculateDayOfWeek(task) == "Wednesday") { loadTaskData(weds, task); }
+                else if (calculateDayOfWeek(task) == "Thursday") { loadTaskData(thurs, task); }
+                else if (calculateDayOfWeek(task) == "Friday") { loadTaskData(fri, task); }
+                else if (calculateDayOfWeek(task) == "Saturday") { loadTaskData(sat, task); }
             }
         }
+
+        unloadStringStreams(sun, mon, tues, weds, thurs, fri, sat);
     }
 }
 
 string View::calculateDayOfWeek(Task* target) {
-    return "";
+    // adjust the year for years since 1900 because thats how tm works
+    int year = target->getAssignedYear() < 69 ? 100 + target->getAssignedYear() : target->getAssignedYear();
+    tm structure = {};
+    structure.tm_year = year - 1900;
+    structure.tm_mon = target->getAssignedMonth() - 1;  // Adjust for months (0-11)
+    structure.tm_mday = target->getAssignedDay();
+
+    time_t time = mktime(&structure);
+
+    vector<string> daysOfWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+    int dayIndex = localtime(&time)->tm_wday;
+
+    return daysOfWeek[dayIndex];
 }
 
 void View::loadTaskData(stringstream& ss,Task* task) {
@@ -203,17 +236,18 @@ bool View::isDateInWeek(Task* target) {
     // gets the current time point
     auto currentTime = chrono::system_clock::now();
     time_t currentTimeT = chrono::system_clock::to_time_t(currentTime);
-    // converst the current time to a tm structure
+    
     tm* currentTM = localtime(&currentTimeT);
-    // calculates the day of the week for the current time
-    int currentDayOfWeek = currentTM->tm_wday;
+
     // calculates the day of the week for the given date
+    int year = target->getAssignedYear() < 69 ? 100 + target->getAssignedYear() : target->getAssignedYear();
     tm givenDate = {0, 0, 0, target->getAssignedDay(), target->getAssignedMonth()
-                 - 1, target->getAssignedYear() - 200};
+                 - 1, year};
+
     mktime(&givenDate);
+    int currentDayOfWeek = currentTM->tm_wday;
     int givenDayOfWeek = givenDate.tm_wday;
-    // difference in days between the current day and the given date
     int daysDifference = (givenDayOfWeek - currentDayOfWeek + 7) % 7;
-    // checks if the given date is in the current week
+
     return (daysDifference >= 0 && daysDifference <= 6);
 }
