@@ -80,14 +80,49 @@ double TaskList::findCompletedTasks() const {
     return numOfCompleted;
 }
 
+bool TaskList::compareTasks(Task* task1, Task* task2) const {
+    if (task1->getDueYear() < task2->getDueYear()) {
+        return true;
+    }
+    if (task1->getDueYear() > task2->getDueYear()) {
+        return false;
+    }
+    if (task1->getDueMonth() < task2->getDueMonth()) {
+        return true;
+    }
+    if (task1->getDueMonth() > task2->getDueMonth()) {
+        return false;
+    }
+
+    return task1->getDueDay() < task2->getDueDay();
+}
+
 void TaskList::viewTasks() const {
     if (getNumOfTasks() != 0) {
+
+    // Sorting by date for output
+        vector<Task*> sortedByDate;
+
+        for (Task* i : listOfTasks) {
+            sortedByDate.push_back(i);
+        } 
+        for (unsigned int i = 0; i < sortedByDate.size() - 1; ++i) {
+            int min = i;
+            for (unsigned int j = i + 1; j < sortedByDate.size(); ++j) {
+                if (compareTasks(sortedByDate[j], sortedByDate[min])) {
+                    min = j;
+                }
+            }
+            swap(sortedByDate[i], sortedByDate[min]);
+        }
+
+    // outputting
         cout << getListName() << "\tCompleted Progression: " << setprecision(3) << getProgress() << "%" << endl;
-        cout << "-----------------------------------------------" << endl << endl;
+        cout << "-----------------------------------------------" << endl;
 
         int taskCount = 1;
 
-        for (auto i : listOfTasks) {
+        for (auto i : sortedByDate) {
             cout << taskCount << ".) " << i->getName() << " " << i->getFullDueDate() << " ";
 
             if (i->getCompleteStatus() == true) {

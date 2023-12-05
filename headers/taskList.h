@@ -25,6 +25,8 @@ class TaskList {
 
     // getters
     void viewTasks() const; // Display all tasks within list
+    unordered_set<Task*> getTasks() const { return listOfTasks; }
+    bool compareTasks(Task*, Task*) const; // used in viewTasks to sort
     string getListName() const; // Return the list's name
     string getListDescription() const; // Return the list's description
     string getListClassification() const; // Return the list's classification
