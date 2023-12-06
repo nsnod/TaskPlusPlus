@@ -132,7 +132,7 @@ vector<string> prompt::newListPrompt() const { //WORKS//
     
 }
 
-void prompt::taskEditorPrompt(TaskList* userList){ //UNTESTED//
+void prompt::taskEditorPrompt(const string& taskName){ //UNTESTED//
     vector<string> userChanges;
     string targetTask = "", action = "", newVal = "";
     string choice = "";
@@ -140,16 +140,7 @@ void prompt::taskEditorPrompt(TaskList* userList){ //UNTESTED//
     cout << "Task Editor" << endl;
     cout << "Edit your task below!" << endl;
 
-    userList->viewTasks();
-
-    cout << "Select a task to edit: ";
-    getline(cin,targetTask);
-
-    while(userList->findTask(targetTask) == nullptr){
-        userList->viewTasks();
-        cout << "Please enter valid task: ";
-        getline(cin,targetTask);
-    }
+    
     
     cout << "1) " << userList->findTask(targetTask)->getName() << endl; //target task name//
     cout << "2) " << userList->findTask(targetTask)->getPriority() << endl; //target task priority//
@@ -158,7 +149,7 @@ void prompt::taskEditorPrompt(TaskList* userList){ //UNTESTED//
     cout << "5) " << userList->findTask(targetTask)->getDescription() << endl; //target task description//
 
     do{
-        cout << "Please action of what you want to edit (enter numerical value): ";
+        cout << "Please select action of what you want to edit (enter numerical value): ";
         getline(cin,choice);
     }while(choice!= "1" && choice != "2" && choice != "3" && choice != "4" && choice !="5");
 
@@ -246,7 +237,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome){
     cout << "//  |___/_/\\___/|__/|__/    |__/|__/\\___/\\___/_/|_/_/\\__, /  " << endl;
     cout << "//                                                   /____/   " << endl;
 
-    mainView->viewWeekly();
+    mainView->viewWeekly(*userHome);
 
     cout << "Would you like to select a task to edit? (enter yes or no): ";
     getline(cin,choice);
@@ -265,6 +256,8 @@ void prompt::viewWeekly(View* mainView, Home* userHome){
         
         cout << "Please select a task: ";
         getline(cin,taskChoice);
+
+        
 
         while(userHome->findSoloTask(taskChoice) == nullptr){
             cout << "Please Enter Existing Task: ";
@@ -296,15 +289,20 @@ void prompt::viewWeekly(View* mainView, Home* userHome){
         return;
     }
 
-    
     else if(choice == "3"){
-
-
+        if(tempTask->getCompleteStatus() == true){
+            cout << "Task is already complete" << endl;
+        }
+        tempTask->switchCompleteStatus();
+        cout << "Task succesfully marked as complete" << endl;
     }
+
     else if(choice == "2"){
+        
 
     }
     else{
+
 
     }
 
