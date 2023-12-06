@@ -26,12 +26,12 @@ class prompt{
     vector<string> newTaskPrompt(const Home*) const;
     vector<string> newListPrompt() const;
 
-    void taskEditorPrompt(const string&);
+    void taskEditorPrompt(Task*, TaskList*);
     void listEditorPrompt(TaskList*);
     
     void viewWeekly(View*,Home*);
-    void viewPriority() const;
-    void viewOverall() const; //viewing all lists  (lists inside the tasks) and solo tasks gets input //
+    void viewPriority();
+    void viewOverall(); //viewing all lists  (lists inside the tasks) and solo tasks gets input //
 
     void printTaskPlusPlus();
     void printEnd(); //print at end XD//

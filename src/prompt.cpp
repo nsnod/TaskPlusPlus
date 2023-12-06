@@ -24,12 +24,11 @@ void prompt::printMainMenu() {
     cout << "==============================================" << endl;
     cout << "             Task++ Menu Options             " << endl;
     cout << "==============================================" << endl;
-    cout << "1. New Task" << endl;
-    cout << "2. New Task List" << endl;
-    cout << "3. View Task Archive" << endl;
-    cout << "4. New Upcoming Tasks" << endl;
-    cout << "5. View Weekly Tasks" << endl;
-    cout << "6. Recommend Weekly Schedule" << endl;
+    cout << "1. Make a New Task" << endl;
+    cout << "2. Make a New Task List" << endl;
+    cout << "4. View Weekly Tasks" << endl;
+    cout << "5. View Overall Tasks" << endl;
+    cout << "6. View Tasks by Priority" << endl;
     cout << "==============================================" << endl;
     cout << "(Type \"Task--\" to exit the terminal)" << endl;
     cout << "==============================================" << endl;
@@ -132,7 +131,7 @@ vector<string> prompt::newListPrompt() const { //WORKS//
     
 }
 
-void prompt::taskEditorPrompt(const string& taskName){ //UNTESTED//
+void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
     vector<string> userChanges;
     string targetTask = "", action = "", newVal = "";
     string choice = "";
@@ -140,13 +139,13 @@ void prompt::taskEditorPrompt(const string& taskName){ //UNTESTED//
     cout << "Task Editor" << endl;
     cout << "Edit your task below!" << endl;
 
-    
-    
-    //cout << "1) " << userList->findTask(targetTask)->getName() << endl; //target task name//
-    //cout << "2) " << userList->findTask(targetTask)->getPriority() << endl; //target task priority//
-    //cout << "3) " << userList->findTask(targetTask)->getFullDueDate() << endl; //target task FULL due date//
-    //cout << "4) " << userList->findTask(targetTask)->getFullAssignedDate() << endl; //target task assigned date//
-    //cout << "5) " << userList->findTask(targetTask)->getDescription() << endl; //target task description//
+    cout << "1) " << userTask->getName() << endl; //target task name//
+    cout << "2) " << userTask->getPriority() << endl; //target task priority//
+    cout << "3) " << userTask->getFullDueDate() << endl; //target task FULL due date//
+    cout << "4) " << userTask->getFullAssignedDate() << endl; //target task assigned date//
+    cout << "5) " << userTask->getDescription() << endl; //target task description//
+
+    targetTask = userTask->getName();
 
     do{
         cout << "Please select action of what you want to edit (enter numerical value): ";
@@ -192,7 +191,7 @@ void prompt::taskEditorPrompt(const string& taskName){ //UNTESTED//
         getline(cin,newVal);
     }
     
-    //userList->editTask(targetTask, action, newVal);
+    taskList->editTask(targetTask, action, newVal);
 }
 
 void prompt::listEditorPrompt(TaskList* userList){ //untested//
@@ -221,13 +220,11 @@ void prompt::listEditorPrompt(TaskList* userList){ //untested//
         getline(cin,payload);
     }
 
-    
 
 }
 
 
 void prompt::viewWeekly(View* mainView, Home* userHome){
-    //fill out with prompt
     string choice = "";
 
     cout << "//   _    ___                 _       __          __   __     " << endl;
@@ -247,27 +244,35 @@ void prompt::viewWeekly(View* mainView, Home* userHome){
         getline(cin, choice);
     }
     
-    string taskChoice = "";
     if(choice == "no" || choice == "No"){
         return;
     }
 
-    else{
+    string taskChoice = "";
+    Task* tempTask = nullptr;
+    TaskList* tempTaskList = nullptr;
+
+    int rev = 0;
         
+    while(tempTask == nullptr){
+
+        if(rev == 0){
         cout << "Please select a task: ";
-        getline(cin,taskChoice);
-
-        
-
-        while(userHome->findSoloTask(taskChoice) == nullptr){
-            cout << "Please Enter Existing Task: ";
-            getline(cin,taskChoice);
+        rev++;
+        }
+        else{
+            cout << "Please select a valid task: ";
         }
 
+        getline(cin,taskChoice);
 
+        if(userHome->findParentList(taskChoice) != nullptr){
+            tempTaskList = userHome->findParentList(taskChoice);
+            tempTask = tempTaskList->findTask(taskChoice);
+        } 
     }
 
-    Task* tempTask = userHome->findSoloTask(taskChoice);
+    string userOption = "0";
 
     cout << "==== Edit Options ====" << endl;
     cout << "1.) Edit a task" << endl;
@@ -276,47 +281,49 @@ void prompt::viewWeekly(View* mainView, Home* userHome){
     cout << "4.) Back out" << endl;
     cout << "======================" << endl;
 
-    cout << "Choose a option (enter 1-4): " << endl;
+    int rev2 = 0; //counter for loop to choose output//
 
-    getline(cin,choice);
+    do{
+        if(rev2 == 0 ){
+            cout << "Choose a option (enter 1-4): ";
+            rev2++;
+        }
+        else{
+            cout << "Please choose a valid option (enter 1-4):";
+        }
+        getline(cin,userOption);
 
-    while(choice!= "1" && choice != "2" && choice != "3" && choice != "4"){
-        cout << "Please enter a valid choice: ";
-        getline(cin,choice);
-    }
+        
+    }while(userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4");
 
-    if(choice == "4"){
+
+    if(userOption == "4"){
+        cout << "See ya!" << endl;
         return;
     }
 
-    else if(choice == "3"){
-        if(tempTask->getCompleteStatus() == true){
+    else if(userOption == "3"){
+        if(tempTask->getCompleteStatus() == true){ //if task is already marked as complete//
             cout << "Task is already complete" << endl;
+            return;
         }
+
         tempTask->switchCompleteStatus();
-        cout << "Task succesfully marked as complete" << endl;
+        cout << "Task successfully marked as complete" << endl;
     }
 
-    else if(choice == "2"){
+    else if(userOption == "2"){
         
+        tempTaskList->removeTask(taskChoice);
+        cout << "Task successfully deleted" << endl;
 
     }
     else{
-
-
+        taskEditorPrompt(tempTask,tempTaskList);
     }
 
+    tempTaskList = nullptr;
     tempTask = nullptr;
-
-
-    
-
-
-
-    
-
-    
-
 
     // calls the function from weekly view class (outputs and calcs all days of week)
     // then this function will take input for if they want to select a task or back out
@@ -326,8 +333,12 @@ void prompt::viewWeekly(View* mainView, Home* userHome){
 
 }
 
-void prompt::viewPriority() const{
+void prompt::viewPriority(){
     //fill out with prompt
+}
+
+void prompt::viewOverall(){
+
 }
 
 void prompt::printTaskPlusPlus() {
