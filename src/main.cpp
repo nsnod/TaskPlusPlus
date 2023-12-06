@@ -29,7 +29,11 @@ int main(){
         }
 
         else if(Prompt.getSelection() == "3"){
-            //what the fuck
+            cout << "Completed solo tasks: " << endl;
+            
+            for(unsigned int i = 0; i < home->soloTasks->getNumOfTasks(); i++){
+                if(home->soloTasks->)
+            }
         }
 
         else if(Prompt.getSelection() == "4"){
