@@ -72,6 +72,9 @@ TEST(HomeView, editingList) {
 
     EXPECT_TRUE(tL1->getListName() == "List 1");
     EXPECT_TRUE(tL2->getListName() == "List 2");
+
+    delete tL1;
+    delete tL2;
 }
 
 // Testing isEmpty //

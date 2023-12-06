@@ -21,6 +21,7 @@ class View {
     string calculateDayOfWeek(Task*);
     bool isDateInWeek(Task*);
     void loadTaskData(stringstream&, Task*);
+    void outputOptions(string const&) const;
     void printHighPriority(bool printCompleted, bool printUncompleted) const;
     void printMedPriority(bool printCompleted, bool printUncompleted) const;
     void printLowPriority(bool printCompleted, bool printUncompleted) const;
