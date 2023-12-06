@@ -25,7 +25,7 @@ void prompt::printMainMenu() {
     cout << "1. New Task" << endl;
     cout << "2. New Task List" << endl;
     cout << "3. View Task Archive" << endl;
-    cout << "4. New Upcoming Tasks" << endl;
+    cout << "4. View Upcoming Tasks" << endl;
     cout << "5. View Weekly Tasks" << endl;
     cout << "6.Reccomend Weekly Schedule" << endl;
     cout << "(Type \"Task--\" - to exit terminal)" << endl << endl;
