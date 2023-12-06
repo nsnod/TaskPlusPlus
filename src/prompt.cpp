@@ -341,16 +341,39 @@ void prompt::viewOverall(){
 
 }
 
-void prompt::printTaskPlusPlus() {
-    string asciiArt = R"(
-  ______           __             
- /_  __/___ ______/ /__  __    __ 
-  / / / __ `/ ___/ //_/_/ /___/ /_
- / / / /_/ (__  ) ,< /_  __/_  __/
-/_/  \__,_/____/_/|_| /_/   /_/   
-)";
 
-    cout << asciiArt << endl;
+
+void printLogos(const string& logoChoice) const{
+    if(logoChoice == "printMainMenu"){
+
+    }
+    else if(logochoice == "newTaskPrompt"){
+
+    }
+    else if(logoChoice == "newListPrompt"){
+
+    }
+    else if(logoChoice == "taskEditorPrompt"){
+
+    }
+    else if(logoChoice == "listEditorPrompt"){
+
+    }
+    else if(logoChoice == "viewWeekly"){
+
+    }
+    else if(logoChoice == "viewPriority"){
+
+    }
+    else if(logoChoice == "viewOverall"){
+
+    }
+    else{
+
+    }
+
+
+
 }
 
 

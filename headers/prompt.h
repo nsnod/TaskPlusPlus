@@ -33,8 +33,8 @@ class prompt{
     void viewPriority();
     void viewOverall(); //viewing all lists  (lists inside the tasks) and solo tasks gets input //
 
-    void printTaskPlusPlus();
-    void printEnd(); //print at end XD//
+    void printLogos(const string&) const;
+    
     
     
 };
