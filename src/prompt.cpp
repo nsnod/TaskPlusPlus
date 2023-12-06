@@ -142,11 +142,11 @@ void prompt::taskEditorPrompt(const string& taskName){ //UNTESTED//
 
     
     
-    cout << "1) " << userList->findTask(targetTask)->getName() << endl; //target task name//
-    cout << "2) " << userList->findTask(targetTask)->getPriority() << endl; //target task priority//
-    cout << "3) " << userList->findTask(targetTask)->getFullDueDate() << endl; //target task FULL due date//
-    cout << "4) " << userList->findTask(targetTask)->getFullAssignedDate() << endl; //target task assigned date//
-    cout << "5) " << userList->findTask(targetTask)->getDescription() << endl; //target task description//
+    //cout << "1) " << userList->findTask(targetTask)->getName() << endl; //target task name//
+    //cout << "2) " << userList->findTask(targetTask)->getPriority() << endl; //target task priority//
+    //cout << "3) " << userList->findTask(targetTask)->getFullDueDate() << endl; //target task FULL due date//
+    //cout << "4) " << userList->findTask(targetTask)->getFullAssignedDate() << endl; //target task assigned date//
+    //cout << "5) " << userList->findTask(targetTask)->getDescription() << endl; //target task description//
 
     do{
         cout << "Please select action of what you want to edit (enter numerical value): ";
@@ -192,7 +192,7 @@ void prompt::taskEditorPrompt(const string& taskName){ //UNTESTED//
         getline(cin,newVal);
     }
     
-    userList->editTask(targetTask, action, newVal);
+    //userList->editTask(targetTask, action, newVal);
 }
 
 void prompt::listEditorPrompt(TaskList* userList){ //untested//

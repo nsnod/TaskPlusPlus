@@ -26,7 +26,7 @@ class prompt{
     vector<string> newTaskPrompt(const Home*) const;
     vector<string> newListPrompt() const;
 
-    void taskEditorPrompt(TaskList*);
+    void taskEditorPrompt(const string&);
     void listEditorPrompt(TaskList*);
     
     void viewWeekly(View*,Home*);
