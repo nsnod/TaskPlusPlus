@@ -11,7 +11,7 @@
 
 using namespace std;
 
-void View::sortTasks(Home target) {
+void View::sortTasks(Home& target) {
     for (Task* i : target.classificationTaskStorage["Dated"]) {
         sortedTasks.push_back(i);
     }
@@ -45,7 +45,7 @@ bool View::compareTasksDueDate (Task const* task1, Task const* task2) {
 }
 
 
-void View::viewPriority(Home target, string userChoice) {
+void View::viewPriority(Home& target, string userChoice) {
     if (target.isEmpty() != true) {
         sortTasks(target);
 
@@ -132,7 +132,7 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
     cout << endl;    
 }
 
-void View::viewOverall(Home target) const {
+void View::viewOverall(Home& target) const {
     if (target.isEmpty() != true) {
         cout << "Solo Tasks" << endl;
         target.soloTasks->viewTasks();
@@ -147,7 +147,7 @@ void View::viewOverall(Home target) const {
     }    
 }
 
-void View::viewWeekly(Home target) {
+void View::viewWeekly(Home& target) {
     loadStringStreams(target);
 }
 
@@ -175,7 +175,7 @@ void View::unloadStringStreams(stringstream& sun, stringstream& mon, stringstrea
     cout << sat.str() << endl;
 }
 
-void View::loadStringStreams(Home target) {
+void View::loadStringStreams(Home& target) {
     stringstream sun, mon, tues, weds, thurs, fri, sat;
     if (target.isEmpty() != true) {
         for (auto taskList : target.overallLists) {
