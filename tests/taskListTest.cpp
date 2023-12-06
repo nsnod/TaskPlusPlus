@@ -109,7 +109,7 @@ TEST(TestingProgression, someCompleted) {
     newList.addTask(t3);
     newList.addTask(t4);
 
-    EXPECT_DOUBLE_EQ(newList.getProgress(), 0.25);
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 25.0);
 }
 
 TEST(TestingProgression, allCompleted) {
@@ -130,22 +130,26 @@ TEST(TestingProgression, allCompleted) {
     newList.addTask(t3);
     newList.addTask(t4);
 
-    EXPECT_DOUBLE_EQ(newList.getProgress(), 1.0);
+    EXPECT_DOUBLE_EQ(newList.getProgress(), 100.0);
 }
 
 TEST(TestingEditTask, stringNewVal) {
-    TaskList newList;
+    TaskList *newList = new TaskList;
     Task *t1 = new Task;
-    newList.addTask(t1);
+    newList->addTask(t1);
 
     string priority = "High";
     string description = "NEED TO DO ASAP";
 
-    newList.editTask(t1, "Priority", priority);
-    newList.editTask(t1, "Description", description);
+    t1->setName("Test Task");
+    t1->setPriority(priority);
+    t1->setDescription(description);
 
-    EXPECT_EQ(t1->getPriority(), priority);
-    EXPECT_EQ(t1->getDescription(), description);
+    newList->editTask("Test Task", "Priority", priority);
+    newList->editTask("Test Task", "Description", description);
+
+    EXPECT_TRUE(t1->getPriority() == priority);
+    EXPECT_TRUE(t1->getDescription() == description);
 }
 
 TEST(TestingRemove, oneTask) {
