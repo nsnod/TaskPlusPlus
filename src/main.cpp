@@ -17,11 +17,25 @@ int main(){
     prompt Prompt;
     Home* home = new Home;
 
-    Prompt.printMainMenu();
+    do{
+        Prompt.printMainMenu();
 
-    if(Prompt.getSelection() == "1"){
-        home->createNewTask(Prompt.newTaskPrompt(home));
-    }
+        if(Prompt.getSelection() == "1"){
+            home->createNewTask(Prompt.newTaskPrompt(home));
+        }
+
+        else if(Prompt.GetSelection() == "2"){
+            home->createNewList(Prompt.newListPrompt());
+        }
+
+        else if(Prompt.getSelection() == "3"){
+            //what the fuck
+        }
+
+        else if(Prompt.getSelection() == "4"){
+            
+        }
+    }while(Prompt.getSelection() != "Task--");
 
 
     delete home;
