@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //#pragma once
 #include <iostream>
 
@@ -43,5 +44,17 @@ int main(){
 
 
     delete home;
+=======
+#include <iostream>
+#include "home.h"
+#include "task.h"
+#include "taskList.h"
+
+using namespace std;
+
+int main() {
+        
+
+>>>>>>> a91b7ed740d7c5af8caa460e3cbbb1cbbfc1a2f0
     return 0;
 }

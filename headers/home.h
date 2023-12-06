@@ -3,7 +3,7 @@
 
 #include "../headers/task.h"
 #include "../headers/taskList.h"
-#include "../headers/task.h"
+#include "view.h"
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
@@ -13,16 +13,22 @@ using namespace std;
 
 class Home {
  public:
+   friend class View;
    void createNewTask(const vector<string>&);
    void createNewList(const vector<string>&);
    void viewLists() const;
-   void editLists() const;
+   void editList(string, string, string) const;
    void setList(Task*, const string&);
+   void setClassification(Task*);
+   bool isEmpty();
+   void deleteList(const string&);
+   TaskList* getSoloTasks() { return soloTasks; }
    Task* findSoloTask(const string&) const;
    TaskList* findTaskList(const string&) const;
    
  private:
-   unordered_map<string, unordered_set<TaskList*>> classificationBasedStorage;
+   unordered_map<string, unordered_set<Task*>> classificationTaskStorage;
+   unordered_set<TaskList*> overallLists;
    TaskList* soloTasks = new TaskList;
 };
 

@@ -47,6 +47,7 @@ class Task {
    string priority;
    string fullDueDate;
    string fullAssignedDate;
+   string classification;
    int dueDay;
    int dueMonth;
    int dueYear;

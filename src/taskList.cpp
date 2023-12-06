@@ -4,7 +4,7 @@
 
 using namespace std;
 
-TaskList::TaskList() : name(""), description(""), classification(""), complete(false), numOfCompleted(0) {}
+TaskList::TaskList() : name(""), description(""), classification(""), complete(false) {}
 
 TaskList::~TaskList() { 
     for (auto i : listOfTasks) {
@@ -47,7 +47,9 @@ void TaskList::removeTask(const string& taskName) {
     }
 }
 
-void TaskList::editTask(Task* target, const string& action, const string& newVal) {
+void TaskList::editTask(string taskName, string action, string newVal) {
+    Task *target = findTask(taskName);
+    
     if (action == "Name") {
         target->setName(newVal);
     }
@@ -63,19 +65,77 @@ void TaskList::editTask(Task* target, const string& action, const string& newVal
     else if (action == "Full Assigned Date") {
         target->setFullAssignedDate(newVal);
     }
+
+    target = nullptr;
 }
 
-void TaskList::findCompletedTasks() {
-    numOfCompleted = 0;
+double TaskList::findCompletedTasks() const {
+    double numOfCompleted = 0;
     for(auto i : listOfTasks) {
         if (i->getCompleteStatus() == true) {
             ++numOfCompleted;
         }
     }
+
+    return numOfCompleted;
+}
+
+bool TaskList::compareTasks(Task* task1, Task* task2) const {
+    if (task1->getDueYear() < task2->getDueYear()) {
+        return true;
+    }
+    if (task1->getDueYear() > task2->getDueYear()) {
+        return false;
+    }
+    if (task1->getDueMonth() < task2->getDueMonth()) {
+        return true;
+    }
+    if (task1->getDueMonth() > task2->getDueMonth()) {
+        return false;
+    }
+
+    return task1->getDueDay() < task2->getDueDay();
 }
 
 void TaskList::viewTasks() const {
-    // Going to call prompt NEED TO WAIT
+    if (getNumOfTasks() != 0) {
+
+    // Sorting by date for output
+        vector<Task*> sortedByDate;
+
+        for (Task* i : listOfTasks) {
+            sortedByDate.push_back(i);
+        } 
+        for (unsigned int i = 0; i < sortedByDate.size() - 1; ++i) {
+            int min = i;
+            for (unsigned int j = i + 1; j < sortedByDate.size(); ++j) {
+                if (compareTasks(sortedByDate[j], sortedByDate[min])) {
+                    min = j;
+                }
+            }
+            swap(sortedByDate[i], sortedByDate[min]);
+        }
+
+    // outputting
+        cout << getListName() << "\tCompleted Progression: " << setprecision(3) << getProgress() << "%" << endl;
+        cout << "-----------------------------------------------" << endl;
+
+        int taskCount = 1;
+
+        for (auto i : sortedByDate) {
+            cout << taskCount << ".) " << i->getName() << " " << i->getFullDueDate() << " ";
+
+            if (i->getCompleteStatus() == true) {
+                cout << "\u2713";
+            }
+            cout << endl;
+
+            ++taskCount;
+        }
+    }
+    else {
+        cout << "------------LIST IS EMPTY------------" << endl;
+    }
 }
 
 string TaskList::getListName() const {
@@ -94,9 +154,9 @@ bool TaskList::getListCompleteStatus() const {
     return complete;
 }
 
-double TaskList::getProgress() {
-    findCompletedTasks();
-    return numOfCompleted / getNumOfTasks();
+double TaskList::getProgress() const {
+    double numOfCompleted = findCompletedTasks();
+    return 100.0 * (numOfCompleted / getNumOfTasks());
 }
 
 Task* TaskList::findTask(const string& taskName) const {

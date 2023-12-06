@@ -9,7 +9,7 @@ using namespace std;
 //Always construct a default task when user creates a task, then prompt them
 //for imformation during new task screen... only fill in what they need
 Task::Task(): name(""), description(""), priority(""), fullDueDate(""), fullAssignedDate(""), dueDay(-1), dueMonth(-1), dueYear(-1),
-              assignedDay(-1), assignedMonth(-1), assignedYear(-1), completed(false) {}
+              assignedDay(-1), assignedMonth(-1), assignedYear(-1), classification(""), completed(false) {}
 
 void Task::setFullDueDate(const string& dueDate) {
     fullDueDate = dueDate;
