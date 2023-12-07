@@ -55,6 +55,8 @@ string redo(const string& action, const Home* userHome){ //for undos from the us
     
 
     return newVal;
+
+    clearScreen();
 }
     
     
@@ -77,7 +79,7 @@ void prompt::displayHorizontalLine(int length = 30, char symbol = '-') {
     cout << setfill(symbol) << setw(length) << "" << setfill(' ') << endl;
 }
 
-void prompt::clearScreen() { //https://cplusplus.com/forum/general/273223///
+void clearScreen() { //https://cplusplus.com/forum/general/273223///
 #ifdef _WIN32
     system("CLS"); // For Windows
 #else
@@ -98,6 +100,8 @@ void prompt::setSelection(){ //TESTED//
     }
         
     this->selection = userChoice;
+
+    clearScreen();
 }
 
 void prompt::printMainMenu(){ //TESTED//
@@ -281,6 +285,8 @@ void prompt::newTaskPrompt(Home* userHome) const {
     userData.push_back(userListChoice);
     
     userHome->createNewTask(userData);
+
+    clearScreen();
 }
 
 void prompt::newListPrompt(Home* h) const { //WORKS//
@@ -362,6 +368,7 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
 
     h->createNewList({listTitle,listDescription});
  
+    clearScreen();
 }
 
 void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
@@ -518,6 +525,8 @@ void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
         getline(cin,toLeave);
     }while(toLeave != "Task--");
 
+    clearScreen();
+
 }
 
 void printSeparator(int length) {
@@ -604,6 +613,15 @@ void prompt::listEditorPrompt(Home* h) {
                 getline(cin,action);
             }
 
+            if(action == "1"){
+                action = "Name";
+            }
+
+            else if(action  == "2"){
+                action = "Description";
+            }
+            
+
                 payload = redo(action,h);
 
             int rev2 = 0;
@@ -629,6 +647,8 @@ void prompt::listEditorPrompt(Home* h) {
         cout << "Type \"Task--\" to leave: ";
         getline(cin,toLeave);
     }while(toLeave != "Task--");
+
+    clearScreen();
     
 }
 

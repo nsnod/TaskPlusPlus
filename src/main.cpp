@@ -26,7 +26,7 @@ int main(){
         }
         //weekly tasks
         else if(Prompt.getSelection() == "3"){
-            view.viewWeekly(*home);
+            Prompt.viewWeekly(*view, home);
         }
         //view tasks by priority
         else if(Prompt.getSelection() == "4"){

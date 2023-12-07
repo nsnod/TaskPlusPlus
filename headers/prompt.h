@@ -22,7 +22,6 @@ class prompt{
 
     public:
 
-    void clearScreen();
     void setSelection(); //helper//
     void setSelection(const string&);
     void printSeparator(int);
