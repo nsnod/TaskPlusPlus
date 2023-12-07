@@ -18,11 +18,11 @@ int main(){
         Prompt.printMainMenu();
 
         if(Prompt.getSelection() == "1"){
-            home->createNewTask(Prompt.newTaskPrompt(home));
+            Prompt.newTaskPrompt(home);
         }
 
         else if(Prompt.getSelection() == "2"){
-            home->createNewList(Prompt.newListPrompt());
+            Prompt.newListPrompt(home);
         }
         //weekly tasks
         else if(Prompt.getSelection() == "3"){
