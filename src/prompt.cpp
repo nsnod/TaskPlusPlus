@@ -94,7 +94,7 @@ void prompt::setSelection(){ //TESTED//
     string userChoice = "";
     getline(cin,userChoice);
     
-    while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "6" && userChoice != "Task--"){ 
+    while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "Task--"){ 
         cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal:";
         getline(cin,userChoice);
     }
@@ -113,9 +113,9 @@ void prompt::printMainMenu(){ //TESTED//
     cout << "==============================================" << endl;
     cout << "1. Make a New Task" << endl;
     cout << "2. Make a New Task List" << endl;
-    cout << "4. View Weekly Tasks" << endl;
-    cout << "5. View Overall Tasks" << endl;
-    cout << "6. View Tasks by Priority" << endl;
+    cout << "3. View Weekly Tasks" << endl;
+    cout << "4. View Overall Tasks" << endl;
+    cout << "5. View Tasks by Priority" << endl;
     cout << "==============================================" << endl;
     cout << "(Type \"Task--\" to exit the terminal)" << endl;
     cout << "==============================================" << endl;
