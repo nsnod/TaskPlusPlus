@@ -8,6 +8,10 @@
 #include "home.h"
 #include "task.h"
 #include "taskList.h"
+
+
+#include "task.h"
+#include "taskList.h"
 #include "view.h"
 
 using namespace std;

@@ -153,25 +153,25 @@ void View::viewWeekly(Home target) {
 
 void View::unloadStringStreams(stringstream& sun, stringstream& mon, stringstream& tues, stringstream& weds,
                 stringstream& thurs, stringstream& fri, stringstream& sat) {
-    cout << "Sunday!" << endl;
+    outputOptions("Sunday");
     cout << sun.str() << endl;
     
-    cout << "Monday!" << endl;
+    outputOptions("Monday");
     cout << mon.str() << endl;
 
-    cout << "Tuesday!" << endl;
+    outputOptions("Tuesday");
     cout << tues.str() << endl;
 
-    cout << "Wednesday!" << endl;
+    outputOptions("Wednesday");
     cout << weds.str() << endl;
 
-    cout << "Thursday!" << endl;
+    outputOptions("Thursday");
     cout << thurs.str() << endl;
 
-    cout << "Friday!" << endl;
+    outputOptions("Friday");
     cout << fri.str() << endl;
 
-    cout << "Saturday!" << endl;
+    outputOptions("Saturday");
     cout << sat.str() << endl;
 }
 
@@ -250,4 +250,74 @@ bool View::isDateInWeek(Task* target) {
     return (target->getAssignedMonth() == (currentDate.tm_mon + 1) 
             && target->getAssignedDay() >= currentWeekStart  
             && target->getAssignedDay() <= currentWeekEnd);
+}
+
+void View::outputOptions(string const& weekday) const {
+    if (weekday == "Sunday") {
+cout << R"(
+   _____                 __           
+  / ___/__  ______  ____/ ____ ___  __
+  \__ \/ / / / __ \/ __  / __ `/ / / /
+ ___/ / /_/ / / / / /_/ / /_/ / /_/ / 
+/____/\__,_/_/ /_/\__,_/\__,_/\__, /  
+                             /____/   )" << endl;
+cout << "-------------------------------------" << endl;
+
+    } else if (weekday == "Monday") {
+cout << R"(        
+    __  ___                __           
+   /  |/  ____  ____  ____/ ____ ___  __
+  / /|_/ / __ \/ __ \/ __  / __ `/ / / /
+ / /  / / /_/ / / / / /_/ / /_/ / /_/ / 
+/_/  /_/\____/_/ /_/\__,_/\__,_/\__, /  
+                               /____/   )" << endl;
+cout << "----------------------------------------" << endl;
+
+    } else if (weekday == "Tuesday") {
+cout << R"(           
+  ______                    __           
+ /_  ____  _____  _________/ ____ ___  __
+  / / / / / / _ \/ ___/ __  / __ `/ / / /
+ / / / /_/ /  __(__  / /_/ / /_/ / /_/ / 
+/_/  \__,_/\___/____/\__,_/\__,_/\__, /  
+                                /____/   )" << endl;
+cout << "----------------------------------------" << endl;
+
+    } else if (weekday == "Wednesday") {
+cout << R"(
+ _       __         __                    __           
+| |     / ___  ____/ ____  ___  _________/ ____ ___  __
+| | /| / / _ \/ __  / __ \/ _ \/ ___/ __  / __ `/ / / /
+| |/ |/ /  __/ /_/ / / / /  __(__  / /_/ / /_/ / /_/ / 
+|__/|__/\___/\__,_/_/ /_/\___/____/\__,_/\__,_/\__, /  
+                                              /____/   )" << endl;
+cout << "-------------------------------------------------------" << endl;
+    } else if (weekday == "Thursday") {
+cout << R"(  
+  ________                        __           
+ /_  __/ /_  __  ________________/ ____ ___  __
+  / / / __ \/ / / / ___/ ___/ __  / __ `/ / / /
+ / / / / / / /_/ / /  (__  / /_/ / /_/ / /_/ / 
+/_/ /_/ /_/\__,_/_/  /____/\__,_/\__,_/\__, /  
+                                      /____/   )" << endl;
+cout << "-----------------------------------------------" << endl;
+    } else if (weekday == "Friday") {
+cout << R"(   
+    ______     _     __           
+   / _________(_____/ ____ ___  __
+  / /_  / ___/ / __  / __ `/ / / /
+ / __/ / /  / / /_/ / /_/ / /_/ / 
+/_/   /_/  /_/\__,_/\__,_/\__, /  
+                         /____/   )" << endl;
+cout << "----------------------------------" << endl;
+    } else if (weekday == "Saturday") {
+cout << R"(  
+   _____       __                 __           
+  / ___/____ _/ /___  ___________/ ____ ___  __
+  \__ \/ __ `/ __/ / / / ___/ __  / __ `/ / / /
+ ___/ / /_/ / /_/ /_/ / /  / /_/ / /_/ / /_/ / 
+/____/\__,_/\__/\__,_/_/   \__,_/\__,_/\__, /  
+                                      /____/   )" << endl;
+cout << "----------------------------------------------" << endl;
+    }
 }
