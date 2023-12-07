@@ -18,23 +18,29 @@ class prompt{
 
     public:
 
+    void clearScreen();
     void setSelection(); //helper//
+    void setSelection(const string&);
+    void printSeparator(int);
     string getSelection() const; //helper//
+
     
     void printMainMenu();
 
-    vector<string> newTaskPrompt(const Home*) const;
-    vector<string> newListPrompt() const;
+    void newTaskPrompt(Home*) const;
+    void newListPrompt(Home*) const;
 
     void taskEditorPrompt(Task*, TaskList*);
-    void listEditorPrompt(TaskList*);
+    void listEditorPrompt(Home*);
     
     void viewWeekly(View*,Home*);
-    void viewPriority();
-    void viewOverall(); //viewing all lists  (lists inside the tasks) and solo tasks gets input //
+    void viewPriority(View*,Home*);
+    void viewOverall(View*,Home*); //viewing all lists  (lists inside the tasks) and solo tasks gets input //
 
     void printLogos(const string&) const;
-    
-    
-    
+
+    void displayHorizontalLine(int, char);
 };
+    
+    
+    
