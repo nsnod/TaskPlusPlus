@@ -150,6 +150,8 @@ TEST(TestingEditTask, stringNewVal) {
 
     EXPECT_TRUE(t1->getPriority() == priority);
     EXPECT_TRUE(t1->getDescription() == description);
+
+    delete newList;
 }
 
 TEST(TestingRemove, oneTask) {
