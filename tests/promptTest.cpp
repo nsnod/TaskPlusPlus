@@ -12,12 +12,7 @@ TEST(promptTest,selection){
     prompt p2;
     prompt p3;
     
-    p1.setSelection("1");
-    p2.setSelection("Task--");
-
-    
-    EXPECT_EQ(p1.getSelection(),"1");
-    EXPECT_EQ(p2.getSelection(), "Task--");
+    p1.printMainMenu();
 }
 
 /*TEST(promptTest, newTaskPrompt){

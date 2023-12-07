@@ -27,6 +27,8 @@ class prompt{
     void setSelection(const string&);
     void printSeparator(int);
     string getSelection() const; //helper//
+    
+    
 
     
     void printMainMenu();
