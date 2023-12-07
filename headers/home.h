@@ -14,6 +14,8 @@ using namespace std;
 class Home {
  public:
    friend class View;
+
+   ~Home();
    void createNewTask(const vector<string>&);
    void createNewList(const vector<string>&);
    void viewLists() const;

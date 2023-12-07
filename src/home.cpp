@@ -9,6 +9,14 @@
 
 using namespace std;
 
+Home::~Home() {
+    delete soloTasks;
+
+    for (auto i : overallLists) {
+        delete i;
+    }
+}
+
 void Home::createNewTask(const vector<string>& inputs) {
     Task* newTask = new Task;
 
