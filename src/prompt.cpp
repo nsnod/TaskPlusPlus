@@ -9,29 +9,29 @@ string prompt::getSelection() const{ //TESTED//
 string redo(const string& action, const Home* userHome){ //for undos from the user//
     string newVal = "";
 
-    if(action == "Name"){
+    if(action == "Name" || action == "1"){
         cout << "Enter new title: ";
         getline(cin,newVal);
 
     }
-    else if(action == "Description"){
+    else if(action == "Description" || action == "2"){
         cout << "Enter new description: ";
         getline(cin,newVal);
 
     }
-    else if(action =="Priority"){
+    else if(action =="Priority" || action == "3"){
         cout << "Enter new priority: ";
         getline(cin,newVal);
 
     }
-    else if(action == "Full Due Date"){
+    else if(action == "Full Due Date" || action == "4"){
         do{
             cout << "Enter new date(in format mm/dd/yy): ";
             getline(cin,newVal);
         }while(newVal.at(2) != '/' || newVal.at(5) != '/' || !(isdigit(newVal.at(0))) || !(isdigit(newVal.at(1))) || !(isdigit(newVal.at(3))) || !(isdigit(newVal.at(4))) || !(isdigit(newVal.at(6))) || !(isdigit(newVal.at(7))));
 
     }
-    else if(action == "Full Assigned Date"){ //assigned date//
+    else if(action == "Full Assigned Date" || action == "5"){ //assigned date//
         do{
             cout << "Enter new assigned date(in format mm/dd/yy): ";
             getline(cin,newVal);
@@ -470,6 +470,27 @@ void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
                 cout << "Please select an action (1-5): ";
                 getline(cin,action);
             }
+
+            if(action == "1"){
+                action = "Name";
+            }
+
+            else if(action == "2"){
+                action = "Description";
+            }
+
+            else if(action == "3"){
+                action = "Priority";
+            }
+
+            else if(action == "4"){
+                action = "Full Due Date";
+            }
+
+            else{
+                action = "Full Assigned Date";
+            }
+
 
             newVal = redo(action,nullptr);
         
