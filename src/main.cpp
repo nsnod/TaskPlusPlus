@@ -30,15 +30,16 @@ int main(){
         }
         //view tasks by priority
         else if(Prompt.getSelection() == "4"){
-            string userPriority;
-            cout << "Please enter a priority category (Completed, Uncompleted, All): " << endl;
-            cin >> userPriority;
-
-            view.viewPriority(*home, userPriority);
+            view.viewOverall(*home);
         }
         //edit tasks
         else if(Prompt.getSelection() == "5"){
-            Prompt.taskEditorPrompt();
+            string userPriority;
+            cout << "Enter the priority of tasks you would like to view (Completed, Uncompleted, All): " << endl;
+            getline(cin, userPriority);
+
+            view.viewPriority(*home, userPriority);
+            
         }
     }while(Prompt.getSelection() != "Task--");
 
@@ -46,11 +47,3 @@ int main(){
 
     return 0;
 }
-
-/*
-cout << "Completed solo tasks: " << endl;
-            
-            for(unsigned int i = 0; i < home->soloTasks->getNumOfTasks(); i++){
-                if(home->soloTasks->)
-            }
-            */
