@@ -116,8 +116,17 @@ TaskList* Home::findParentList(const string& taskName) const {
     return nullptr;
 }
 
+
 bool Home::isEmpty() {
     if (soloTasks->getNumOfTasks() == 0 && overallLists.size() == 0) {
+        return true;
+    }
+    
+    return false;
+}
+
+bool Home::listEmpty() {
+    if (overallLists.size() == 0) {
         return true;
     }
     
