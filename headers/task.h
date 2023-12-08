@@ -11,7 +11,7 @@ class Task {
    //Rule of three
    ~Task() {}
    Task(const Task& other);
-   // Task& operator=(const Task&);
+   Task& operator=(const Task&);
 
    // setters //
    void setName(const string& n) { name = n; }
@@ -25,6 +25,7 @@ class Task {
    void setAssignedDay(int aD) { assignedDay = aD; }
    void setAssignedMonth(int aM) { assignedMonth = aM; }
    void setAssignedYear(int aY) { assignedYear = aY; }
+   void setCompleteStatus(bool newStatus) { completed = newStatus; }
    void switchCompleteStatus();
 
    // getters //

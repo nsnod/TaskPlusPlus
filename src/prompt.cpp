@@ -1015,24 +1015,26 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         }
         else if(choice == "1"){
             listEditorPrompt(userHome);
-            return;
+            
         }
         
-        userHome->viewLists();
-
-        cout << "Enter a list to delete: ";
-        getline(cin,userList);
-        cout << endl;
-
-        while(userHome->findTaskList(userList)){
+        else if(choice =="2"){
             userHome->viewLists();
-            cout << "INVALID please enter existing list: ";
-            getline(cin,userList);
-        }
 
-        if(choice == "2"){
-            userHome->deleteList(userList);
-            cout << "List successfully deleted" << endl;
+            cout << "Enter a list to delete: ";
+            getline(cin,userList);
+            cout << endl;
+
+            while(userHome->findTaskList(userList)){
+                userHome->viewLists();
+                cout << "INVALID please enter existing list: ";
+                getline(cin,userList);
+            }
+
+            if(choice == "2"){
+                userHome->deleteList(userList);
+                cout << "List successfully deleted" << endl;
+            }
         }
     }
 
