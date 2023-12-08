@@ -94,6 +94,9 @@ void Home::setList(Task* newTask, const string& selectedList) {
 }
 
 void Home::setClassification(Task* newTask) { 
+    classificationTaskStorage["Undated"].erase(newTask);
+    classificationTaskStorage["Dated"].erase(newTask);
+
     if (newTask->getFullDueDate() == "") {
         classificationTaskStorage["Undated"].insert(newTask);
     } else {
