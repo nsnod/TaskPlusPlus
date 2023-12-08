@@ -128,7 +128,10 @@ D: The Dependency inversion principle is applied by the Home class. The Home cla
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+1. Open your terminal application and use the cd command to navigate to a suitable directory
+2. To properly import all the required files, run the command: git clone --recursive https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013.git
+3. Run the command cmake ., followed by make
+4. To execute the Task Manager program, simply run ./bin/TaskPlusPlus
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ We utilized the GoogleTest framework to test all of our classes concurrently as we were developing them. We ran various macros provided to test different functionalities of our classes. More specifically, we performed stress testing with a large amount of inputs as well as covering all possible edge cases.
  
