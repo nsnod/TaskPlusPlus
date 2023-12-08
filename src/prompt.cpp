@@ -444,20 +444,20 @@ void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
                 action = "Name";
             }
 
-            else if(action == "2"){
-                action = "Description";
-            }
-
-            else if(action == "3"){
+            else if(action == "5"){
                 action = "Priority";
             }
 
-            else if(action == "4"){
+            else if(action == "2"){
                 action = "Full Due Date";
             }
 
-            else{
+            else if(action == "3"){
                 action = "Full Assigned Date";
+            }
+
+            else{
+                action = "Description";
             }
 
 
@@ -669,8 +669,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
         cout << "1) Edit a task" << endl << endl;
         cout << "2) Delete a task" << endl << endl;
         cout << "3) Switch complete status " << endl << endl;
-        cout << "4) Move task to a different list" << endl << endl;
-        cout << "5) Back out" << endl;
+        cout << "4) Back out" << endl;
 
         printSeparator(23); // Print a line separator
 
@@ -678,34 +677,20 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
     do {
         if (rev2 == 0) {
-            cout << "Choose an option (Enter 1-5): ";
+            cout << "Choose an option (Enter 1-4): ";
             rev2++;
         } 
         else {
-            cout << "Please choose a valid option (Enter 1-5): ";
+            cout << "Please choose a valid option (Enter 1-4): ";
         }
         getline(cin, userOption);
 
-        } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4" && userOption != "5");
+        } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4");
 
-    if (userOption == "5") {
+    if (userOption == "4") {
         cout << "See ya!" << endl;
         return;
     } 
-    else if(userOption == "4"){
-        userHome->viewLists();
-        cout << "Please enter a new list to add the task to: ";
-        getline(cin,userOption);
-
-        while(userHome->findTaskList(userOption) == nullptr){
-            cout << "INVALID please enter existing list: ";
-            userHome->viewLists();
-        }
-
-        userHome->setList(tempTask, userOption);
-        cout << "Sucessfully added task to " << userOption;
-
-    }
 
     else if (userOption == "3") {
         string status = "";
@@ -798,8 +783,7 @@ void prompt::viewPriority(View* mainView, Home* userHome){
     cout << "1) Edit a task" << endl << endl;
     cout << "2) Delete a task" << endl << endl;
     cout << "3) Mark a task as complete" << endl << endl;
-    cout << "4) Move task to a different list" << endl << endl;
-    cout << "5) Back out" << endl;
+    cout << "4) Back out" << endl;
 
     printSeparator(23); // Print a line separator
 
@@ -807,34 +791,20 @@ void prompt::viewPriority(View* mainView, Home* userHome){
 
     do {
         if (rev2 == 0) {
-            cout << "Choose an option (Enter 1-5): ";
+            cout << "Choose an option (Enter 1-4): ";
             rev2++;
         } 
         else {
-            cout << "Please choose a valid option (Enter 1-5): ";
+            cout << "Please choose a valid option (Enter 1-4): ";
         }
         getline(cin, userOption);
 
-    } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4" && userOption != "5");
+    } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4");
 
-    if (userOption == "5") {
+    if (userOption == "4") {
         cout << "See ya!" << endl;
         return;
     } 
-    else if(userOption == "4"){
-        userHome->viewLists();
-        cout << "Please enter a new list to add the task to: ";
-        getline(cin,userOption);
-
-        while(userHome->findTaskList(userOption) == nullptr){
-            cout << "INVALID please enter existing list: ";
-            userHome->viewLists();
-        }
-
-        userHome->setList(tempTask, userOption);
-        cout << "Sucessfully added task to " << userOption;
-
-    }
     else if (userOption == "3") {
         if (tempTask->getCompleteStatus() == true) { // If task is already marked as complete//
             cout << "Task is already complete" << endl;
@@ -926,8 +896,7 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         cout << "1) Edit a task" << endl << endl;
         cout << "2) Delete a task" << endl << endl;
         cout << "3) Mark a task as complete" << endl << endl;
-        cout << "4) Move task to a different list" << endl << endl;
-        cout << "5) Back out" << endl;
+        cout << "4) Back out" << endl;
 
         printSeparator(23); // Print a line separator
 
@@ -935,11 +904,11 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
         do {
             if (rev2 == 0) {
-                cout << "Choose an option (Enter 1-5): ";
+                cout << "Choose an option (Enter 1-4): ";
                 rev2++;
             } 
             else {
-                cout << "Please choose a valid option (Enter 1-5): ";
+                cout << "Please choose a valid option (Enter 1-4): ";
             }
             getline(cin, userOption);
 
@@ -1112,7 +1081,7 @@ void prompt::printLogos(const string& logoChoice) const{
     | | / / / _ \ | /| / /   | | /| / / _ \/ _ \/ //_/ / / / /
     | |/ / /  __/ |/ |/ /    | |/ |/ /  __/  __/ ,< / / /_/ / 
     |___/_/\___/|__/|__/     |__/|__/\___/\___/_/|_/_/\__, /  
-                                                 /____/   
+                                                     /____/   
     )";
         
 
@@ -1125,7 +1094,7 @@ void prompt::printLogos(const string& logoChoice) const{
     | | / / / _ \ | /| / /  / /_/ / ___/ / __ \/ ___/ / __/ / / /
     | |/ / /  __/ |/ |/ /  / ____/ /  / / /_/ / /  / / /_/ /_/ / 
     |___/_/\___/|__/|__/  /_/   /_/  /_/\____/_/  /_/\__/\__, /  
-                                                    /____/   
+                                                        /____/   
     )";
 
 
