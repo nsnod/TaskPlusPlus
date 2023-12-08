@@ -92,7 +92,7 @@ void View::viewPriority(Home& target, string userChoice) {
 void View::printHighPriority(bool printCompleted, bool printUncompleted) const {
     for (int i = 0; i < sortedTasks.size(); ++i) {
         Task* target = sortedTasks.at(i);
-        if (target->getPriority() == "High") {
+        if (target->getPriority() == "High" || target->getPriority() == "high") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
                 cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
@@ -107,7 +107,7 @@ void View::printHighPriority(bool printCompleted, bool printUncompleted) const {
 void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
     for (int i = 0; i < sortedTasks.size(); ++i) {
         Task* target = sortedTasks.at(i);
-        if (target->getPriority() == "Medium") {
+        if (target->getPriority() == "Medium" || target->getPriority() == "medium") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
                 cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
@@ -122,7 +122,7 @@ void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
 void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
     for (int i = 0; i < sortedTasks.size(); ++i) {
         Task* target = sortedTasks.at(i);
-        if (target->getPriority() == "Low") {
+        if (target->getPriority() == "Low" || target->getPriority() == "low") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
                 cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
@@ -135,7 +135,6 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
 }
 
 void View::viewOverall(Home& target) const {
-
     cout << "Solo Tasks" << endl;
     if (target.getSoloTasks()->getNumOfTasks() == 0) {
         cout << "-------------NO TASKS AVAILABLE-------------" << endl << endl;
