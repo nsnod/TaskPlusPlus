@@ -114,6 +114,7 @@ void prompt::printMainMenu(){ //TESTED//
 void prompt::newTaskPrompt(Home* userHome) const {
     vector<string> userData;
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "", userListChoice = "",assignToList = "", confirmation = "";
+    string chooseToAssignDate = "";
 
     cout << "Input Information as prompted!" << endl;
         
@@ -125,11 +126,20 @@ void prompt::newTaskPrompt(Home* userHome) const {
         getline(cin,priority);
     }
 
-    do{
-        cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
-        getline(cin,dueDate);
-    }while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
-    
+    cout << "Would you like to assing a due date(\"yes\" or \"no\"): ";
+    getline(cin,chooseToAssignDate);
+
+    while(chooseToAssignDate != "Yes" && chooseToAssignDate !="yes" && chooseToAssignDate != "no" && chooseToAssignDate != "No"){
+        cout << "INVALID please enter \"yes\" or \"no\": ";
+        getline(cin,chooseToAssignDate);
+    }
+
+    if(chooseToAssignDate =="yes" || chooseToAssignDate != "Yes"){
+        do{
+            cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+            getline(cin,dueDate);
+        }while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
+    }
     
     do{
         cout << "Please enter the assigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
