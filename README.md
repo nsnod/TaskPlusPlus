@@ -72,29 +72,29 @@ Authors:
 Once you boot the program, you will be taken to the home screen and will have multiple options of where to pivot to. You will be able to create a new task list, a new task, and will have multiple viewing options of the weekly tasks, the overall tasks and lists, and your tasks organized by their priority. Within the new task screen, you will be able to create new tasks, confirm creation, and undo any errors you may have made. The new task list will have the same features but will be a list containing multiple other tasks. From the different viewing screens, you will be able to edit the tasks and lists, or delete them. From the overall updated viewing screen, You will be able to see individual tasks not assigned to a list and then all the lists with tasks inside of them. Each list will have a percentage to show how many tasks in that list have been completed. All screens have the option to return home.
 
 ### Screen Layouts
-![Main Menu](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Home_Screen.jpg)\
-The home screen prompts the user to enter their preferred action. Options include creating a new task, creating a new list, viewing the archive, checking weekly tasks, examining upcoming tasks, and selecting the weekly schedule recommender. The user can type their choice, and the program will parse it to determine the next course of action. There's also an exit option for users to leave the program when they're done. User can type Task-- to back out and return to the terminal.
+![Main Menu](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-1.jpg)
+From the Main Menu, the user has the following options above available to them. Selecting one options will take them to another screen.
 
-![New Task Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_Task.jpg)\
-When creating a new task, users are required to input the task name, task description, priority, due date, assigned date, and whether they want to assign it to an existing list or not. While on this screen, users have the flexibility to edit the task description extensively. They can undo any possible mistakes when given the final option to confirm. After they're satisfied with the changes, users can choose to return to the home screen. User can type Task-- to back out and return to the home screen.
+![New Task Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-2.jpg)
+Users will be prompted to enter all the relevant information for a new task they input. At the end, they will be prompted to confirm this or re enter the information.
 
-![New List Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_List.jpg)\
-Users can specify a list name and provide a description or any relevant information about the list's purpose. After naming the list and providing the description, users are given the option to pivot to the new task screen with the "add task" option. User can type Task-- to back out and return to the home screen.
+![New List Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-3.jpg)
+Similar to task, users will be able to create a list with a title and a description. Users will be able to add tasks to this list from another screen.
 
-![Task Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Task_Editor.jpg)\
-When tasks are selected for editing, users are taken to the edit screen. This edit screen displays all current data of the task, including the title, priority, due date, assigned date, description, and whether it has an assigned list or not. Users have the option to continue editing aspects of the task or confirm their changes. User can type Task-- to back out and return to the home screen.
+![Task Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-4.jpg)
+When the user wants to edit information regarding the task, they will access this screen outside of the main menu.
 
-![List Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/List_Editor.jpg)\
-When lists are selected for editing, users are taken to the list editor screen. The edit screen displays all the data of the current list, including the title and the description. Users are given the option to continue editing aspects of the list or confirm their changes. User can type Task-- to back out and return to the home screen.
+![List Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-5.jpg)
+The user will also have the option to edit data regarding the list from some of the view screens.
 
-![Weekly View](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Weekly.jpg)\
+![Weekly View](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-6.jpg)
 Users are presented with a calendar of the current week when viewing weekly tasks, with each task displayed alongside its due date. Users can manage the entire week or select individual days of the week. Actions include editing, archiving, deleting, or marking tasks as complete for the week or specific days. Users can also edit individual tasks on specific days. Users can also view the progress bar for the percentage of tasks they have completed for the week. User can type Task-- to back out and return to the home screen.
 
-![Upcoming View](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Upcoming.jpg)\
-Users get to see an overall list of undated tasks as well as their weekly tasks assigned to days beyond the current week. Users can edit, delete, archive, or mark tasks and lists as complete. They can also manage tasks within the selected lists. User can type Task-- to back out and return to the home screen.
+![View Priority](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-7.jpg)
+Users will be able to view tasks sectioned by their priority as shown above.
 
-![Archive View](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Archive.jpg)\
-Users can view all archived lists and tasks and choose between the two options. They can enter a number corresponding to the task or list in the selected category. Users can also see the automated completed task list, which stores all completed tasks and lists. Options include editing, deleting, uploading, or marking as complete. Uploading allows users to move archived weeks into a new week for easier week creation. User can type Task-- to back out and return to the home screen.
+![View Overall](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/CS100%20New%20Layouts-8.jpg)
+View overall tasks.
 
 ## Class Diagram
 ![UML](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/UML_4.png)\
