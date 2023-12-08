@@ -9,15 +9,33 @@ using namespace std;
 //Always construct a default task when user creates a task, then prompt them
 //for imformation during new task screen... only fill in what they need
 Task::Task(): name(""), description(""), priority(""), fullDueDate(""), fullAssignedDate(""), dueDay(-1), dueMonth(-1), dueYear(-1),
-              assignedDay(-1), assignedMonth(-1), assignedYear(-1), classification(""), completed(false) {}
+              assignedDay(-1), assignedMonth(-1), assignedYear(-1), completed(false) {}
 
-Task::Task(const Task& other)
-    : name(other.name), description(other.description), priority(other.priority),
-      fullDueDate(other.fullDueDate), fullAssignedDate(other.fullAssignedDate),
-      classification(other.classification), dueDay(other.dueDay),
-      dueMonth(other.dueMonth), dueYear(other.dueYear),
-      assignedDay(other.assignedDay), assignedMonth(other.assignedMonth),
-      assignedYear(other.assignedYear), completed(other.completed) {
+Task::Task(const Task& other) {
+    setName(other.getName());
+    setDescription(other.getDescription());
+    setPriority(other.getPriority());
+    setFullDueDate(other.getFullDueDate());
+    setFullAssignedDate(other.getFullAssignedDate());
+    setCompleteStatus(other.getCompleteStatus());
+}
+
+Task& Task::operator=(const Task& other) {
+    if (this != &other) {
+        name = other.getName();
+        description = other.getDescription();
+        priority = other.getPriority();
+        fullDueDate = other.getFullDueDate();
+        fullAssignedDate = other.getFullAssignedDate();
+        dueDay = other.getDueDay();
+        dueMonth = other.getDueMonth();
+        dueYear = other.getDueYear();
+        assignedDay = other.getAssignedDay();
+        assignedMonth = other.getAssignedMonth();
+        assignedYear = other.getAssignedYear();
+        completed = other.getCompleteStatus();
+    }
+    return *this;
 }
 
 void Task::setFullDueDate(const string& dueDate) {

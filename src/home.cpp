@@ -81,13 +81,11 @@ void Home::setList(Task* newTask, const string& selectedList) {
         soloTasks->addTask(new Task(*newTask));
         delete newTask;
     } else {
-        bool isAdded = false;
-        // Task* taskCopy = newTask;
+        Task* taskCopy = (new Task(*newTask));
         for (auto taskLists : overallLists) {
             if (taskLists->getListName() == selectedList) {
-               taskLists->addTask(new Task(*newTask));
-               isAdded = true;
-            //    delete newTask;
+               taskLists->addTask(taskCopy);
+               delete newTask;
                break;
             }
         }

@@ -135,11 +135,16 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
 }
 
 void View::viewOverall(Home& target) const {
-    if (target.listEmpty() != true) {
-        cout << "Solo Tasks" << endl;
-        target.soloTasks->viewTasks();
-        cout << endl << endl;
 
+    cout << "Solo Tasks" << endl;
+    if (target.getSoloTasks()->getNumOfTasks() == 0) {
+        cout << "-------------NO TASKS AVAILABLE-------------" << endl << endl;
+    } else {
+        target.getSoloTasks()->viewTasks();
+        cout << endl << endl;
+    }
+
+    if (target.listEmpty() != true) {
         for (TaskList* list : target.overallLists) {
             if (list->getNumOfTasks() == 0) {
                 cout << list->getListName() << endl;
