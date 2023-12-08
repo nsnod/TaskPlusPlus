@@ -89,6 +89,9 @@ void Home::setList(Task* newTask, const string& selectedList) {
                break;
             }
         }
+        if (!isAdded) {
+            delete newTask;
+        }
     }
 }
 

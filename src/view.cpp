@@ -16,14 +16,16 @@ void View::sortTasks(Home& target) {
         sortedTasks.push_back(i);
     }
 
-    for (unsigned int i = 0; i < sortedTasks.size() - 1; ++i) {
-        int min = i;
-        for (unsigned int j = i + 1; j < sortedTasks.size(); ++j) {
-            if (compareTasksDueDate(sortedTasks.at(j), sortedTasks.at(min))) {
-                min = j;
+    if(sortedTasks.size() > 1) {
+        for (unsigned int i = 0; i < sortedTasks.size() - 1; ++i) {
+            int min = i;
+            for (unsigned int j = i + 1; j < sortedTasks.size(); ++j) {
+                if (compareTasksDueDate(sortedTasks.at(j), sortedTasks.at(min))) {
+                    min = j;
+                }
             }
+            swap(sortedTasks.at(i), sortedTasks.at(min));
         }
-        swap(sortedTasks.at(i), sortedTasks.at(min));
     }
 }
 
