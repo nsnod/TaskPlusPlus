@@ -11,6 +11,15 @@ using namespace std;
 Task::Task(): name(""), description(""), priority(""), fullDueDate(""), fullAssignedDate(""), dueDay(-1), dueMonth(-1), dueYear(-1),
               assignedDay(-1), assignedMonth(-1), assignedYear(-1), classification(""), completed(false) {}
 
+Task::Task(const Task& other)
+    : name(other.name), description(other.description), priority(other.priority),
+      fullDueDate(other.fullDueDate), fullAssignedDate(other.fullAssignedDate),
+      classification(other.classification), dueDay(other.dueDay),
+      dueMonth(other.dueMonth), dueYear(other.dueYear),
+      assignedDay(other.assignedDay), assignedMonth(other.assignedMonth),
+      assignedYear(other.assignedYear), completed(other.completed) {
+}
+
 void Task::setFullDueDate(const string& dueDate) {
     fullDueDate = dueDate;
 
