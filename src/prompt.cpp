@@ -737,8 +737,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
         tempTaskList = nullptr;
         tempTask = nullptr;
-
-    
+    }
 }
 
 void prompt::viewPriority(View* mainView, Home* userHome){
