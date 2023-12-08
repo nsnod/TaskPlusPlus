@@ -27,6 +27,7 @@ Authors:
     * Tasks based on priority
     * Home Screen
     * All different options on every different screen to pivot to other screens
+    * Displaying when a user wants to redo a attribute
 * Input:
     * Tasks:
         * Task’s name, priority
