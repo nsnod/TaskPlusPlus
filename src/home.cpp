@@ -31,6 +31,11 @@ void Home::createNewTask(const vector<string>& inputs) {
 
 void Home::deleteList(const string& listName) {
 
+    if (listName == "Solo Tasks") {
+        cout << "You cannot delete Solo Tasks. This is not a User List." << endl;
+        return;
+    }
+
     TaskList* target = findTaskList(listName);
 
     if (target != nullptr) {
@@ -73,13 +78,15 @@ void Home::editList(string newList, string action, string newVal) const {
 
 void Home::setList(Task* newTask, const string& selectedList) {
     if (selectedList == "") {
-        soloTasks->addTask(newTask);
+        soloTasks->addTask(new Task(*newTask));
+        delete newTask;
     } else {
+        Task* taskCopy = newTask;
         for (auto taskLists : overallLists) {
             if (taskLists->getListName() == selectedList) {
-                TaskList *remover = findParentList(newTask->getName());
-                remover->removeTask(newTask->getName());
-                taskLists->addTask(newTask);
+               taskLists->addTask(new Task(*newTask));
+               delete newTask;
+               break;
             }
         }
     }
@@ -121,7 +128,7 @@ TaskList* Home::findParentList(const string& taskName) const {
 
 
 bool Home::isEmpty() {
-    if (soloTasks->getNumOfTasks() == 0 && overallLists.size() == 0) {
+    if (classificationTaskStorage.size() == 0) {
         return true;
     }
     

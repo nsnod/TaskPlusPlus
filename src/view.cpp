@@ -141,7 +141,7 @@ void View::viewOverall(Home& target) const {
         for (TaskList* list : target.overallLists) {
             if (list->getNumOfTasks() == 0) {
                 cout << list->getListName() << endl;
-                cout << "-------------NO TASKS AVAILABLE-------------" << endl;
+                cout << "-------------NO TASKS AVAILABLE-------------" << endl << endl;
             } else {
                 list->viewTasks();
                 cout << endl << endl;

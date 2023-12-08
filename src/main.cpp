@@ -34,8 +34,6 @@ int main(){
         }
         //edit tasks
         else if(Prompt.getSelection() == "5"){
-            string userPriority;
-
             Prompt.viewPriority(&view, home);
             
         }
