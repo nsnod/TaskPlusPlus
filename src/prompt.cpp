@@ -87,7 +87,7 @@ void prompt::setSelection(){ //TESTED//
     getline(cin,userChoice);
     
     while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "Task--"){ 
-        cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal:";
+        cout << "INVALID INPUT: Please enter 1-5 or \"Task--\" to exit terminal:";
         getline(cin,userChoice);
     }
         
