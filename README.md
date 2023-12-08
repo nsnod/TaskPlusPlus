@@ -18,16 +18,15 @@ Authors:
     * Displaying possible actions for items or list
     * Displaying Lists
     * Displaying tasks that are finished and not finished
-    * Creating a file that stores user's task list information
     * Displaying the weekly tasks schedule and the days
-    * Displaying if lists are completed or not completed
-    * File outputted to machine(in user chosen directory)
-    * Total percentage bar of tasks completed for the week
-    * Individual daily percentage bar of tasks completed for the week
+    * Displaying if tasks are completed or not completed
+    * Displaying a percentage of completed tasks within a list
     * Individual daily tasks
-    * Tasks for the weeks
     * Overall undated tasks
-    * Archived tasks and lists
+    * Weekly Tasks and Lists
+    * Tasks based on priority
+    * Home Screen
+    * All different options on every different screen to pivot to other screens
 * Input:
     * Tasks:
         * Task’s name, priority
@@ -39,11 +38,7 @@ Authors:
         * Noting a completion of the tasks
         * Renaming tasks
         * Undoing action
-        * Redoing action
-        * Choosing between weekly task or an overall undated list of tasks
-        * Choosing day if weekly
-        * Archive tasks
-        * Retrieve tasks from archive
+        * Assigning a date
     * Lists:
         * List’s name
         * List’s priority
@@ -53,31 +48,27 @@ Authors:
         * Noting the completion of lists
         * Undoing action
         * Choosing to have the application suggest a weekly schedule
-        * Choosing between weekly list or an overall undated list of the lists
-        * Choosing day if weekly
-        * Archive lists
-        * Retrieve lists from archive
+        * Assigning tasks to a list
+
 
 **What are the features that the project provides?**
-* Users can create tasks with a title, description, classification, priority, and due date
+* Users can create tasks with a title, description, classification, priority, assigned date and due date
 * Tasks lists can be made that will contain multiple tasks within it
-* Each task will have the option to contain subtasks
-* Users will be able to manage all of their tasks and tasks lists with displaying, creation, deletion, and editing
+* Users will be able to manage all of their tasks and tasks lists by creating and deleting 
 * Users will also have the option to undo their actions
-* You will be able to sort lists based on their classification
-* The application will also suggest a weekly schedule based on priority and due date
-* Users will be able to assign tasks to the day to make weekly sets of tasks as well as
-store the tasks in an overall undated category rather than the weekly set
-* Users will have the option to change an undated overall task and assign a date/edit priority
-* Download a task document on their machine
-* Users will have the option to archive the lists or tasks instead of deleting them if they want to reuse them (example: a long list of tasks that you will have to reuse you can archive to keep your overall tasks and weekly tasks clean)
-* Users will have the option to take tasks and lists out of the archive 
+* Users will be able to view tasks by their priority to see which need to be completed first
+* The application will output a weekly view with a updating weekly schedule that is handled on the back-end
+* Users will be able to assign tasks to the certain day they want to do them 
+* Users will be able to view all of their tasks and task lists even if the tasks do not belong to a list
+* Users will have the option to edit any aspect of their task or task list
+* Users will have the option to mark different tasks as complete and see this represented through a check mark
+* Users will be able to view the completed status of their lists and the percentage of how many tasks have been completed within
 
 ## User Interface Specification
 
 ### Navigation Diagram
 ![Navigation Diagram](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Navigation.png)\
-Once you boot the program, you will be taken to the home screen and will have multiple options of where to pivot to. You will be able to create a new task list, a new task, and will have multiple viewing options of the task archive, the overall undated tasks, and your weekly set of tasks. Within the new task screen, you will be able to create new tasks, confirm creation, and undo any errors you may have made. The new task list will have the same features but will be a list containing multiple other tasks. From the different viewing screens, you will be able to download the set of tasks for each viewing screen, edit the tasks and lists, or delete them. From the overall updated viewing screen, you will be able to create a recommended list of tasks for your week. You will be able to archive any tasks or task lists from within the viewing screens. All screens have the option to return home.
+Once you boot the program, you will be taken to the home screen and will have multiple options of where to pivot to. You will be able to create a new task list, a new task, and will have multiple viewing options of the weekly tasks, the overall tasks and lists, and your tasks organized by their priority. Within the new task screen, you will be able to create new tasks, confirm creation, and undo any errors you may have made. The new task list will have the same features but will be a list containing multiple other tasks. From the different viewing screens, you will be able to edit the tasks and lists, or delete them. From the overall updated viewing screen, You will be able to see individual tasks not assigned to a list and then all the lists with tasks inside of them. Each list will have a percentage to show how many tasks in that list have been completed. All screens have the option to return home.
 
 ### Screen Layouts
 ![Home Screen](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Home_Screen.jpg)\
@@ -126,11 +117,25 @@ D: The Dependency inversion principle is applied by the Home class. The Home cla
  > * Make sure your README file and Project board are up-to-date reflecting the current status of your project (e.g. any changes that you have made during the project such as changes to your class diagram). Previous versions should still be visible through your commit history. 
  
  ## Screenshots
- > Screenshots of the input/output after running your application
+The following images are screenshots of specific screens in our application
+
+![Main Menu](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Main_Menu.png)\
+
+The user will be presented with the main menu of our task manager. We have displayed the logo in a special font above.
+
+![New Task Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_Task_Prompt.png)\
+
+After selecting the corresponding option, the user will be prompted with the relevant information for their new task. They will also be asked to confirm or amend that task.
+
+![View Overall Tasks](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/View_Overall_Tasks.png)\
+
+After entering the option to View Overall Tasks, the application will display the weekly calender with the tasks dispersed throughout the week.
+
+
  ## Installation/Usage
 1. Open your terminal application and use the cd command to navigate to a suitable directory
 2. To properly import all the required files, run the command: git clone --recursive https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013.git
-3. Run the command cmake ., followed by make
+3. Run the command cmake . followed by make
 4. To execute the Task Manager program, simply run ./bin/TaskPlusPlus
  ## Testing
  We utilized the GoogleTest framework to test all of our classes concurrently as we were developing them. We ran various macros provided to test different functionalities of our classes. More specifically, we performed stress testing with a large amount of inputs as well as covering all possible edge cases.

@@ -10,7 +10,7 @@ class Task {
    Task();
    //Rule of three
    ~Task() {}
-   // Task(const Task&);
+   Task(const Task& other);
    // Task& operator=(const Task&);
 
    // setters //

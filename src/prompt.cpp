@@ -523,7 +523,6 @@ void prompt::listEditorPrompt(Home* h) {
     displayHorizontalLine(50);
 
     h->viewLists();
-
     cout << "Please Select a list to edit: ";
     getline(cin,userList);
 
@@ -620,9 +619,9 @@ void prompt::listEditorPrompt(Home* h) {
     do{
         cout << "Type \"Task--\" to leave: ";
         getline(cin,toLeave);
-    }while(toLeave != "Task--" && toLeave =="task--");
+    }while(toLeave != "Task--" && toLeave != "task--");
 
-    clearScreen();
+    
     
 }
 
@@ -738,9 +737,6 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
         tempTaskList = nullptr;
         tempTask = nullptr;
-
-    
-    
 }
 
 void prompt::viewPriority(View* mainView, Home* userHome){
@@ -1009,8 +1005,12 @@ void prompt::viewOverall(View* mainView, Home* userHome){
             cout << "INVALID please enter (1-3): ";
             getline(cin,choice);
         }
+        if (choice == "1"){
+            listEditorPrompt(userHome);
 
-        if(choice == "3"){
+        }
+
+        else if(choice == "3"){
             cout << "See ya!" << endl;
         }
         else if(choice == "1"){
@@ -1022,10 +1022,11 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
         cout << "Enter a list to delete: ";
         getline(cin,userList);
+        cout << endl;
 
         while(userHome->findTaskList(userList)){
             userHome->viewLists();
-            cout << "INVALID please enter existing task: " << endl;
+            cout << "INVALID please enter existing list: ";
             getline(cin,userList);
         }
 
@@ -1033,7 +1034,6 @@ void prompt::viewOverall(View* mainView, Home* userHome){
             userHome->deleteList(userList);
             cout << "List successfully deleted" << endl;
         }
-        
     }
 
     tempTaskList = nullptr;
