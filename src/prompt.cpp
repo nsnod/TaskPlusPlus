@@ -35,7 +35,7 @@ string redo(const string& action, Home* userHome){ //for undos from the user//
         do{
             cout << "Enter new date(in format mm/dd/yy): ";
             getline(cin,newVal);
-        }while(newVal.at(2) != '/' || newVal.at(5) != '/' || !(isdigit(newVal.at(0))) || !(isdigit(newVal.at(1))) || !(isdigit(newVal.at(3))) || !(isdigit(newVal.at(4))) || !(isdigit(newVal.at(6))) || !(isdigit(newVal.at(7))));
+        }while(newVal.size()!= 8 ||newVal.at(2) != '/' || newVal.at(5) != '/' || !(isdigit(newVal.at(0))) || !(isdigit(newVal.at(1))) || !(isdigit(newVal.at(3))) || !(isdigit(newVal.at(4))) || !(isdigit(newVal.at(6))) || !(isdigit(newVal.at(7))));
 
     }
     else if(action == "Full Assigned Date" || action == "5"){ //assigned date//
@@ -126,7 +126,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
         getline(cin,priority);
     }
 
-    cout << "Would you like to assing a due date(\"yes\" or \"no\"): ";
+    cout << "Would you like to assingn a due date(\"yes\" or \"no\"): ";
     getline(cin,chooseToAssignDate);
 
     while(chooseToAssignDate != "Yes" && chooseToAssignDate !="yes" && chooseToAssignDate != "no" && chooseToAssignDate != "No"){
@@ -134,7 +134,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
         getline(cin,chooseToAssignDate);
     }
 
-    if(chooseToAssignDate =="yes" || chooseToAssignDate != "Yes"){
+    if(chooseToAssignDate =="yes" || chooseToAssignDate == "Yes"){
         do{
             cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
             getline(cin,dueDate);
@@ -190,10 +190,8 @@ void prompt::newTaskPrompt(Home* userHome) const {
     
     string userAction = "";
     string newVal = ""; //declaring outside so it doesnt delete out of scope//
+    string userStay = "2";
     if(confirmation == "2"){
-        
-        string userStay = "2"; //to go into loop if user wants to keep redoing//
-        
         
         while(userStay == "2"){
             cout << "Enter \"1\" to edit title" << endl;
@@ -207,19 +205,12 @@ void prompt::newTaskPrompt(Home* userHome) const {
             getline(cin,userAction);
 
             while(userAction != "1" && userAction != "2" && userAction != "3" && userAction != "4" && userAction != "5"){
-                
-                
+                    
                 cout << "Please select a action (1-5): ";
-                
                 getline(cin,userAction);
-
-            }
-
-            
-            
+            }            
             newVal = redo(userAction,userHome);
             
-
             int rev2 = 0;
 
             do{
@@ -232,37 +223,16 @@ void prompt::newTaskPrompt(Home* userHome) const {
                 }
                 getline(cin,userStay);
             }while(userStay!= "1" && userStay != "2");
-
-
         }
     }
 
     if(confirmation == "2"){
-        if(userAction == "1"){
-            title = newVal;
-            
-        }
-        else if(userAction == "2"){
-            priority = newVal;
-
-        }
-        else if(userAction == "3"){
-            dueDate = newVal;
-
-        }
-        else if(userAction == "4"){
-            assignedDate = newVal;
-
-        }
-        else if(userAction == "5"){
-            desc = newVal;
-
-        }
-        else if(userAction == "6"){
-            userListChoice = newVal;
-
-        }
-
+        if(userAction == "1"){title = newVal;}
+        else if(userAction == "2"){priority = newVal;}
+        else if(userAction == "3"){dueDate = newVal;}
+        else if(userAction == "4"){assignedDate = newVal;}
+        else if(userAction == "5"){desc = newVal;}
+        else if(userAction == "6"){userListChoice = newVal;}
     }
 
     userData.push_back(title);
