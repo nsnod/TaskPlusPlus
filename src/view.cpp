@@ -135,7 +135,6 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
 }
 
 void View::viewOverall(Home& target) const {
-
     cout << "Solo Tasks" << endl;
     if (target.getSoloTasks()->getNumOfTasks() == 0) {
         cout << "-------------NO TASKS AVAILABLE-------------" << endl << endl;

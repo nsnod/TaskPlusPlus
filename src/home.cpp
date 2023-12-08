@@ -78,17 +78,18 @@ void Home::editList(string newList, string action, string newVal) const {
 
 void Home::setList(Task* newTask, const string& selectedList) {
     if (selectedList == "") {
-        soloTasks->addTask(new Task(*newTask));
-        delete newTask;
+        soloTasks->addTask(newTask);
+        // delete newTask;
     } else {
-        Task* taskCopy = (new Task(*newTask));
+        // Task* taskCopy = (new Task(*newTask));
         for (auto taskLists : overallLists) {
             if (taskLists->getListName() == selectedList) {
-               taskLists->addTask(taskCopy);
-               delete newTask;
-               break;
+               taskLists->addTask(newTask);
+            //    delete newTask;
+            //    break;
             }
         }
+        // delete taskCopy;
     }
 }
 
