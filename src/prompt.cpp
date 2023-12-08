@@ -546,7 +546,7 @@ void prompt::listEditorPrompt(Home* h) {
     } while (choice != "1" && choice != "2");
 
     if (choice == "1") {
-        action = "Name";
+        action = "Title";
         cout << "Enter new Title: ";
         getline(cin, payload);
     } 
