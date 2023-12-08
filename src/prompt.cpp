@@ -914,24 +914,10 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
         } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4");
 
-        if (userOption == "5") {
+        if (userOption == "4") {
             cout << "See ya!" << endl;
             return;
         } 
-        else if(userOption == "4"){
-            userHome->viewLists();
-            cout << "Please enter a new list to add the task to: ";
-            getline(cin,userOption);
-
-            while(userHome->findTaskList(userOption) == nullptr){
-                cout << "INVALID please enter existing list: ";
-                userHome->viewLists();
-            }
-
-            userHome->setList(tempTask, userOption);
-            cout << "Sucessfully added task to " << userOption;
-
-        }
 
         else if (userOption == "3") {
             if (tempTask->getCompleteStatus() == true) { // If task is already marked as complete//
