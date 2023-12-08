@@ -165,7 +165,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
     do{
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
@@ -214,7 +214,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
@@ -255,9 +255,6 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
     }
 
-
-
-
     userData.push_back(title);
     userData.push_back(priority);
     userData.push_back(dueDate);
@@ -284,7 +281,7 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
 
     do{
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
@@ -320,7 +317,7 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
@@ -344,12 +341,8 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
         }
     }
 
-
-
-
     h->createNewList({listTitle,listDescription});
  
-    clearScreen();
 }
 
 void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
@@ -428,7 +421,7 @@ void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
 
     do{ //confirm or redo//
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
@@ -486,7 +479,7 @@ void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
@@ -568,7 +561,7 @@ void prompt::listEditorPrompt(Home* h) {
 
     do{ //confirm or redo//
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
@@ -609,7 +602,7 @@ void prompt::listEditorPrompt(Home* h) {
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or 2 \"2\" to redo: ";
+                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
@@ -627,7 +620,7 @@ void prompt::listEditorPrompt(Home* h) {
     do{
         cout << "Type \"Task--\" to leave: ";
         getline(cin,toLeave);
-    }while(toLeave != "Task--");
+    }while(toLeave != "Task--" && toLeave =="task--");
 
     clearScreen();
     
@@ -893,7 +886,7 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         return;
     }
 
-    cout << "Would you like to edit a task or list: (enter \"Task\" or \"List\")";
+    cout << "Would you like to edit a task or list: (enter \"Task\" or \"List\"): ";
 
     getline(cin,choice);
 
@@ -1020,10 +1013,14 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         if(choice == "3"){
             cout << "See ya!" << endl;
         }
+        else if(choice == "1"){
+            listEditorPrompt(userHome);
+            return;
+        }
         
         userHome->viewLists();
 
-        cout << "Enter a list to edit: ";
+        cout << "Enter a list to delete: ";
         getline(cin,userList);
 
         while(userHome->findTaskList(userList)){
@@ -1034,19 +1031,9 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
         if(choice == "2"){
             userHome->deleteList(userList);
+            cout << "List successfully deleted" << endl;
         }
-        else{
-            listEditorPrompt(userHome);
-        }
-
-
-
-
-
-
-
-
-
+        
     }
 
     tempTaskList = nullptr;
