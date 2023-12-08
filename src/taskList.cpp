@@ -65,7 +65,6 @@ void TaskList::editTask(string taskName, string action, string newVal) {
     else if (action == "Full Assigned Date") {
         target->setFullAssignedDate(newVal);
     }
-
     target = nullptr;
 }
 
