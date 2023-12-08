@@ -15,6 +15,9 @@ void View::sortTasks(Home& target) {
     for (Task* i : target.classificationTaskStorage["Dated"]) {
         sortedTasks.push_back(i);
     }
+    for (Task* i : target.classificationTaskStorage["Undated"]) {
+        undatedTasks.push_back(i);
+    }
 
     if(sortedTasks.size() > 1) {
         for (unsigned int i = 0; i < sortedTasks.size() - 1; ++i) {
@@ -83,6 +86,7 @@ void View::viewPriority(Home& target, string userChoice) {
         }
 
         sortedTasks.clear();
+        undatedTasks.clear();
     }
     else {
         cout << "-------------NO TASKS AVAILABLE-------------" << endl;
@@ -94,10 +98,18 @@ void View::printHighPriority(bool printCompleted, bool printUncompleted) const {
         Task* target = sortedTasks.at(i);
         if (target->getPriority() == "High" || target->getPriority() == "high") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
+                cout << "\u2022 " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
             else if (target->getCompleteStatus() == false && printUncompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
+                cout << "\u2022 " << target->getName() << " " << target->getFullDueDate() << endl;
+            }
+        }
+    } 
+
+    if (undatedTasks.size() > 0) {
+        for (int i = 0; i < undatedTasks.size(); ++i) {
+            if (undatedTasks.at(i)->getPriority() == "High" || undatedTasks.at(i)->getPriority() == "high") {
+                cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
             }
         }
     } 
@@ -109,10 +121,18 @@ void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
         Task* target = sortedTasks.at(i);
         if (target->getPriority() == "Medium" || target->getPriority() == "medium") {
             if (target->getCompleteStatus() == true && printCompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
+                cout << "\u2022 " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
             else if (target->getCompleteStatus() == false && printUncompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
+                cout << "\u2022 " << target->getName() << " " << target->getFullDueDate() << endl;
+            }
+        }
+    } 
+
+    if (undatedTasks.size() > 0) {
+        for (int i = 0; i < undatedTasks.size(); ++i) {
+            if (undatedTasks.at(i)->getPriority() == "Medium" || undatedTasks.at(i)->getPriority() == "medium") {
+                cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
             }
         }
     } 
@@ -122,12 +142,20 @@ void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
 void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
     for (int i = 0; i < sortedTasks.size(); ++i) {
         Task* target = sortedTasks.at(i);
-        if (target->getPriority() == "Low" || target->getPriority() == "low") {
+        if ((target->getPriority() == "Low" || target->getPriority() == "low") && (target->getFullDueDate() != "")) {
             if (target->getCompleteStatus() == true && printCompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
+                cout << "\u2022 " << target->getName() << " " << target->getFullDueDate() << " \u2713" << endl;
             }
             else if (target->getCompleteStatus() == false && printUncompleted == true) {
-                cout << i + 1 << ".) " << target->getName() << " " << target->getFullDueDate() << endl;
+                cout << "\u2022 " << target->getName() << " " << target->getFullDueDate() << endl;
+            }
+        }
+    }
+
+    if (undatedTasks.size() > 0) {
+        for (int i = 0; i < undatedTasks.size(); ++i) {
+            if(undatedTasks.at(i)->getPriority() == "Low" || undatedTasks.at(i)->getPriority() == "low") {
+                cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
             }
         }
     } 
