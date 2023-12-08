@@ -122,7 +122,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
     string chooseToAssignDate = "";
 
     printLogos("newTaskPrompt");
-
+    
     cout << "Input Information as prompted!" << endl;
         
     cout << "Please enter the name of the new task: ";
@@ -1028,11 +1028,11 @@ void prompt::printLogos(const string& logoChoice) const{
     }
     else if(logoChoice == "newTaskPrompt"){
         cout << R"(
-        _   __                ______           __      
-       / | / /__ _      __   /_  __/___ ______/ /__    
-      /  |/ / _ \ | /| / /    / / / __ `/ ___/ //_/    
-     / /|  /  __/ |/ |/ /    / / / /_/ (__  ) ,<       
-    /_/ |_/\___/|__/|__/    /_/  \__,_/____/_/|_|      
+     _   __                ______           __      
+    / | / /__ _      __   /_  __/___ ______/ /__    
+   /  |/ / _ \ | /| / /    / / / __ `/ ___/ //_/    
+  / /|  /  __/ |/ |/ /    / / / /_/ (__  ) ,<       
+ /_/ |_/\___/|__/|__/    /_/  \__,_/____/_/|_|      
                                                    
 )";
     cout << endl;
@@ -1053,11 +1053,11 @@ void prompt::printLogos(const string& logoChoice) const{
     }
     else if(logoChoice == "taskEditorPrompt"){
         cout << R"(
-          ______           __      ______    ___ __            
-         /_  __/___ ______/ /__   / ____/___/ (_) /_____  _____
-          / / / __ `/ ___/ //_/  / __/ / __  / / __/ __ \/ ___/
-         / / / /_/ (__  ) ,<    / /___/ /_/ / / /_/ /_/ / /    
-        /_/  \__,_/____/_/|_|  /_____/\__,_/_/\__/\____/_/     
+     ______           __      ______    ___ __            
+    /_  __/___ ______/ /__   / ____/___/ (_) /_____  _____
+     / / / __ `/ ___/ //_/  / __/ / __  / / __/ __ \/ ___/
+    / / / /_/ (__  ) ,<    / /___/ /_/ / / /_/ /_/ / /    
+   /_/  \__,_/____/_/|_|  /_____/\__,_/_/\__/\____/_/     
         )";
     cout << endl;
         
