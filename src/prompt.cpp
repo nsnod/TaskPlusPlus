@@ -27,8 +27,13 @@ string redo(const string& action, Home* userHome){ //for undos from the user//
 
     }
     else if(action =="Priority" || action == "3"){
-        cout << "Enter new priority: ";
+        cout << "Enter new priority(enter \"High\",\"Medium\", \"Low\"): ";
         getline(cin,newVal);
+
+        while(newVal != "high" && newVal != "High" && newVal != "medium" && newVal != "Medium" && newVal != "low" && newVal != "Low"){
+            cout << "INVALID enter \"High\" \"Medium\" or \"Low\": ";
+            getline(cin,newVal);
+        }
 
     }
     else if(action == "Full Due Date" || action == "4"){
