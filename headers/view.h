@@ -26,6 +26,7 @@ class View {
     void printMedPriority(bool printCompleted, bool printUncompleted) const;
     void printLowPriority(bool printCompleted, bool printUncompleted) const;
     vector<Task*> sortedTasks;
+    vector<Task*> undatedTasks;
 };
 
 #endif
