@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 #include <iostream>
 
 #include "../headers/home.h"
@@ -30,13 +30,13 @@ int main(){
         }
         //view tasks by priority
         else if(Prompt.getSelection() == "4"){
-            Prompt.viewOverall(&view, *home);
+            Prompt.viewOverall(&view, home);
         }
         //edit tasks
         else if(Prompt.getSelection() == "5"){
             string userPriority;
 
-            Prompt.viewPriority(&home, userPriority);
+            Prompt.viewPriority(&view, home);
             
         }
     }while(Prompt.getSelection() != "Task--");

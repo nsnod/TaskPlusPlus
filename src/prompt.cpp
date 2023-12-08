@@ -45,20 +45,7 @@ string redo(const string& action, Home* userHome){ //for undos from the user//
         }while(newVal.at(2) != '/' || newVal.at(5) != '/' || !(isdigit(newVal.at(0))) || !(isdigit(newVal.at(1))) || !(isdigit(newVal.at(3))) || !(isdigit(newVal.at(4))) || !(isdigit(newVal.at(6))) || !(isdigit(newVal.at(7))));
 
     }
-    else if (action == "6" && userHome->listEmpty() != true) {
-        if(userHome != nullptr){
-            userHome->viewLists();
-        }
-
-        cout << "Choose list from above: ";
-        getline(cin,newVal);
-
-        while(userHome->findTaskList(newVal) == nullptr){
-            userHome->viewLists();
-            cout << "Invalid list does not exist please choose another list: ";
-            getline(cin,newVal);
-        }
-    }
+    
     
 
     return newVal;
@@ -204,30 +191,24 @@ void prompt::newTaskPrompt(Home* userHome) const {
             cout << "Enter \"3\" to edit priority" << endl;
             cout << "Enter \"4\" to edit due date" << endl;
             cout << "Enter \"5\" to edit assigned" << endl;
-            if(userHome->listEmpty() == false){
-                cout << "Enter \"6\" to edit list choice" << endl;
-            }
+            
 
             cout << "Please select an action to edit (enter the corresponding number): ";
             getline(cin,userAction);
 
-            while(userAction != "1" && userAction != "2" && userAction != "3" && userAction != "4" && userAction != "5" && userAction !="6"){
-                if(userAction == "6" && userHome->listEmpty()){
-                    cout << "Please select a action (1-5): ";   
-                }
-                else if (userHome->listEmpty() == false){
-                    cout << "Please select a action (1-6): ";
-                }
+            while(userAction != "1" && userAction != "2" && userAction != "3" && userAction != "4" && userAction != "5"){
+                
+                
+                cout << "Please select a action (1-5): ";
+                
                 getline(cin,userAction);
 
             }
 
-            if(userHome->listEmpty()){ //if home is empty it will not pass it in because it will have nothing in lists//
-                newVal = redo(userAction,nullptr);
-            }
-            else{
-                newVal = redo(userAction,userHome);
-            }
+            
+            
+            newVal = redo(userAction,userHome);
+            
 
             int rev2 = 0;
 
