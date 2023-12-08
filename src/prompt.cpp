@@ -508,7 +508,7 @@ void prompt::listEditorPrompt(Home* h) {
 
     while(h->findTaskList(userList) == nullptr){
         h->viewLists();
-        cout << "Please enter a valid list";
+        cout << "Please enter a valid list: ";
         getline(cin,userList);
     }
 
@@ -1005,7 +1005,7 @@ void prompt::viewOverall(View* mainView, Home* userHome){
             getline(cin,userList);
             cout << endl;
 
-            while(userHome->findTaskList(userList)){
+            while(userHome->findTaskList(userList) == nullptr){
                 userHome->viewLists();
                 cout << "INVALID please enter existing list: ";
                 getline(cin,userList);
