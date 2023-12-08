@@ -639,7 +639,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
     mainView->viewWeekly(*userHome);
 
-    cout << "Would you like to select a task to edit? (Enter 'Yes' or 'No'): ";
+    cout << "Would you like to select a task to edit or list? (Enter 'Yes' or 'No'): ";
     getline(cin, choice);
 
     while (choice != "yes" && choice != "Yes" && choice != "no" && choice != "No") {
@@ -652,6 +652,14 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
         return;
     }
 
+    cout << "Would you like to edit a list or task (\"1\" for task \"2\" for list): ";
+    getline(cin,choice);
+
+    if(choice != "1" && choice != "2"){
+        cout << "Please enter \"1\" or \"2\": ";
+        getline(cin,choice);
+    }
+
     cout << endl;
 
     string taskChoice = "";
@@ -660,58 +668,58 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
     int rev = 0;
 
-    while (tempTask == nullptr) {
+    if(choice == "2"){
+        while (tempTask == nullptr) {
 
         if (rev == 0) {
             cout << "Please select a task: ";
             rev++;
-        } 
-        else {
+        } else {
             cout << "Please select a valid task: ";
         }
 
-        getline(cin, taskChoice);
+            getline(cin, taskChoice);
 
-        if (userHome->findParentList(taskChoice) != nullptr) {
-            tempTaskList = userHome->findParentList(taskChoice);
-            tempTask = tempTaskList->findTask(taskChoice);
+            if (userHome->findParentList(taskChoice) != nullptr) {
+                tempTaskList = userHome->findParentList(taskChoice);
+                tempTask = tempTaskList->findTask(taskChoice);
+            }
         }
-    }
 
-    cout << endl;
+        cout << endl;
 
-    string userOption = "0";
+        string userOption = "0";
 
-    printSeparator(23); // Print a line separator
-    cout << "   Edit Options" << endl;
-    printSeparator(23); // Print a line separator
+        printSeparator(23); // Print a line separator
+        cout << "   Edit Options" << endl;
+        printSeparator(23); // Print a line separator
 
-    cout << "1.) Edit a task" << endl << endl;
-    cout << "2.) Delete a task" << endl << endl;
-    cout << "3.) Mark a task as complete" << endl << endl;
-    cout << "4.) Back out" << endl;
+        cout << "1) Edit a task" << endl << endl;
+        cout << "2) Delete a task" << endl << endl;
+        cout << "3) Mark a task as complete" << endl << endl;
+        cout << "4) Move task to a different list" << endl << endl;
+        cout << "5) Back out" << endl;
 
-    printSeparator(23); // Print a line separator
+        printSeparator(23); // Print a line separator
 
-    int rev2 = 0; // Counter for loop to choose output//
+        int rev2 = 0; // Counter for loop to choose output//
 
     do {
         if (rev2 == 0) {
-            cout << "Choose an option (Enter 1-4): ";
+            cout << "Choose an option (Enter 1-5): ";
             rev2++;
         } 
         else {
-            cout << "Please choose a valid option (Enter 1-4): ";
+            cout << "Please choose a valid option (Enter 1-5): ";
         }
         getline(cin, userOption);
 
-    } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4");
+        } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4" && userOption != "5");
 
-    if (userOption == "4"){
+    if (userOption == "4") {
         cout << "See ya!" << endl;
         return;
-    } 
-    else if (userOption == "3"){
+    } else if (userOption == "3") {
         if (tempTask->getCompleteStatus() == true) { // If task is already marked as complete//
             cout << "Task is already complete" << endl;
             return;
@@ -719,18 +727,16 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
         tempTask->switchCompleteStatus();
         cout << "Task successfully marked as complete" << endl;
-    } 
-    else if (userOption == "2") {
+    } else if (userOption == "2") {
         tempTaskList->removeTask(taskChoice);
         cout << "Task successfully deleted" << endl;
-    } 
-    else {
+    } else {
         clearScreen(); // Assuming this function clears the screen
         taskEditorPrompt(tempTask, tempTaskList);
     }
 
-    tempTaskList = nullptr;
-    tempTask = nullptr;
+        tempTaskList = nullptr;
+        tempTask = nullptr;
 
     
 }
