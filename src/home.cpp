@@ -77,6 +77,8 @@ void Home::setList(Task* newTask, const string& selectedList) {
     } else {
         for (auto taskLists : overallLists) {
             if (taskLists->getListName() == selectedList) {
+                TaskList *remover = findParentList(newTask->getName());
+                remover->removeTask(newTask->getName());
                 taskLists->addTask(newTask);
             }
         }
