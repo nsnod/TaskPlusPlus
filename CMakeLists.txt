@@ -15,10 +15,6 @@ include_directories(
   ${CMAKE_SOURCE_DIR}/tests/googletest/include/
 )
 
-# add_executable (TaskPlusPlus
-#   
-# )
-
 add_subdirectory(src)
 add_subdirectory(tests)
 
