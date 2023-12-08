@@ -233,11 +233,10 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
     if(confirmation == "2"){
         if(userAction == "1"){title = newVal;}
-        else if(userAction == "2"){priority = newVal;}
-        else if(userAction == "3"){dueDate = newVal;}
-        else if(userAction == "4"){assignedDate = newVal;}
-        else if(userAction == "5"){desc = newVal;}
-        else if(userAction == "6"){userListChoice = newVal;}
+        else if(userAction == "2"){desc = newVal;}
+        else if(userAction == "3"){priority = newVal;}
+        else if(userAction == "4"){dueDate = newVal;}
+        else if(userAction == "5"){assignedDate = newVal;}
     }
 
     userData.push_back(title);
