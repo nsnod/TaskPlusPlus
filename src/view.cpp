@@ -16,14 +16,16 @@ void View::sortTasks(Home& target) {
         sortedTasks.push_back(i);
     }
 
-    for (unsigned int i = 0; i < sortedTasks.size() - 1; ++i) {
-        int min = i;
-        for (unsigned int j = i + 1; j < sortedTasks.size(); ++j) {
-            if (compareTasksDueDate(sortedTasks.at(j), sortedTasks.at(min))) {
-                min = j;
+    if(sortedTasks.size() > 1) {
+        for (unsigned int i = 0; i < sortedTasks.size() - 1; ++i) {
+            int min = i;
+            for (unsigned int j = i + 1; j < sortedTasks.size(); ++j) {
+                if (compareTasksDueDate(sortedTasks.at(j), sortedTasks.at(min))) {
+                    min = j;
+                }
             }
+            swap(sortedTasks.at(i), sortedTasks.at(min));
         }
-        swap(sortedTasks.at(i), sortedTasks.at(min));
     }
 }
 
@@ -133,11 +135,16 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
 }
 
 void View::viewOverall(Home& target) const {
-    if (target.isEmpty() != true) {
-        cout << "Solo Tasks" << endl;
-        target.soloTasks->viewTasks();
-        cout << endl << endl;
 
+    cout << "Solo Tasks" << endl;
+    if (target.getSoloTasks()->getNumOfTasks() == 0) {
+        cout << "-------------NO TASKS AVAILABLE-------------" << endl << endl;
+    } else {
+        target.getSoloTasks()->viewTasks();
+        cout << endl << endl;
+    }
+
+    if (target.listEmpty() != true) {
         for (TaskList* list : target.overallLists) {
             if (list->getNumOfTasks() == 0) {
                 cout << list->getListName() << endl;
