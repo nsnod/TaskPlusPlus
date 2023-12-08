@@ -119,15 +119,15 @@ D: The Dependency inversion principle is applied by the Home class. The Home cla
  ## Screenshots
 The following images are screenshots of specific screens in our application
 
-![Main Menu](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Main_Menu.png)\
+![Main Menu](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Main_Menu.png)
 
 The user will be presented with the main menu of our task manager. We have displayed the logo in a special font above.
 
-![New Task Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_Task_Prompt.png)\
+![New Task Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_Task_Prompt.png)
 
 After selecting the corresponding option, the user will be prompted with the relevant information for their new task. They will also be asked to confirm or amend that task.
 
-![View Overall Tasks](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/View_Overall_Tasks.png)\
+![View Overall Tasks](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/View_Overall_Tasks.png)
 
 After entering the option to View Overall Tasks, the application will display the weekly calender with the tasks dispersed throughout the week.
 
