@@ -40,10 +40,11 @@ Task& Task::operator=(const Task& other) {
 
 void Task::setFullDueDate(const string& dueDate) {
     fullDueDate = dueDate;
-
-    setDueMonth(stoi(dueDate.substr(0, 2)));
-    setDueDay(stoi(dueDate.substr(3, 2)));
-    setDueYear(stoi(dueDate.substr(6, 2)));
+    if (fullDueDate != "") {
+        setDueMonth(stoi(dueDate.substr(0, 2)));
+        setDueDay(stoi(dueDate.substr(3, 2)));
+        setDueYear(stoi(dueDate.substr(6, 2)));
+    }
 }
 
 void Task::setFullAssignedDate(const string& assignedDate) {
