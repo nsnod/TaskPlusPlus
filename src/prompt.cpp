@@ -27,8 +27,13 @@ string redo(const string& action, Home* userHome){ //for undos from the user//
 
     }
     else if(action =="Priority" || action == "3"){
-        cout << "Enter new priority: ";
+        cout << "Enter new priority(enter \"High\",\"Medium\", \"Low\"): ";
         getline(cin,newVal);
+
+        while(newVal != "high" && newVal != "High" && newVal != "medium" && newVal != "Medium" && newVal != "low" && newVal != "Low"){
+            cout << "INVALID enter \"High\" \"Medium\" or \"Low\": ";
+            getline(cin,newVal);
+        }
 
     }
     else if(action == "Full Due Date" || action == "4"){
@@ -228,11 +233,10 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
     if(confirmation == "2"){
         if(userAction == "1"){title = newVal;}
-        else if(userAction == "2"){priority = newVal;}
-        else if(userAction == "3"){dueDate = newVal;}
-        else if(userAction == "4"){assignedDate = newVal;}
-        else if(userAction == "5"){desc = newVal;}
-        else if(userAction == "6"){userListChoice = newVal;}
+        else if(userAction == "2"){desc = newVal;}
+        else if(userAction == "3"){priority = newVal;}
+        else if(userAction == "4"){dueDate = newVal;}
+        else if(userAction == "5"){assignedDate = newVal;}
     }
 
     userData.push_back(title);
