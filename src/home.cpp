@@ -55,6 +55,7 @@ void Home::viewLists() const {
 
     for (auto list : overallLists) {
         cout << listCount << ".)" << list->getListName() << endl;
+        listCount++;
     }
 }
 
