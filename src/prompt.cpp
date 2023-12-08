@@ -121,6 +121,8 @@ void prompt::newTaskPrompt(Home* userHome) const {
     string title = "", desc = "", priority = "", dueDate = "", assignedDate = "", userListChoice = "",assignToList = "", confirmation = "";
     string chooseToAssignDate = "";
 
+    printLogos("newTaskPrompt");
+
     cout << "Input Information as prompted!" << endl;
         
     cout << "Please enter the name of the new task: ";
@@ -252,6 +254,8 @@ void prompt::newTaskPrompt(Home* userHome) const {
 }
 
 void prompt::newListPrompt(Home* h) const { //WORKS//
+
+    printLogos("newListPrompt");
 
     string listTitle = "", listDescription = "", confirmation = "";
     cout << "==============================================" << endl;
@@ -613,6 +617,8 @@ void prompt::listEditorPrompt(Home* h) {
 void prompt::viewWeekly(View* mainView, Home* userHome) {
     string choice = "";
 
+    printLogos("viewWeekly");
+
     mainView->viewWeekly(*userHome);
 
     cout << "Would you like to select a task to edit? (Enter 'Yes' or 'No'): ";
@@ -702,7 +708,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
     }
 
     else if (userOption == "3") {
-        string status = ""
+        string status = "";
         if (tempTask->getCompleteStatus() == true) { // If task is already marked as complete//
            status = "uncomplete";
         }
@@ -729,6 +735,8 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 void prompt::viewPriority(View* mainView, Home* userHome){
     string userDifficulty = "";
     string choice = "";
+
+    printLogos("viewPriority");
 
     cout << "Which priority tasks would you like to view (\"Completed\",\"Uncompleted\",\"All\"): ";
     getline(cin,userDifficulty);
@@ -852,6 +860,8 @@ void prompt::viewPriority(View* mainView, Home* userHome){
 }
 
 void prompt::viewOverall(View* mainView, Home* userHome){
+
+    printLogos("viewOverall");
 
     mainView->viewOverall(*userHome);
     string choice = "";
