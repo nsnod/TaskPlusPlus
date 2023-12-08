@@ -1,12 +1,19 @@
 #include "../headers/prompt.h"
 
-
+void clearScreen() { //https://cplusplus.com/forum/general/273223///
+#ifdef _WIN32
+    system("CLS"); // For Windows
+#else
+    
+    system("clear"); // For Linux/Unix
+#endif
+}
 
 string prompt::getSelection() const{ //TESTED//
     return this->selection;
 }
 
-string redo(const string& action, const Home* userHome){ //for undos from the user//
+string redo(const string& action, Home* userHome){ //for undos from the user//
     string newVal = "";
 
     if(action == "Name" || action == "1"){
@@ -38,7 +45,7 @@ string redo(const string& action, const Home* userHome){ //for undos from the us
         }while(newVal.at(2) != '/' || newVal.at(5) != '/' || !(isdigit(newVal.at(0))) || !(isdigit(newVal.at(1))) || !(isdigit(newVal.at(3))) || !(isdigit(newVal.at(4))) || !(isdigit(newVal.at(6))) || !(isdigit(newVal.at(7))));
 
     }
-    else{
+    else if (action == "6" && userHome->listEmpty() != true) {
         if(userHome != nullptr){
             userHome->viewLists();
         }
@@ -79,14 +86,7 @@ void prompt::displayHorizontalLine(int length = 30, char symbol = '-') {
     cout << setfill(symbol) << setw(length) << "" << setfill(' ') << endl;
 }
 
-void clearScreen() { //https://cplusplus.com/forum/general/273223///
-#ifdef _WIN32
-    system("CLS"); // For Windows
-#else
-    
-    system("clear"); // For Linux/Unix
-#endif
-}
+
 
 void prompt::setSelection(){ //TESTED//
     
@@ -141,18 +141,18 @@ void prompt::newTaskPrompt(Home* userHome) const {
     do{
         cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,dueDate);
-    }while(dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
+    }while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
     
     
     do{
         cout << "Please enter the assigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,assignedDate);
-    }while(assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7))));
+    }while(assignedDate.size() != 8 || assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7))));
 
     cout << "Please enter the description of the new task: ";
     getline(cin, desc);
     
-    if(userHome->isEmpty() == false){ //if list is empty user will get option to add to list//
+    if(userHome->listEmpty() == false){ //if list is empty user will get option to add to list//
         do{
             cout << "Please Enter Y for yes or N for no to assign task to a task list: ";
             getline(cin,assignToList);
@@ -200,11 +200,11 @@ void prompt::newTaskPrompt(Home* userHome) const {
         
         while(userStay == "2"){
             cout << "Enter \"1\" to edit title" << endl;
-            cout << "Enter \"2\" to edit priority" << endl;
-            cout << "Enter \"3\" to edit due date" << endl;
-            cout << "Enter \"4\" to edit assigned date" << endl;
-            cout << "Enter \"5\" to edit description" << endl;
-            if(userHome->isEmpty() == false){
+            cout << "Enter \"2\" to edit description" << endl;
+            cout << "Enter \"3\" to edit priority" << endl;
+            cout << "Enter \"4\" to edit due date" << endl;
+            cout << "Enter \"5\" to edit assigned" << endl;
+            if(userHome->listEmpty() == false){
                 cout << "Enter \"6\" to edit list choice" << endl;
             }
 
@@ -212,17 +212,17 @@ void prompt::newTaskPrompt(Home* userHome) const {
             getline(cin,userAction);
 
             while(userAction != "1" && userAction != "2" && userAction != "3" && userAction != "4" && userAction != "5" && userAction !="6"){
-                if(userAction == "6" && userHome->isEmpty()){
+                if(userAction == "6" && userHome->listEmpty()){
                     cout << "Please select a action (1-5): ";   
                 }
-                else{
-                    cout << "Please select a action (1-6)";
+                else if (userHome->listEmpty() == false){
+                    cout << "Please select a action (1-6): ";
                 }
                 getline(cin,userAction);
 
             }
 
-            if(userHome->isEmpty()){ //if home is empty it will not pass it in because it will have nothing in lists//
+            if(userHome->listEmpty()){ //if home is empty it will not pass it in because it will have nothing in lists//
                 newVal = redo(userAction,nullptr);
             }
             else{
@@ -267,7 +267,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
             desc = newVal;
 
         }
-        else{
+        else if(userAction == "6"){
             userListChoice = newVal;
 
         }

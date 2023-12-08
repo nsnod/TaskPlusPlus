@@ -23,6 +23,7 @@ class Home {
    void setList(Task*, const string&);
    void setClassification(Task*);
    bool isEmpty();
+   bool listEmpty();
    void deleteList(const string&);
    TaskList* getSoloTasks() { return soloTasks; }
    TaskList* findParentList(const string& taskName) const;
