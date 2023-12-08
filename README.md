@@ -72,13 +72,13 @@ Authors:
 Once you boot the program, you will be taken to the home screen and will have multiple options of where to pivot to. You will be able to create a new task list, a new task, and will have multiple viewing options of the weekly tasks, the overall tasks and lists, and your tasks organized by their priority. Within the new task screen, you will be able to create new tasks, confirm creation, and undo any errors you may have made. The new task list will have the same features but will be a list containing multiple other tasks. From the different viewing screens, you will be able to edit the tasks and lists, or delete them. From the overall updated viewing screen, You will be able to see individual tasks not assigned to a list and then all the lists with tasks inside of them. Each list will have a percentage to show how many tasks in that list have been completed. All screens have the option to return home.
 
 ### Screen Layouts
-![Home Screen](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Home_Screen.jpg)\
+![Main Menu](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Home_Screen.jpg)\
 The home screen prompts the user to enter their preferred action. Options include creating a new task, creating a new list, viewing the archive, checking weekly tasks, examining upcoming tasks, and selecting the weekly schedule recommender. The user can type their choice, and the program will parse it to determine the next course of action. There's also an exit option for users to leave the program when they're done. User can type Task-- to back out and return to the terminal.
 
-![New Task](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_Task.jpg)\
+![New Task Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_Task.jpg)\
 When creating a new task, users are required to input the task name, task description, priority, due date, assigned date, and whether they want to assign it to an existing list or not. While on this screen, users have the flexibility to edit the task description extensively. They can undo any possible mistakes when given the final option to confirm. After they're satisfied with the changes, users can choose to return to the home screen. User can type Task-- to back out and return to the home screen.
 
-![New List](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_List.jpg)\
+![New List Prompt](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_List.jpg)\
 Users can specify a list name and provide a description or any relevant information about the list's purpose. After naming the list and providing the description, users are given the option to pivot to the new task screen with the "add task" option. User can type Task-- to back out and return to the home screen.
 
 ![Task Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Task_Editor.jpg)\
