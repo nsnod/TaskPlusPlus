@@ -133,7 +133,7 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
 }
 
 void View::viewOverall(Home& target) const {
-    if (target.isEmpty() != true) {
+    if (target.listEmpty() != true) {
         cout << "Solo Tasks" << endl;
         target.soloTasks->viewTasks();
         cout << endl << endl;
