@@ -131,7 +131,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
         getline(cin,priority);
     }
 
-    cout << "Would you like to assingn a due date(\"yes\" or \"no\"): ";
+    cout << "Would you like to assign a due date(\"yes\" or \"no\"): ";
     getline(cin,chooseToAssignDate);
 
     while(chooseToAssignDate != "Yes" && chooseToAssignDate !="yes" && chooseToAssignDate != "no" && chooseToAssignDate != "No"){
