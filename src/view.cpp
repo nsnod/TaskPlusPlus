@@ -49,7 +49,7 @@ void View::viewPriority(Home& target, string userChoice) {
     if (target.isEmpty() != true) {
         sortTasks(target);
 
-        if (userChoice == "Completed") {
+        if (userChoice == "Completed" || userChoice == "completed") {
             cout << "HIGH PRIORITY - COMPLETED\n" << "---------------------------\n";
             printHighPriority(true, false);
 
@@ -59,7 +59,7 @@ void View::viewPriority(Home& target, string userChoice) {
             cout << "LOW PRIORITY - COMPLETED\n" << "---------------------------\n";
             printLowPriority(true, false);
         }
-        else if (userChoice == "Uncompleted") {
+        else if (userChoice == "Uncompleted" || userChoice == "uncompleted") {
             cout << "HIGH PRIORITY - UNCOMPLETED\n" << "---------------------------\n";
             printHighPriority(false, true);
 
@@ -69,7 +69,7 @@ void View::viewPriority(Home& target, string userChoice) {
             cout << "LOW PRIORITY - UNCOMPLETED\n" << "---------------------------\n";
             printLowPriority(false, true);
         }
-        else if (userChoice == "All") {
+        else if (userChoice == "All" || userChoice == "all") {
             cout << "HIGH PRIORITY - ALL\n" << "---------------------------\n";
             printHighPriority(true, true);
 
@@ -139,12 +139,15 @@ void View::viewOverall(Home& target) const {
         cout << endl << endl;
 
         for (TaskList* list : target.overallLists) {
-            list->viewTasks();
-            cout << endl << endl;
+            if (list->getNumOfTasks() == 0) {
+                cout << list->getListName() << endl;
+                cout << "-------------NO TASKS AVAILABLE-------------" << endl;
+            } else {
+                list->viewTasks();
+                cout << endl << endl;
+            }
         } 
-    } else {
-        cout << "-------------NO TASKS AVAILABLE-------------" << endl;
-    }    
+    }
 }
 
 void View::viewWeekly(Home& target) {
