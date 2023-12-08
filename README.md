@@ -113,10 +113,26 @@ The user will be presented with the main menu of our task manager. We have displ
 
 After selecting the corresponding option, the user will be prompted with the relevant information for their new task. They will also be asked to confirm or amend that task.
 
-![View Overall Tasks](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/View_Overall_Tasks.png)
+![New Task List](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/New_TaskList.png)
 
-After entering the option to View Overall Tasks, the application will display the weekly calender with the tasks dispersed throughout the week.
+User will have the option to create a new list of tasks and add a title and description. When creating new tasks, they will be able to add tasks to a specific list.
 
+![Task Editor](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/Task_Editor.png)
+
+When redoing a task, a user will be able to choose which aspect of a task they would like to edit and make the corresponding change.
+
+![View Weekly Tasks](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/View_Weekly_Tasks.png)
+
+User will have the ability to view their tasks in a weekly calender format. Special font is used to denote which day of the week it is.
+
+
+![View Overall Tasks](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/View_Overall.png)
+
+After entering the option to View Overall Tasks, the application will display the weekly calender with the tasks dispersed throughout the week. Completion status will also be indicated with a check mark.
+
+![View Priority](https://github.com/cs100/final-project-btran159-nsnod001-rgujr001-surib013/blob/master/images/View_Priority.png)
+
+As shown above, when the user selects the option to view tasks by priority, they will be shown each task by priority level.
 
  ## Installation/Usage
 1. Open your terminal application and use the cd command to navigate to a suitable directory
