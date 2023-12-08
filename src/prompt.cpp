@@ -662,7 +662,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
         cout << "1) Edit a task" << endl << endl;
         cout << "2) Delete a task" << endl << endl;
-        cout << "3) Mark a task as complete" << endl << endl;
+        cout << "3) Switch complete status " << endl << endl;
         cout << "4) Move task to a different list" << endl << endl;
         cout << "5) Back out" << endl;
 
@@ -702,13 +702,16 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
     }
 
     else if (userOption == "3") {
+        string status = ""
         if (tempTask->getCompleteStatus() == true) { // If task is already marked as complete//
-            cout << "Task is already complete" << endl;
-            return;
+           status = "uncomplete";
+        }
+        else{
+            status = "complete";
         }
 
         tempTask->switchCompleteStatus();
-        cout << "Task successfully marked as complete" << endl;
+        cout << "Task successfully switched to " << status << endl;
     } 
     else if (userOption == "2") {
         tempTaskList->removeTask(taskChoice);
