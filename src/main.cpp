@@ -1,4 +1,4 @@
-//#pragma once
+#pragma once
 #include <iostream>
 
 #include "../headers/home.h"
@@ -18,27 +18,26 @@ int main(){
         Prompt.printMainMenu();
 
         if(Prompt.getSelection() == "1"){
-            home->createNewTask(Prompt.newTaskPrompt(home));
-        }
+            Prompt.newTaskPrompt(home);
+        } 
 
         else if(Prompt.getSelection() == "2"){
-            home->createNewList(Prompt.newListPrompt());
+            Prompt.newListPrompt(home);
         }
         //weekly tasks
         else if(Prompt.getSelection() == "3"){
-            view.viewWeekly(*home);
+            Prompt.viewWeekly(&view, home);
         }
         //view tasks by priority
         else if(Prompt.getSelection() == "4"){
-            string userPriority;
-            cout << "Please enter a priority category (Completed, Uncompleted, All): " << endl;
-            cin >> userPriority;
-
-            view.viewPriority(*home, userPriority);
+            Prompt.viewOverall(&view, *home);
         }
         //edit tasks
         else if(Prompt.getSelection() == "5"){
-            Prompt.taskEditorPrompt();
+            string userPriority;
+
+            Prompt.viewPriority(&home, userPriority);
+            
         }
     }while(Prompt.getSelection() != "Task--");
 
@@ -46,11 +45,3 @@ int main(){
 
     return 0;
 }
-
-/*
-cout << "Completed solo tasks: " << endl;
-            
-            for(unsigned int i = 0; i < home->soloTasks->getNumOfTasks(); i++){
-                if(home->soloTasks->)
-            }
-            */
