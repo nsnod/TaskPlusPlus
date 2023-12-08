@@ -59,7 +59,7 @@ void Home::viewLists() const {
     int listCount = 1;
 
     for (auto list : overallLists) {
-        cout << listCount << ".)" << list->getListName() << endl;
+        cout << listCount << ".) " << list->getListName() << endl;
         listCount++;
     }
 }
