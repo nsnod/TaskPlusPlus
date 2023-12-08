@@ -35,7 +35,7 @@ class prompt{
     void newTaskPrompt(Home*) const;
     void newListPrompt(Home*) const;
 
-    void taskEditorPrompt(Task*, TaskList*);
+    void taskEditorPrompt(Home*, Task*, TaskList*);
     void listEditorPrompt(Home*);
     
     void viewWeekly(View*,Home*);
