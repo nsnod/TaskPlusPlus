@@ -27,11 +27,11 @@ string redo(const string& action, Home* userHome){ //for undos from the user//
 
     }
     else if(action =="Priority" || action == "3"){
-        cout << "Enter new priority(enter \"High\",\"Medium\", \"Low\"): ";
+        cout << "Enter new priority(enter \"High\", \"Medium\", \"Low\"): ";
         getline(cin,newVal);
 
         while(newVal != "high" && newVal != "High" && newVal != "medium" && newVal != "Medium" && newVal != "low" && newVal != "Low"){
-            cout << "INVALID enter \"High\" \"Medium\" or \"Low\": ";
+            cout << "INVALID enter \"High\", \"Medium\", \"Low\": ";
             getline(cin,newVal);
         }
 
@@ -129,7 +129,7 @@ void prompt::newTaskPrompt(Home* userHome) const {
     getline(cin, title);
     
     while(priority != "High" && priority != "Medium" && priority != "Low" && priority != "high" && priority != "medium" && priority != "low"){
-        cout << "Please enter the priority of the new task (\"High\", \"Medium\",\"Low\"): ";
+        cout << "Please enter the priority of the new task (\"High\", \"Medium\", \"Low\"): ";
         getline(cin,priority);
     }
 
@@ -995,7 +995,7 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         cout << "3) Back out" << endl;
         printSeparator(23); // Print a line separator
         
-        cout << "Choose a option (1-3): " << endl;
+        cout << "Choose a option (1-3): ";
         getline(cin,choice);
 
         while(choice != "1" && choice != "2" && choice != "3"){
