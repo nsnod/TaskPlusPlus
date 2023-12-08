@@ -59,7 +59,7 @@ void Home::viewLists() const {
     int listCount = 1;
 
     for (auto list : overallLists) {
-        cout << listCount << ".)" << list->getListName() << endl;
+        cout << listCount << ".) " << list->getListName() << endl;
         listCount++;
     }
 }
@@ -94,6 +94,9 @@ void Home::setList(Task* newTask, const string& selectedList) {
 }
 
 void Home::setClassification(Task* newTask) { 
+    classificationTaskStorage["Undated"].erase(newTask);
+    classificationTaskStorage["Dated"].erase(newTask);
+
     if (newTask->getFullDueDate() == "") {
         classificationTaskStorage["Undated"].insert(newTask);
     } else {

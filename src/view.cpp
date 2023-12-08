@@ -109,7 +109,12 @@ void View::printHighPriority(bool printCompleted, bool printUncompleted) const {
     if (undatedTasks.size() > 0) {
         for (int i = 0; i < undatedTasks.size(); ++i) {
             if (undatedTasks.at(i)->getPriority() == "High" || undatedTasks.at(i)->getPriority() == "high") {
-                cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
+                if (undatedTasks.at(i)->getCompleteStatus() == true && printCompleted == true) {
+                    cout << "\u2022 " << undatedTasks.at(i)->getName() << " \u2713" << endl;
+                }
+                else if (undatedTasks.at(i)->getCompleteStatus() == false && printUncompleted == true) {
+                    cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
+                }
             }
         }
     } 
@@ -132,7 +137,12 @@ void View::printMedPriority(bool printCompleted, bool printUncompleted) const {
     if (undatedTasks.size() > 0) {
         for (int i = 0; i < undatedTasks.size(); ++i) {
             if (undatedTasks.at(i)->getPriority() == "Medium" || undatedTasks.at(i)->getPriority() == "medium") {
-                cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
+                if (undatedTasks.at(i)->getCompleteStatus() == true && printCompleted == true) {
+                    cout << "\u2022 " << undatedTasks.at(i)->getName() << " \u2713" << endl;
+                }
+                else if (undatedTasks.at(i)->getCompleteStatus() == false && printUncompleted == true) {
+                    cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
+                }
             }
         }
     } 
@@ -154,8 +164,13 @@ void View::printLowPriority(bool printCompleted, bool printUncompleted) const {
 
     if (undatedTasks.size() > 0) {
         for (int i = 0; i < undatedTasks.size(); ++i) {
-            if(undatedTasks.at(i)->getPriority() == "Low" || undatedTasks.at(i)->getPriority() == "low") {
-                cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
+            if (undatedTasks.at(i)->getPriority() == "Low" || undatedTasks.at(i)->getPriority() == "low") {
+                if (undatedTasks.at(i)->getCompleteStatus() == true && printCompleted == true) {
+                    cout << "\u2022 " << undatedTasks.at(i)->getName() << " \u2713" << endl;
+                }
+                else if (undatedTasks.at(i)->getCompleteStatus() == false && printUncompleted == true) {
+                    cout << "\u2022 " << undatedTasks.at(i)->getName() << endl;
+                }
             }
         }
     } 

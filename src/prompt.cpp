@@ -87,7 +87,7 @@ void prompt::setSelection(){ //TESTED//
     getline(cin,userChoice);
     
     while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "Task--"){ 
-        cout << "INVALID INPUT: Please enter 1-6 or \"Task--\" to exit terminal:";
+        cout << "INVALID INPUT: Please enter 1-5 or \"Task--\" to exit terminal:";
         getline(cin,userChoice);
     }
         
@@ -333,7 +333,7 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
  
 }
 
-void prompt::taskEditorPrompt(Task* userTask, TaskList* taskList){
+void prompt::taskEditorPrompt(Home* userHome, Task* userTask, TaskList* taskList){
     vector<string> userChanges;
     string targetTask = "", action = "", newVal = "";
     string choice = "";
@@ -621,6 +621,10 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
     mainView->viewWeekly(*userHome);
 
+    if(userHome->isEmpty()){
+        return;
+    }
+
     cout << "Would you like to select a task to edit? (Enter 'Yes' or 'No'): ";
     getline(cin, choice);
 
@@ -710,7 +714,7 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
     } 
     else {
         clearScreen(); // Assuming this function clears the screen
-        taskEditorPrompt(tempTask, tempTaskList);
+        taskEditorPrompt(userHome, tempTask, tempTaskList);
     }
 
         tempTaskList = nullptr;
@@ -732,6 +736,10 @@ void prompt::viewPriority(View* mainView, Home* userHome){
     }
 
     mainView->viewPriority(*userHome,userDifficulty); //Uncompleted, Completed, All//
+
+    if(userHome->isEmpty()){
+        return;
+    }
     
     cout << "Would you like to select a task to edit? (Enter 'Yes' or 'No'): ";
     getline(cin, choice);
@@ -820,7 +828,7 @@ void prompt::viewPriority(View* mainView, Home* userHome){
     } 
     else {
         clearScreen(); // Assuming this function clears the screen
-        taskEditorPrompt(tempTask, tempTaskList);
+        taskEditorPrompt(userHome, tempTask, tempTaskList);
     }
 
     tempTaskList = nullptr;
@@ -834,6 +842,11 @@ void prompt::viewOverall(View* mainView, Home* userHome){
     printLogos("viewOverall");
 
     mainView->viewOverall(*userHome);
+
+    if(userHome->isEmpty()){
+        return;
+    }
+
     string choice = "";
 
    cout << "Would you like to select a task or list to edit? (Enter 'Yes' or 'No'): ";
@@ -914,24 +927,10 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
         } while (userOption != "1" && userOption != "2" && userOption != "3" && userOption != "4");
 
-        if (userOption == "5") {
+        if (userOption == "4") {
             cout << "See ya!" << endl;
             return;
         } 
-        else if(userOption == "4"){
-            userHome->viewLists();
-            cout << "Please enter a new list to add the task to: ";
-            getline(cin,userOption);
-
-            while(userHome->findTaskList(userOption) == nullptr){
-                cout << "INVALID please enter existing list: ";
-                userHome->viewLists();
-            }
-
-            userHome->setList(tempTask, userOption);
-            cout << "Sucessfully added task to " << userOption;
-
-        }
 
         else if (userOption == "3") {
             if (tempTask->getCompleteStatus() == true) { // If task is already marked as complete//
@@ -948,7 +947,7 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         } 
         else {
             clearScreen(); // Assuming this function clears the screen
-            taskEditorPrompt(tempTask, tempTaskList);
+            taskEditorPrompt(userHome, tempTask, tempTaskList);
         }
     }
 
