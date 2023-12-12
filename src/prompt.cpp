@@ -123,7 +123,8 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
     printLogos("newTaskPrompt");
     
-    cout << "Input Information as prompted!" << endl;
+    cout << endl << "             Input Information as prompted!             " << endl;
+    cout << "========================================================" << endl;
         
     cout << "Please enter the name of the new task: ";
     getline(cin, title);
@@ -133,25 +134,25 @@ void prompt::newTaskPrompt(Home* userHome) const {
         getline(cin,priority);
     }
 
-    cout << "Would you like to assign a due date(\"yes\" or \"no\"): ";
+    cout << "Would you like to assign a due date(\"Yes\" or \"No\"): ";
     getline(cin,chooseToAssignDate);
 
     while(chooseToAssignDate != "Yes" && chooseToAssignDate !="yes" && chooseToAssignDate != "no" && chooseToAssignDate != "No"){
-        cout << "INVALID please enter \"yes\" or \"no\": ";
+        cout << "INVALID please enter \"Yes\" or \"No\": ";
         getline(cin,chooseToAssignDate);
     }
 
     if(chooseToAssignDate =="yes" || chooseToAssignDate == "Yes"){
         do{
-            cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+            cout << "Please enter the Due Date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
             getline(cin,dueDate);
-        }while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
+        }while(dueDate.size() < 8 || (dueDate.at(2) != '/' && dueDate.at(2) != '-') || (dueDate.at(5) != '-' && dueDate.at(5) != '/') || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
     }
     
     do{
-        cout << "Please enter the assigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+        cout << "Please enter the Assigned Date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,assignedDate);
-    }while(assignedDate.size() != 8 || assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7))));
+    }while(assignedDate.size() != 8 || (dueDate.at(2) != '/' && dueDate.at(2) != '-') || (dueDate.at(5) != '-' && dueDate.at(5) != '/') || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7))));
 
     cout << "Please enter the description of the new task: ";
     getline(cin, desc);
@@ -1015,11 +1016,11 @@ void prompt::printLogos(const string& logoChoice) const{
 
     if(logoChoice == "printMainMenu"){
         cout << R"(
-  ______           __                
- /_  __/___ ______/ /__     __    __ 
-  / / / __ `/ ___/ //_/  __/ /___/ /_
- / / / /_/ (__  ) ,<    /_  __/_  __/
-/_/  \__,_/____/_/|_|    /_/   /_/   
+       ______           __                
+      /_  __/___ ______/ /__     __    __ 
+       / / / __ `/ ___/ //_/  __/ /___/ /_
+      / / / /_/ (__  ) ,<    /_  __/_  __/
+     /_/  \__,_/____/_/|_|    /_/   /_/   
 )";
     cout << endl;
         
@@ -1027,11 +1028,23 @@ void prompt::printLogos(const string& logoChoice) const{
     }
     else if(logoChoice == "newTaskPrompt"){
         cout << R"(
-     _   __                ______           __      
-    / | / /__ _      __   /_  __/___ ______/ /__    
-   /  |/ / _ \ | /| / /    / / / __ `/ ___/ //_/    
-  / /|  /  __/ |/ |/ /    / / / /_/ (__  ) ,<       
- /_/ |_/\___/|__/|__/    /_/  \__,_/____/_/|_|      
+         _   __                ______           __      
+        / | / /__ _      __   /_  __/___ ______/ /__    
+       /  |/ / _ \ | /| / /    / / / __ `/ ___/ //_/    
+      / /|  /  __/ |/ |/ /    / / / /_/ (__  ) ,<       
+     /_/ |_/\___/|__/|__/    /_/  \__,_/____/_/|_|     
+
+========================================================)";
+        
+
+    }
+    else if(logoChoice == "taskEditorPrompt"){
+        cout << R"(
+     ______           __      ______    ___ __            
+    /_  __/___ ______/ /__   / ____/___/ (_) /_____  _____
+     / / / __ `/ ___/ //_/  / __/ / __  / / __/ __ \/ ___/
+    / / / /_/ (__  ) ,<    / /___/ /_/ / / /_/ /_/ / /    
+   /_/  \__,_/____/_/|_|  /_____/\__,_/_/\__/\____/_/
                                                    
 )";
     cout << endl;
