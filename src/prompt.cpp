@@ -27,11 +27,11 @@ string redo(const string& action, Home* userHome){ //for undos from the user//
 
     }
     else if(action =="Priority" || action == "3"){
-        cout << "Enter new priority(enter \"High\", \"Medium\", \"Low\"): ";
+        cout << "Enter new priority ('High', 'Medium', 'Low'): ";
         getline(cin,newVal);
 
         while(newVal != "high" && newVal != "High" && newVal != "medium" && newVal != "Medium" && newVal != "low" && newVal != "Low"){
-            cout << "INVALID enter \"High\", \"Medium\", \"Low\": ";
+            cout << "Enter a valid priority ('High', 'Medium', 'Low': ";
             getline(cin,newVal);
         }
 
@@ -87,7 +87,7 @@ void prompt::setSelection(){ //TESTED//
     getline(cin,userChoice);
     
     while (userChoice != "1" && userChoice != "2" && userChoice != "3" && userChoice != "4" && userChoice != "5" && userChoice != "Task--"){ 
-        cout << "INVALID INPUT: Please enter 1-5 or \"Task--\" to exit terminal:";
+        cout << "INVALID enter (1-5) or 'Task--' to exit terminal:";
         getline(cin,userChoice);
     }
         
@@ -103,15 +103,15 @@ void prompt::printMainMenu(){ //TESTED//
     cout << "==============================================" << endl;
     cout << "             Task++ Menu Options             " << endl;
     cout << "==============================================" << endl;
-    cout << "1. Make a New Task" << endl;
-    cout << "2. Make a New Task List" << endl;
-    cout << "3. View Tasks In Your Week" << endl;
-    cout << "4. View Overall Lists & Tasks" << endl;
-    cout << "5. View Tasks by Priority" << endl;
+    cout << "1) Make a New Task" << endl;
+    cout << "2) Make a New Task List" << endl;
+    cout << "3) View Tasks In Your Week" << endl;
+    cout << "4) View Overall Lists & Tasks" << endl;
+    cout << "5) View Tasks by Priority" << endl;
     cout << "==============================================" << endl;
-    cout << "(Type \"Task--\" to exit the terminal)" << endl;
+    cout << "(Type 'Task--' to exit the terminal)" << endl;
     cout << "==============================================" << endl;
-    cout << "Please select an option (Enter the corresponding number): ";
+    cout << "Select an option (Enter corresponding numerical value): ";
     this->setSelection();
   
 }
@@ -123,42 +123,43 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
     printLogos("newTaskPrompt");
     
-    cout << "Input Information as prompted!" << endl;
+    cout << endl << "             Input Information as prompted!             " << endl;
+    cout << "========================================================" << endl;
         
-    cout << "Please enter the name of the new task: ";
+    cout << "Enter the name of the new task: ";
     getline(cin, title);
     
     while(priority != "High" && priority != "Medium" && priority != "Low" && priority != "high" && priority != "medium" && priority != "low"){
-        cout << "Please enter the priority of the new task (\"High\", \"Medium\", \"Low\"): ";
+        cout << "Enter the priority of the new task (\"High\", \"Medium\", \"Low\"): ";
         getline(cin,priority);
     }
 
-    cout << "Would you like to assign a due date(\"yes\" or \"no\"): ";
+    cout << "Would you like to assign a due date(\"Yes\" or \"No\"): ";
     getline(cin,chooseToAssignDate);
 
     while(chooseToAssignDate != "Yes" && chooseToAssignDate !="yes" && chooseToAssignDate != "no" && chooseToAssignDate != "No"){
-        cout << "INVALID please enter \"yes\" or \"no\": ";
+        cout << "INVALID enter \"Yes\" or \"No\": ";
         getline(cin,chooseToAssignDate);
     }
 
     if(chooseToAssignDate =="yes" || chooseToAssignDate == "Yes"){
         do{
-            cout << "Please enter the due date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+            cout << "Enter the Due Date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
             getline(cin,dueDate);
-        }while(dueDate.size() != 8 || dueDate.at(2) != '/' || dueDate.at(5) != '/' || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
+        }while(dueDate.size() < 8 || (dueDate.at(2) != '/' && dueDate.at(2) != '-') || (dueDate.at(5) != '-' && dueDate.at(5) != '/') || !(isdigit(dueDate.at(0))) || !(isdigit(dueDate.at(1))) || !(isdigit(dueDate.at(3))) || !(isdigit(dueDate.at(4))) || !(isdigit(dueDate.at(6))) || !(isdigit(dueDate.at(7))));
     }
     
     do{
-        cout << "Please enter the assigned date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
+        cout << "Enter the Assigned Date of the task in the format MM/DD/YY: "; //checks in input is in correct format at all the indices//
         getline(cin,assignedDate);
-    }while(assignedDate.size() != 8 || assignedDate.at(2) != '/' || assignedDate.at(5) != '/' || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7))));
+    }while(assignedDate.size() != 8 || (dueDate.at(2) != '/' && dueDate.at(2) != '-') || (dueDate.at(5) != '-' && dueDate.at(5) != '/') || !(isdigit(assignedDate.at(0))) || !(isdigit(assignedDate.at(1))) || !(isdigit(assignedDate.at(3))) || !(isdigit(assignedDate.at(4))) || !(isdigit(assignedDate.at(6))) || !(isdigit(assignedDate.at(7))));
 
-    cout << "Please enter the description of the new task: ";
+    cout << "Enter the description of the new task: ";
     getline(cin, desc);
     
     if(userHome->listEmpty() == false){ //if list is empty user will get option to add to list//
         do{
-            cout << "Please Enter Y for yes or N for no to assign task to a task list: ";
+            cout << "Enter Y for yes or N for no to assign task to a task list: ";
             getline(cin,assignToList);
         }while(assignToList != "Y" && assignToList != "N" && assignToList != "y" && assignToList != "n"); //checks if user properly enter y or n, to see if they want to assign it to a list//
 
@@ -166,12 +167,12 @@ void prompt::newTaskPrompt(Home* userHome) const {
         if(assignToList == "Y"){ 
 
             userHome->viewLists(); 
-            cout << "Please select list: ";
+            cout << "Select list: ";
             getline(cin,userListChoice);
 
             while(userHome->findTaskList(userListChoice) == nullptr){ //checks if list exist//
                 userHome->viewLists();
-                cout << "Please select a existing list (listed above): ";
+                cout << "Select a existing list (Listed above): ";
                 getline(cin,userListChoice);
                 
             }
@@ -182,11 +183,11 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
     do{
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+            cout << "Enter \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
-            cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+            cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
         }
         getline(cin,confirmation);
         
@@ -201,19 +202,19 @@ void prompt::newTaskPrompt(Home* userHome) const {
     if(confirmation == "2"){
         
         while(userStay == "2"){
-            cout << "Enter \"1\" to edit title" << endl;
-            cout << "Enter \"2\" to edit description" << endl;
-            cout << "Enter \"3\" to edit priority" << endl;
-            cout << "Enter \"4\" to edit due date" << endl;
-            cout << "Enter \"5\" to edit assigned" << endl;
+            cout << "1) Edit title" << endl;
+            cout << "2) Edit description" << endl;
+            cout << "3) Edit priority" << endl;
+            cout << "4) Edit due date" << endl;
+            cout << "5) Edit assigned" << endl;
             
 
-            cout << "Please select an action to edit (enter the corresponding number): ";
+            cout << "Select an option (Enter corresponding numerical value): ";
             getline(cin,userAction);
 
             while(userAction != "1" && userAction != "2" && userAction != "3" && userAction != "4" && userAction != "5"){
                     
-                cout << "Please select a action (1-5): ";
+                cout << "Select an action (1-5): ";
                 getline(cin,userAction);
             }            
             newVal = redo(userAction,userHome);
@@ -222,11 +223,11 @@ void prompt::newTaskPrompt(Home* userHome) const {
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+                    cout << "Enter \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
-                    cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+                    cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
                 }
                 getline(cin,userStay);
             }while(userStay!= "1" && userStay != "2");
@@ -258,22 +259,22 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
     printLogos("newListPrompt");
 
     string listTitle = "", listDescription = "", confirmation = "";
-    cout << "==============================================" << endl;
+    cout << endl << "           Input Information as prompted!           " << endl;
+    cout << "====================================================" << endl;
     cout << "Enter List Title: ";
     getline(cin, listTitle);
     cout << "Enter Description: ";
     getline(cin, listDescription);
-    cout << "==============================================" << endl;
 
     int rev = 0;
 
     do{
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+            cout << "Enter \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
-            cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+            cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
         }
         getline(cin,confirmation);
         
@@ -288,14 +289,14 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
         string userStay = "2"; //to go into loop if user wants to keep redoing//
         
         while(userStay == "2"){
-            cout << "Enter \"1\" to edit title" << endl;
-            cout << "Enter \"2\" to edit description" << endl;
-            cout << "Please select an action to edit (enter the corresponding number): ";
+            cout << "1) Edit title" << endl;
+            cout << "2) Edit description" << endl;
+            cout << "Select an option (Enter corresponding numerical value): ";
 
             getline(cin,userAction);
 
             if(userAction != "1" && userAction != "2"){
-                cout << "Please select an action (1-2): ";
+                cout << "Select an action (1-2): ";
                 getline(cin,userAction);
             }
 
@@ -305,11 +306,11 @@ void prompt::newListPrompt(Home* h) const { //WORKS//
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+                    cout << "Enter \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
-                    cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+                    cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
                 }
                 getline(cin,userStay);
             }while(userStay != "1" && userStay != "2");
@@ -357,7 +358,7 @@ void prompt::taskEditorPrompt(Home* userHome, Task* userTask, TaskList* taskList
     printSeparator(55);
 
     do {
-        cout << "Please select an action to edit (enter the corresponding number): ";
+        cout << "Select an option (Enter corresponding numerical value): ";
         getline(cin, choice);
     } while (choice != "1" && choice != "2" && choice != "3" && choice != "4" && choice != "5");
 
@@ -409,11 +410,11 @@ void prompt::taskEditorPrompt(Home* userHome, Task* userTask, TaskList* taskList
 
     do{ //confirm or redo//
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+            cout << "Enter \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
-            cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+            cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
         }
         getline(cin,confirmation);
         
@@ -425,18 +426,18 @@ void prompt::taskEditorPrompt(Home* userHome, Task* userTask, TaskList* taskList
         
         
         while(userStay == "2"){
-            cout << "Enter \"1\" to edit title" << endl;
-            cout << "Enter \"2\" to edit priority" << endl;
-            cout << "Enter \"3\" to edit due date" << endl;
-            cout << "Enter \"4\" to edit assigned date" << endl;
-            cout << "Enter \"5\" to edit description" << endl;
+            cout << "1) Edit title" << endl;
+            cout << "2) Edit priority" << endl;
+            cout << "3) Edit due date" << endl;
+            cout << "4) Edit assigned date" << endl;
+            cout << "5) Edit description" << endl;
 
-            cout << "Please select an action to edit (enter the corresponding number): ";
+            cout << "Select an option (Enter corresponding numerical value): ";
             getline(cin,action);
 
             if(action != "1" && action != "2" && action != "3" && action != "4" && action != "5"){
 
-                cout << "Please select an action (1-5): ";
+                cout << "Select an action (1-5): ";
                 getline(cin,action);
             }
 
@@ -467,11 +468,11 @@ void prompt::taskEditorPrompt(Home* userHome, Task* userTask, TaskList* taskList
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+                    cout << "Enter \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
-                    cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+                    cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
                 }
                 getline(cin,userStay);
             }while(userStay!= "1" && userStay != "2");
@@ -511,12 +512,12 @@ void prompt::listEditorPrompt(Home* h) {
     displayHorizontalLine(50);
 
     h->viewLists();
-    cout << "Please Select a list to edit: ";
+    cout << "Select a list to edit: ";
     getline(cin,userList);
 
     while(h->findTaskList(userList) == nullptr){
         h->viewLists();
-        cout << "Please enter a valid list: ";
+        cout << "Enter a valid list: ";
         getline(cin,userList);
     }
 
@@ -528,7 +529,7 @@ void prompt::listEditorPrompt(Home* h) {
     cout << "2) " << h->findTaskList(userList)->getListDescription() << endl;
 
     do {
-        cout << "Please Type 1 to edit your list name or Type 2 to edit your list description: ";
+        cout << "Enter \"1\" to edit your list name or \"2\" to edit your list description: ";
         getline(cin, choice);
     } while (choice != "1" && choice != "2");
 
@@ -548,11 +549,11 @@ void prompt::listEditorPrompt(Home* h) {
 
     do{ //confirm or redo//
         if(rev == 0){
-            cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+            cout << "Enter \"1\" to confirm or \"2\" to redo: ";
             rev++;
         }
         else{
-            cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+            cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
         }
         getline(cin,confirmation);
         
@@ -563,14 +564,14 @@ void prompt::listEditorPrompt(Home* h) {
         string userStay = "2"; //to go into loop if user wants to keep redoing//
         
         while(userStay == "2"){
-            cout << "Enter \"1\" to edit title" << endl;
-            cout << "Enter \"2\" to edit description" << endl;
-            cout << "Please select an action to edit (enter the corresponding number): ";
+            cout << "1) Edit title" << endl;
+            cout << "2) Edit description" << endl;
+            cout << "Select an option (Enter corresponding numerical value): ";
 
             getline(cin,action);
 
             if(action != "1" && action != "2"){
-                cout << "Please select an action (1-2): ";
+                cout << "Select an action (1-2): ";
                 getline(cin,action);
             }
 
@@ -589,11 +590,11 @@ void prompt::listEditorPrompt(Home* h) {
 
             do{
                 if(rev2 == 0){
-                    cout << "Please Type \"1\" to confirm or \"2\" to redo: ";
+                    cout << "Enter \"1\" to confirm or \"2\" to redo: ";
                     rev++;
                 }
                 else{
-                    cout << "Invalid please enter \"1\" to confirm or \"2\" to redo: ";
+                    cout << "INVALID enter \"1\" to confirm or \"2\" to redo: ";
                 }
                 getline(cin,userStay);
             }while(userStay != "1" && userStay != "2");
@@ -629,12 +630,11 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
     getline(cin, choice);
 
     while (choice != "yes" && choice != "Yes" && choice != "no" && choice != "No") {
-        cout << "Please enter a valid choice (Yes or No): ";
+        cout << "Enter a valid choice ('Yes' or 'No'): ";
         getline(cin, choice);
     }
 
     if (choice == "no" || choice == "No") {
-        cout << "See ya!" << endl;
         return;
     }
 
@@ -647,11 +647,11 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
     
     while (tempTask == nullptr) {
         if (rev == 0){
-            cout << "Please select a task: ";
+            cout << "Select a task: ";
             rev++;
         } 
         else{
-            cout << "Please select a valid task: ";
+            cout << "Select a valid task: ";
         }
 
         getline(cin, taskChoice);
@@ -681,11 +681,11 @@ void prompt::viewWeekly(View* mainView, Home* userHome) {
 
     do {
         if (rev2 == 0) {
-            cout << "Choose an option (Enter 1-4): ";
+            cout << "Select an option (Enter corresponding numerical value): ";
             rev2++;
         } 
         else {
-            cout << "Please choose a valid option (Enter 1-4): ";
+            cout << "Select a valid option (Enter 1-4): ";
         }
         getline(cin, userOption);
 
@@ -731,7 +731,7 @@ void prompt::viewPriority(View* mainView, Home* userHome){
     getline(cin,userDifficulty);
 
     while(userDifficulty != "Completed" && userDifficulty != "Uncompleted" && userDifficulty != "All" && userDifficulty != "completed" && userDifficulty != "uncompleted" && userDifficulty!= "all"){
-        cout << "Please choose (\"Completed\",\"Uncompleted\",\"All\"): ";
+        cout << "Select ('Completed', 'Uncompleted', 'All'): ";
         getline(cin,userDifficulty);
     }
 
@@ -741,11 +741,11 @@ void prompt::viewPriority(View* mainView, Home* userHome){
         return;
     }
     
-    cout << "Would you like to select a task to edit? (Enter 'Yes' or 'No'): ";
+    cout << "Would you like to select a task to edit? ('Yes' or 'No'): ";
     getline(cin, choice);
 
     while (choice != "yes" && choice != "Yes" && choice != "no" && choice != "No") {
-        cout << "Please enter a valid choice (Yes or No): ";
+        cout << "Enter a valid choice ('Yes' or 'No'): ";
         getline(cin, choice);
     }
 
@@ -765,11 +765,11 @@ void prompt::viewPriority(View* mainView, Home* userHome){
     while (tempTask == nullptr) {
 
         if (rev == 0) {
-            cout << "Please select a task: ";
+            cout << "Select a task: ";
             rev++;
         } 
         else {
-            cout << "Please select a valid task: ";
+            cout << "Select a valid task: ";
         }
 
         getline(cin, taskChoice);
@@ -799,11 +799,11 @@ void prompt::viewPriority(View* mainView, Home* userHome){
 
     do {
         if (rev2 == 0) {
-            cout << "Choose an option (Enter 1-4): ";
+            cout << "Select an option (Enter corresponding numerical value): ";
             rev2++;
         } 
         else {
-            cout << "Please choose a valid option (Enter 1-4): ";
+            cout << "Select a valid option (Enter 1-4): ";
         }
         getline(cin, userOption);
 
@@ -849,11 +849,11 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
     string choice = "";
 
-   cout << "Would you like to select a task or list to edit? (Enter 'Yes' or 'No'): ";
+   cout << "Would you like to select a task or list to edit? ('Yes' or 'No'): ";
     getline(cin, choice);
 
     while (choice != "yes" && choice != "Yes" && choice != "no" && choice != "No") {
-        cout << "Please enter a valid choice (Yes or No): ";
+        cout << "Enter a valid choice (Yes or No): ";
         getline(cin, choice);
     }
 
@@ -862,12 +862,12 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         return;
     }
 
-    cout << "Would you like to edit a task or list: (enter \"Task\" or \"List\"): ";
+    cout << "Would you like to edit a task or list: (enter 'Task' or 'List'): ";
 
     getline(cin,choice);
 
     while(choice != "Task" && choice != "task" && choice != "List" && choice != "list"){
-        cout << "Invalid Please enter (\"Task\" or \"List\"): ";
+        cout << "INVALID enter ('Task' or 'List'): ";
         getline(cin,choice);
     }
 
@@ -883,11 +883,11 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         while (tempTask == nullptr) {
 
             if (rev == 0) {
-                cout << "Please select a task: ";
+                cout << "Select a task: ";
                 rev++;
             } 
             else {
-                cout << "Please select a valid task: ";
+                cout << "Select a valid task: ";
             }
 
             getline(cin, taskChoice);
@@ -917,11 +917,11 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
         do {
             if (rev2 == 0) {
-                cout << "Choose an option (Enter 1-4): ";
+                cout << "Select an option (Enter corresponding numerical value): ";
                 rev2++;
             } 
             else {
-                cout << "Please choose a valid option (Enter 1-4): ";
+                cout << "Select a valid option (Enter 1-4): ";
             }
             getline(cin, userOption);
 
@@ -967,7 +967,7 @@ void prompt::viewOverall(View* mainView, Home* userHome){
         getline(cin,choice);
 
         while(choice != "1" && choice != "2" && choice != "3"){
-            cout << "INVALID please enter (1-3): ";
+            cout << "INVALID enter (1-3): ";
             getline(cin,choice);
         }
         if (choice == "1"){
@@ -992,7 +992,7 @@ void prompt::viewOverall(View* mainView, Home* userHome){
 
             while(userHome->findTaskList(userList) == nullptr){
                 userHome->viewLists();
-                cout << "INVALID please enter existing list: ";
+                cout << "INVALID enter existing list: ";
                 getline(cin,userList);
             }
 
@@ -1015,11 +1015,11 @@ void prompt::printLogos(const string& logoChoice) const{
 
     if(logoChoice == "printMainMenu"){
         cout << R"(
-  ______           __                
- /_  __/___ ______/ /__     __    __ 
-  / / / __ `/ ___/ //_/  __/ /___/ /_
- / / / /_/ (__  ) ,<    /_  __/_  __/
-/_/  \__,_/____/_/|_|    /_/   /_/   
+       ______           __                
+      /_  __/___ ______/ /__     __    __ 
+       / / / __ `/ ___/ //_/  __/ /___/ /_
+      / / / /_/ (__  ) ,<    /_  __/_  __/
+     /_/  \__,_/____/_/|_|    /_/   /_/   
 )";
     cout << endl;
         
@@ -1027,11 +1027,23 @@ void prompt::printLogos(const string& logoChoice) const{
     }
     else if(logoChoice == "newTaskPrompt"){
         cout << R"(
-     _   __                ______           __      
-    / | / /__ _      __   /_  __/___ ______/ /__    
-   /  |/ / _ \ | /| / /    / / / __ `/ ___/ //_/    
-  / /|  /  __/ |/ |/ /    / / / /_/ (__  ) ,<       
- /_/ |_/\___/|__/|__/    /_/  \__,_/____/_/|_|      
+         _   __                ______           __      
+        / | / /__ _      __   /_  __/___ ______/ /__    
+       /  |/ / _ \ | /| / /    / / / __ `/ ___/ //_/    
+      / /|  /  __/ |/ |/ /    / / / /_/ (__  ) ,<       
+     /_/ |_/\___/|__/|__/    /_/  \__,_/____/_/|_|     
+
+========================================================)";
+        
+
+    }
+    else if(logoChoice == "taskEditorPrompt"){
+        cout << R"(
+     ______           __      ______    ___ __            
+    /_  __/___ ______/ /__   / ____/___/ (_) /_____  _____
+     / / / __ `/ ___/ //_/  / __/ / __  / / __/ __ \/ ___/
+    / / / /_/ (__  ) ,<    / /___/ /_/ / / /_/ /_/ / /    
+   /_/  \__,_/____/_/|_|  /_____/\__,_/_/\__/\____/_/
                                                    
 )";
     cout << endl;
@@ -1040,13 +1052,13 @@ void prompt::printLogos(const string& logoChoice) const{
 
     else if(logoChoice == "newListPrompt"){
         cout << R"(
-        _   __                __    _      __ 
-       / | / /__ _      __   / /   (_)____/ /_
-      /  |/ / _ \ | /| / /  / /   / / ___/ __/
-     / /|  /  __/ |/ |/ /  / /___/ (__  ) /_  
-    /_/ |_/\___/|__/|__/  /_____/_/____/\__/  
-    )";
-    cout << endl;
+         _   __                __    _      __ 
+        / | / /__ _      __   / /   (_)____/ /_
+       /  |/ / _ \ | /| / /  / /   / / ___/ __/
+      / /|  /  __/ |/ |/ /  / /___/ (__  ) /_  
+     /_/ |_/\___/|__/|__/  /_____/_/____/\__/  
+
+====================================================)";
         
 
     }
